@@ -20,7 +20,7 @@ class ProgressiveBackground extends Component {
   componentDidMount() {
     const { background } = this.props;
     loadImage(background)
-      .then(bgImage => {
+      .then(() => {
         this.setState({ isLoaded: true });
       })
       .catch(error => console.log(error));

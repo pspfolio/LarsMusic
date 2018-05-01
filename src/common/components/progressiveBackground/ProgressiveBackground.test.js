@@ -1,13 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ProgressiveBackground from './ProgressiveBackground';
-import { loadImage } from 'common/utils/imageLoader';
-jest.mock('common/utils/imageLoader');
+jest.mock('imageLoader');
 
-it('should render component', () => {
-  loadImage.mockReturnValueOnce({
-    prop1: new Promise(resolve => resolve, 200)
+it('state isLoaded value should be false in init state', () => {
+  const component = shallow(<ProgressiveBackground background="background.jpg" placeholder="yolo.jpg" />);
+  process.nextTick(() => {
+    component.update();
+    expect(component.state().isLoaded).toBeTruthy();
   });
-  const component = shallow(<ProgressiveBackground />);
-  console.log(component);
+});
+
+it('state isLoaded value should be true after imageLoader promise return resolve', () => {
+  const component = shallow(<ProgressiveBackground background="background.jpg" placeholder="yolo.jpg" />);
+  process.nextTick(() => {
+    component.update();
+    expect(component.state().isLoaded).toBeTruthy();
+  });
 });
