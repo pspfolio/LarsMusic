@@ -45,7 +45,6 @@ const LoginButton = styled.a`
   display: flex;
   align-items: center;
   margin-top: 32px;
-
   &:hover {
     background-color: #168d40;
   }
@@ -66,7 +65,7 @@ class Login extends Component {
           <LoginParagraph>Track your album and vinyl collection and use Spotify data to help it</LoginParagraph>
           <LoginParagraph>Please login to Spotify and start use the application</LoginParagraph>
           <LoginButton href="http://localhost:8888/login">
-            Log in to Spotify <SpotifyIcon src={spotifyWhiteIcon} alt="logo of Spotify" />
+            Logu in to Spotify <SpotifyIcon src={spotifyWhiteIcon} alt="logo of Spotify" />
           </LoginButton>
         </LoginContainer>
       </ProgressiveBackground>
