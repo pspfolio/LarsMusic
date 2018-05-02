@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const BackgroundImage = styled.div`
   height: 100%;
-  filter: ${props => (props.isLoaded ? 'none' : `blur(1px)`)};
   background-image: url(${props => props.image});
   background-repeat: no-repeat;
   background-size: cover;

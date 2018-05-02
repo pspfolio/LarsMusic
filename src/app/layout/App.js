@@ -8,6 +8,7 @@ import './App.css';
 
 const FullViewHeight = styled.div`
   height: 100vh;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const AsyncLoginComponent = Loadable({
