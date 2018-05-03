@@ -5,7 +5,7 @@ exports[`Login renders correctly 1`] = `
   className="sc-bdVaJa tHcNi"
 >
   <article
-    className="sc-bwzfXH fNiEKJ"
+    className="sc-bwzfXH irXouN"
   >
     <h1
       className="sc-htpNat iwPzKF"
@@ -13,20 +13,20 @@ exports[`Login renders correctly 1`] = `
       LarsMusic
     </h1>
     <p
-      className="sc-bxivhb dHibnO"
+      className="sc-bxivhb fgjHCA"
     >
       Track your album and vinyl collection and use Spotify data to help it
     </p>
     <p
-      className="sc-bxivhb dHibnO"
+      className="sc-bxivhb fgjHCA"
     >
       Please login to Spotify and start use the application
     </p>
     <a
-      className="sc-ifAKCX hWAakY"
+      className="sc-ifAKCX bwrGw"
       href="http://localhost:8888/login"
     >
-      Log in to Spotify 
+      Log in 
       <img
         alt="logo of Spotify"
         className="sc-EHOje iupfgb"

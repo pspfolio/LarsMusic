@@ -10,6 +10,12 @@ const LoginContainer = styled.article`
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 0 40px;
+  text-align: center;
+
+  @media (max-width: 375px) {
+    padding: 0 20px;
+  }
 `;
 
 const MainHeader = styled.h1`
@@ -23,7 +29,7 @@ const LoginParagraph = styled.p`
   color: white;
   font-size: 1.5rem;
   letter-spacing: 0.75px;
-  margin: 0 0 8px 0;
+  margin: 0 0 24px 0;
 `;
 
 const LoginButton = styled.a`
@@ -45,6 +51,7 @@ const LoginButton = styled.a`
   display: flex;
   align-items: center;
   margin-top: 32px;
+  justify-content: center;
   &:hover {
     background-color: #168d40;
   }
@@ -65,7 +72,7 @@ class Login extends Component {
           <LoginParagraph>Track your album and vinyl collection and use Spotify data to help it</LoginParagraph>
           <LoginParagraph>Please login to Spotify and start use the application</LoginParagraph>
           <LoginButton href="http://localhost:8888/login">
-            Logu in to Spotify <SpotifyIcon src={spotifyWhiteIcon} alt="logo of Spotify" />
+            Log in <SpotifyIcon src={spotifyWhiteIcon} alt="logo of Spotify" />
           </LoginButton>
         </LoginContainer>
       </ProgressiveBackground>
