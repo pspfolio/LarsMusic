@@ -11,8 +11,13 @@ const FullViewHeight = styled.div`
   font-family: 'Roboto', sans-serif;
 `;
 
-const AsyncLoginComponent = Loadable({
+const AsyncLogin = Loadable({
   loader: () => import('features/login/Login'),
+  loading: Loading
+});
+
+const AsyncCallback = Loadable({
+  loader: () => import('features/accessToken/AccessToken'),
   loading: Loading
 });
 
@@ -22,7 +27,8 @@ class App extends Component {
       <FullViewHeight>
         <Router>
           <Switch>
-            <Route path="/login" component={AsyncLoginComponent} />
+            <Route path="/login" component={AsyncLogin} />
+            <Route path="/callback" component={AsyncCallback} />
             <Route render={() => <h1>Four oh Four</h1>} />
           </Switch>
         </Router>
