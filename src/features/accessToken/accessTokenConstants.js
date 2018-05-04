@@ -1,1 +1,1 @@
-export const SET_ACCESSTOKEN = 'SET_ACCESSTOKEN';
+export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN';

@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 import { setAccessToken } from './accessTokenActions';
 
-class AccessToken extends Component {
+export class AccessToken extends Component {
   componentDidMount() {
-    console.log(this.props.location.search);
     const { search } = this.props.location;
     const parsed = queryString.parse(search);
-    console.log(parsed.access_token);
     this.props.setAccessToken(parsed);
   }
 
