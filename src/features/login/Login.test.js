@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
 import Login from './Login';
 
 describe('Login component', () => {
@@ -9,7 +8,7 @@ describe('Login component', () => {
   });
 
   it('Login renders correctly', () => {
-    const tree = renderer.create(shallow(<Login />)).toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(<Login />);
+    expect(wrapper).toMatchSnapshot();
   });
 });
