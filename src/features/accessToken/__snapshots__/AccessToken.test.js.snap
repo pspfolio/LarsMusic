@@ -5,6 +5,11 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AccessToken
+    history={
+        Array [
+            "/",
+          ]
+    }
     location={
         Object {
             "search": "yolo123",

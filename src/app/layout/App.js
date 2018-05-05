@@ -29,9 +29,9 @@ class App extends Component {
       <FullViewHeight>
         <Router>
           <Switch>
+            <PrivateRoute path="/" exact component={Collections} />
             <Route path="/login" component={AsyncLogin} />
             <Route path="/callback" component={AsyncCallback} />
-            <PrivateRoute path="/collections" component={Collections} />
             <Route render={() => <h1>Four oh Four</h1>} />
           </Switch>
         </Router>

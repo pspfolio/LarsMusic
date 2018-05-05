@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import { setAccessToken } from './accessTokenActions';
 
 export class AccessToken extends Component {
   componentDidMount() {
-    const { search } = this.props.location;
+    const {
+      history,
+      location: { search },
+      setAccessToken
+    } = this.props;
+
     const parsed = queryString.parse(search);
-    this.props.setAccessToken(parsed);
+    setAccessToken(parsed);
+    history.push('/');
   }
 
   render() {
@@ -21,4 +28,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(AccessToken);
+export default withRouter(connect(null, mapDispatchToProps)(AccessToken));

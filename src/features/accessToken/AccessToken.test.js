@@ -6,11 +6,11 @@ const location = { search: 'yolo123' };
 
 describe('Accesstoken component', () => {
   it('renders without crashing', () => {
-    shallow(<AccessToken setAccessToken={() => {}} location={location} />);
+    shallow(<AccessToken setAccessToken={() => {}} location={location} history={[]} />);
   });
 
   it('AccessToken renders correctly', () => {
-    const wrapper = shallow(<AccessToken setAccessToken={() => {}} location={location} />);
+    const wrapper = shallow(<AccessToken setAccessToken={() => {}} location={location} history={[]} />);
     expect(wrapper).toMatchSnapshot();
   });
 });
