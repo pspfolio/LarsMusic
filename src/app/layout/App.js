@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import styled from 'styled-components';
 import Loading from 'common/components/Loading';
+import PrivateRoute from 'common/components/privateRoute/PrivateRoute';
+import Collections from 'features/collections/Collections';
 
 import './App.css';
 
@@ -29,6 +31,7 @@ class App extends Component {
           <Switch>
             <Route path="/login" component={AsyncLogin} />
             <Route path="/callback" component={AsyncCallback} />
+            <PrivateRoute path="/collections" component={Collections} />
             <Route render={() => <h1>Four oh Four</h1>} />
           </Switch>
         </Router>
