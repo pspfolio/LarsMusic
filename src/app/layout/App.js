@@ -4,7 +4,6 @@ import Loadable from 'react-loadable';
 import styled from 'styled-components';
 import Loading from 'common/components/Loading';
 import PrivateRoute from 'common/components/privateRoute/PrivateRoute';
-import Collections from 'features/collections/Collections';
 
 import './App.css';
 
@@ -23,15 +22,20 @@ const AsyncCallback = Loadable({
   loading: Loading
 });
 
+const AsyncDashboard = Loadable({
+  loader: () => import('features/dashboard/Dashboard'),
+  loading: Loading
+});
+
 class App extends Component {
   render() {
     return (
       <FullViewHeight>
         <Router>
           <Switch>
-            <PrivateRoute path="/" exact component={Collections} />
-            <Route path="/login" component={AsyncLogin} />
+            <PrivateRoute path="/" exact component={AsyncDashboard} />
             <Route path="/callback" component={AsyncCallback} />
+            <Route path="/login" component={AsyncLogin} />
             <Route render={() => <h1>Four oh Four</h1>} />
           </Switch>
         </Router>
