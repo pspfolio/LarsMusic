@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from 'common/components/header/Header';
 import fetchArtists from '../artistActions';
+import { selectArtists } from '../artistSelectors';
+import Header from 'common/components/header/Header';
 
 class ArtistList extends Component {
   componentDidMount() {
@@ -9,12 +10,20 @@ class ArtistList extends Component {
     getArtists();
   }
   render() {
-    return <Header>Your collection of Artists</Header>;
+    return (
+      <article>
+        <Header>Your collection of Artists</Header>
+      </article>
+    );
   }
 }
+
+const mapStateToProps = state => ({
+  artists: selectArtists(state)
+});
 
 const mapDispatchToProps = dispatch => ({
   getArtists: () => dispatch(fetchArtists())
 });
 
-export default connect(null, mapDispatchToProps)(ArtistList);
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistList);
