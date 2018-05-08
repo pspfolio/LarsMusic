@@ -56,12 +56,23 @@ const CardActions = styled.div`
 `;
 
 const CardActionLinkOpen = styled(Link)`
-  color: #9012fe;
+  color: #a8a8a8;
   text-decoration: none;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #9012fe;
+  }
 `;
 
-const CardActionLinkPlay = styled.span`
+const CardActionLinkPlay = styled.a`
   color: #a8a8a8;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #1db954;
+  }
 `;
 
 const MoreArtistLinkContainer = styled.div`
@@ -94,7 +105,10 @@ class ArtistList extends Component {
                 {artist.genres.slice(0, 2).map(genre => <span key={genre}> {genre} </span>)}
               </CardGenreList>
               <CardActions>
-                <CardActionLinkPlay>Listen</CardActionLinkPlay> <CardActionLinkOpen to="/">Open</CardActionLinkOpen>
+                <CardActionLinkPlay href={artist.external_urls['spotify']} target="_blank">
+                  Spotify
+                </CardActionLinkPlay>
+                <CardActionLinkOpen to="/">Open</CardActionLinkOpen>
               </CardActions>
             </ArtistCard>
           ))}
