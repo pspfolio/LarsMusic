@@ -14,4 +14,14 @@ describe('artistReducer', () => {
     const state = artistReducer(undefined, action);
     expect(state.isFetching).toEqual(true);
   });
+
+  it('should handle RECEIVE_ARTIST_LIST', () => {
+    const action = {
+      type: RECEIVE_ARTIST_LIST,
+      payload: [{ name: 'artist' }]
+    };
+    const state = artistReducer(undefined, action);
+    expect(state.isFetching).toEqual(false);
+    expect(state.entities.length).toEqual(1);
+  });
 });
