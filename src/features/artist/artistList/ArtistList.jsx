@@ -82,6 +82,7 @@ const MoreArtistLinkContainer = styled.div`
 const MoreArtistLink = styled(Link)`
   color: #9012fe;
   text-decoration: none;
+  font-weight: 500;
 `;
 
 class ArtistList extends Component {
