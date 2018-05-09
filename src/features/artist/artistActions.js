@@ -8,7 +8,15 @@ function requestArtistList() {
   };
 }
 
-function setArtistList(payload) {
+function setArtistList(json) {
+  const data = json.artists.map(artist => ({
+    ...artist,
+    followers: artist.followers['total'],
+    images: artist.images.find(image => image.width > 100 && image.width < 250),
+    external_urls: artist.external_urls['spotify']
+  }));
+
+  const payload = mapKeys(data, 'id');
   return {
     type: RECEIVE_ARTIST_LIST,
     payload
@@ -28,8 +36,7 @@ export default function fetchArtists() {
     })
       .then(data => data.json())
       .then(json => {
-        const result = mapKeys(json.artists, 'id');
-        dispatch(setArtistList(result));
+        dispatch(setArtistList(json));
       });
   };
 }

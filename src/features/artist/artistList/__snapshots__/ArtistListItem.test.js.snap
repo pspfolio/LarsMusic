@@ -1,0 +1,391 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArtistListItem component ArtistListItem renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ArtistListItem
+    external_urls="urls"
+    genres={
+        Array [
+            "genre1",
+            "genre2",
+          ]
+    }
+    images={
+        Object {
+            "url": "yolo",
+          }
+    }
+    name="yolo"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.div
+          url="yolo"
+/>,
+        <styled.h3>
+          yolo
+</styled.h3>,
+        <styled.div>
+          <span>
+                     
+                    genre1
+                     
+          </span>
+          <span>
+                     
+                    genre2
+                     
+          </span>
+</styled.div>,
+        <styled.div>
+          <styled.a
+                    href="urls"
+                    target="_blank"
+          >
+                    Spotify
+          </styled.a>
+          <Styled(Link)
+                    to="/"
+          >
+                    Open
+          </Styled(Link)>
+</styled.div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "url": "yolo",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "yolo",
+        },
+        "ref": null,
+        "rendered": "yolo",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <span>
+               
+              genre1
+               
+</span>,
+            <span>
+               
+              genre2
+               
+</span>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "genre1",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                " ",
+                "genre1",
+                " ",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              " ",
+              "genre1",
+              " ",
+            ],
+            "type": "span",
+          },
+          Object {
+            "instance": null,
+            "key": "genre2",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                " ",
+                "genre2",
+                " ",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              " ",
+              "genre2",
+              " ",
+            ],
+            "type": "span",
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.a
+              href="urls"
+              target="_blank"
+>
+              Spotify
+</styled.a>,
+            <Styled(Link)
+              to="/"
+>
+              Open
+</Styled(Link)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Spotify",
+              "href": "urls",
+              "target": "_blank",
+            },
+            "ref": null,
+            "rendered": "Spotify",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Open",
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": "Open",
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.div
+            url="yolo"
+/>,
+          <styled.h3>
+            yolo
+</styled.h3>,
+          <styled.div>
+            <span>
+                         
+                        genre1
+                         
+            </span>
+            <span>
+                         
+                        genre2
+                         
+            </span>
+</styled.div>,
+          <styled.div>
+            <styled.a
+                        href="urls"
+                        target="_blank"
+            >
+                        Spotify
+            </styled.a>
+            <Styled(Link)
+                        to="/"
+            >
+                        Open
+            </Styled(Link)>
+</styled.div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "url": "yolo",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "yolo",
+          },
+          "ref": null,
+          "rendered": "yolo",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <span>
+                 
+                genre1
+                 
+</span>,
+              <span>
+                 
+                genre2
+                 
+</span>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "genre1",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  " ",
+                  "genre1",
+                  " ",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                " ",
+                "genre1",
+                " ",
+              ],
+              "type": "span",
+            },
+            Object {
+              "instance": null,
+              "key": "genre2",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  " ",
+                  "genre2",
+                  " ",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                " ",
+                "genre2",
+                " ",
+              ],
+              "type": "span",
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.a
+                href="urls"
+                target="_blank"
+>
+                Spotify
+</styled.a>,
+              <Styled(Link)
+                to="/"
+>
+                Open
+</Styled(Link)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Spotify",
+                "href": "urls",
+                "target": "_blank",
+              },
+              "ref": null,
+              "rendered": "Spotify",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Open",
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": "Open",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
