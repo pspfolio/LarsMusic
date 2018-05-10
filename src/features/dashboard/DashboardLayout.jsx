@@ -3,23 +3,21 @@ import styled from 'styled-components';
 
 const TopBar = styled.nav`
   width: 100%;
-  background-color: #5e24d4;
-  background-image: linear-gradient(to right, #5e24d4, #9c69dc);
-  height: 80px;
+  background-color: #424242;
+  height: 72px;
   display: flex;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
 const TopBarContainer = styled.div`
-  width: 1170px;
-  margin: 0 auto;
   display: flex;
   height: 100%;
   align-items: center;
+  margin-left: 24px;
 `;
 
 const Container = styled.main`
-  width: 1170px;
+  width: 1250px;
   margin: 0 auto;
 `;
 

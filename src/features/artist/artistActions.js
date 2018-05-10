@@ -9,10 +9,11 @@ function requestArtistList() {
 }
 
 function setArtistList(json) {
+  console.log(json.artists);
   const data = json.artists.map(artist => ({
     ...artist,
     followers: artist.followers['total'],
-    images: artist.images.find(image => image.width > 100 && image.width < 250),
+    images: artist.images.find(image => image.width > 199 && image.width < 350),
     external_urls: artist.external_urls['spotify']
   }));
 
