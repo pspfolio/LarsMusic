@@ -39,37 +39,17 @@ ShallowWrapper {
           <styled.h5>
                     yolo
           </styled.h5>
-          <styled.div>
-                    <styled.span>
-                              genre1
-                               
-                              <styled.img
-                                        alt="genre divider"
-                                        src="round-lens-24px.svg"
-                              />
-                    </styled.span>
-                    <styled.span>
-                              genre2
-                               
-                              <styled.img
-                                        alt="genre divider"
-                                        src="round-lens-24px.svg"
-                              />
-                    </styled.span>
-          </styled.div>
-          <styled.div>
-                    <styled.a
-                              href="urls"
-                              target="_blank"
-                    >
-                              Spotify
-                    </styled.a>
-                    <Styled(Link)
-                              to="/"
-                    >
-                              Open
-                    </Styled(Link)>
-          </styled.div>
+          <ArtistListItemGenres
+                    genres={
+                              Array [
+                                        "genre1",
+                                        "genre2",
+                                      ]
+                    }
+          />
+          <ArtistListItemActions
+                    externalUrl="urls"
+          />
 </styled.div>,
       ],
     },
@@ -95,37 +75,17 @@ ShallowWrapper {
             <styled.h5>
               yolo
 </styled.h5>,
-            <styled.div>
-              <styled.span>
-                            genre1
-                             
-                            <styled.img
-                                          alt="genre divider"
-                                          src="round-lens-24px.svg"
-                            />
-              </styled.span>
-              <styled.span>
-                            genre2
-                             
-                            <styled.img
-                                          alt="genre divider"
-                                          src="round-lens-24px.svg"
-                            />
-              </styled.span>
-</styled.div>,
-            <styled.div>
-              <styled.a
-                            href="urls"
-                            target="_blank"
-              >
-                            Spotify
-              </styled.a>
-              <Styled(Link)
-                            to="/"
-              >
-                            Open
-              </Styled(Link)>
-</styled.div>,
+            <ArtistListItemGenres
+              genres={
+                            Array [
+                                          "genre1",
+                                          "genre2",
+                                        ]
+              }
+/>,
+            <ArtistListItemActions
+              externalUrl="urls"
+/>,
           ],
         },
         "ref": null,
@@ -144,145 +104,26 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "children": Array [
-                <styled.span>
-                  genre1
-                   
-                  <styled.img
-                                    alt="genre divider"
-                                    src="round-lens-24px.svg"
-                  />
-</styled.span>,
-                <styled.span>
-                  genre2
-                   
-                  <styled.img
-                                    alt="genre divider"
-                                    src="round-lens-24px.svg"
-                  />
-</styled.span>,
+              "genres": Array [
+                "genre1",
+                "genre2",
               ],
             },
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": "genre1",
-                "nodeType": "class",
-                "props": Object {
-                  "children": Array [
-                    "genre1",
-                    " ",
-                    <styled.img
-                      alt="genre divider"
-                      src="round-lens-24px.svg"
-/>,
-                  ],
-                },
-                "ref": null,
-                "rendered": Array [
-                  "genre1",
-                  " ",
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "alt": "genre divider",
-                      "src": "round-lens-24px.svg",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": [Function],
-                  },
-                ],
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": "genre2",
-                "nodeType": "class",
-                "props": Object {
-                  "children": Array [
-                    "genre2",
-                    " ",
-                    <styled.img
-                      alt="genre divider"
-                      src="round-lens-24px.svg"
-/>,
-                  ],
-                },
-                "ref": null,
-                "rendered": Array [
-                  "genre2",
-                  " ",
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "alt": "genre divider",
-                      "src": "round-lens-24px.svg",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": [Function],
-                  },
-                ],
-                "type": [Function],
-              },
-            ],
+            "rendered": null,
             "type": [Function],
           },
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "children": Array [
-                <styled.a
-                  href="urls"
-                  target="_blank"
->
-                  Spotify
-</styled.a>,
-                <Styled(Link)
-                  to="/"
->
-                  Open
-</Styled(Link)>,
-              ],
+              "externalUrl": "urls",
             },
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "Spotify",
-                  "href": "urls",
-                  "target": "_blank",
-                },
-                "ref": null,
-                "rendered": "Spotify",
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "Open",
-                  "to": "/",
-                },
-                "ref": null,
-                "rendered": "Open",
-                "type": [Function],
-              },
-            ],
+            "rendered": null,
             "type": [Function],
           },
         ],
@@ -305,37 +146,17 @@ ShallowWrapper {
             <styled.h5>
                         yolo
             </styled.h5>
-            <styled.div>
-                        <styled.span>
-                                    genre1
-                                     
-                                    <styled.img
-                                                alt="genre divider"
-                                                src="round-lens-24px.svg"
-                                    />
-                        </styled.span>
-                        <styled.span>
-                                    genre2
-                                     
-                                    <styled.img
-                                                alt="genre divider"
-                                                src="round-lens-24px.svg"
-                                    />
-                        </styled.span>
-            </styled.div>
-            <styled.div>
-                        <styled.a
-                                    href="urls"
-                                    target="_blank"
-                        >
-                                    Spotify
-                        </styled.a>
-                        <Styled(Link)
-                                    to="/"
-                        >
-                                    Open
-                        </Styled(Link)>
-            </styled.div>
+            <ArtistListItemGenres
+                        genres={
+                                    Array [
+                                                "genre1",
+                                                "genre2",
+                                              ]
+                        }
+            />
+            <ArtistListItemActions
+                        externalUrl="urls"
+            />
 </styled.div>,
         ],
       },
@@ -361,37 +182,17 @@ ShallowWrapper {
               <styled.h5>
                 yolo
 </styled.h5>,
-              <styled.div>
-                <styled.span>
-                                genre1
-                                 
-                                <styled.img
-                                                alt="genre divider"
-                                                src="round-lens-24px.svg"
-                                />
-                </styled.span>
-                <styled.span>
-                                genre2
-                                 
-                                <styled.img
-                                                alt="genre divider"
-                                                src="round-lens-24px.svg"
-                                />
-                </styled.span>
-</styled.div>,
-              <styled.div>
-                <styled.a
-                                href="urls"
-                                target="_blank"
-                >
-                                Spotify
-                </styled.a>
-                <Styled(Link)
-                                to="/"
-                >
-                                Open
-                </Styled(Link)>
-</styled.div>,
+              <ArtistListItemGenres
+                genres={
+                                Array [
+                                                "genre1",
+                                                "genre2",
+                                              ]
+                }
+/>,
+              <ArtistListItemActions
+                externalUrl="urls"
+/>,
             ],
           },
           "ref": null,
@@ -410,145 +211,26 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
-                "children": Array [
-                  <styled.span>
-                    genre1
-                     
-                    <styled.img
-                                        alt="genre divider"
-                                        src="round-lens-24px.svg"
-                    />
-</styled.span>,
-                  <styled.span>
-                    genre2
-                     
-                    <styled.img
-                                        alt="genre divider"
-                                        src="round-lens-24px.svg"
-                    />
-</styled.span>,
+                "genres": Array [
+                  "genre1",
+                  "genre2",
                 ],
               },
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": "genre1",
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": Array [
-                      "genre1",
-                      " ",
-                      <styled.img
-                        alt="genre divider"
-                        src="round-lens-24px.svg"
-/>,
-                    ],
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    "genre1",
-                    " ",
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "alt": "genre divider",
-                        "src": "round-lens-24px.svg",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                  ],
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": "genre2",
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": Array [
-                      "genre2",
-                      " ",
-                      <styled.img
-                        alt="genre divider"
-                        src="round-lens-24px.svg"
-/>,
-                    ],
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    "genre2",
-                    " ",
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "alt": "genre divider",
-                        "src": "round-lens-24px.svg",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                  ],
-                  "type": [Function],
-                },
-              ],
+              "rendered": null,
               "type": [Function],
             },
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
-                "children": Array [
-                  <styled.a
-                    href="urls"
-                    target="_blank"
->
-                    Spotify
-</styled.a>,
-                  <Styled(Link)
-                    to="/"
->
-                    Open
-</Styled(Link)>,
-                ],
+                "externalUrl": "urls",
               },
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": "Spotify",
-                    "href": "urls",
-                    "target": "_blank",
-                  },
-                  "ref": null,
-                  "rendered": "Spotify",
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": "Open",
-                    "to": "/",
-                  },
-                  "ref": null,
-                  "rendered": "Open",
-                  "type": [Function],
-                },
-              ],
+              "rendered": null,
               "type": [Function],
             },
           ],

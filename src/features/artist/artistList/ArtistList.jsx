@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import values from 'lodash/values';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import fetchArtists from '../artistActions';
-import { selectArtists } from '../artistSelectors';
+import { selectArtistByLimit } from '../artistSelectors';
 import Header from 'common/components/header/Header';
 import ArtistListItem from './ArtistListItem';
 
@@ -30,12 +29,11 @@ class ArtistList extends Component {
   }
   render() {
     const { artists } = this.props;
-    const artistList = values(artists);
 
     return (
       <div>
         <Header>Your collection of Artists</Header>
-        <ArtistContainer>{artistList.map(artist => <ArtistListItem key={artist.id} {...artist} />)}</ArtistContainer>
+        <ArtistContainer>{artists.map(artist => <ArtistListItem key={artist.id} {...artist} />)}</ArtistContainer>
         <MoreArtistLinkContainer>
           <MoreArtistLink to="/">More...</MoreArtistLink>
         </MoreArtistLinkContainer>
@@ -45,7 +43,7 @@ class ArtistList extends Component {
 }
 
 const mapStateToProps = state => ({
-  artists: selectArtists(state)
+  artists: selectArtistByLimit(state, 4)
 });
 
 const mapDispatchToProps = dispatch => ({
