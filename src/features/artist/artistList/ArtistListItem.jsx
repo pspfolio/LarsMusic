@@ -5,6 +5,8 @@ import lens from 'assets/images/round-lens-24px.svg';
 
 const ArtistCard = styled.section`
   width: 296px;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1);
   border-radius: 5px;
   background-color: #fff;
@@ -20,6 +22,7 @@ const CardArtistImage = styled.div`
 
 const CardArtistContent = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   padding: 16px;
 `;
@@ -53,29 +56,36 @@ const CardGenreListDivider = styled.img`
 
 const CardActions = styled.div`
   display: flex;
-  width: 100%;
   flex: 1;
   align-items: flex-end;
-  justify-content: space-evenly;
+  margin-top: 24px;
+  width: 100%;
 `;
 
 const CardActionLinkOpen = styled(Link)`
-  color: #a8a8a8;
+  color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
   transition: color 0.3s ease-in-out;
-
+  font-size: 14px;
+  letter-spacing: 1.25px;
+  margin-left: 24px;
+  text-transform: uppercase;
+  font-weight: 500;
   &:hover {
     color: #9012fe;
   }
 `;
 
-const CardActionLinkPlay = styled.a`
-  color: #a8a8a8;
+const CardActionLinkSpotify = styled.a`
+  color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
   transition: color 0.3s ease-in-out;
-
+  font-size: 14px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  font-weight: 500;
   &:hover {
-    color: #1db954;
+    color: #1ed760;
   }
 `;
 
@@ -93,9 +103,9 @@ const ArtistListItem = ({ images, name, genres, external_urls }) => {
           ))}
         </CardGenreList>
         <CardActions>
-          <CardActionLinkPlay href={external_urls} target="_blank">
+          <CardActionLinkSpotify href={external_urls} target="_blank">
             Spotify
-          </CardActionLinkPlay>
+          </CardActionLinkSpotify>
           <CardActionLinkOpen to="/">Open</CardActionLinkOpen>
         </CardActions>
       </CardArtistContent>
