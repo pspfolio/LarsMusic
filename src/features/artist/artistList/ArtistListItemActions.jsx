@@ -37,12 +37,12 @@ const CardActionLinkSpotify = styled.a`
   }
 `;
 
-const ArtistListItemActions = ({ externalUrl }) => (
+const ArtistListItemActions = ({ externalUrl, artistId }) => (
   <CardActions>
     <CardActionLinkSpotify href={externalUrl} target="_blank">
       Spotify
     </CardActionLinkSpotify>
-    <CardActionLinkOpen to="/">Open</CardActionLinkOpen>
+    <CardActionLinkOpen to={`/artist/${artistId}`}>Open</CardActionLinkOpen>
   </CardActions>
 );
 

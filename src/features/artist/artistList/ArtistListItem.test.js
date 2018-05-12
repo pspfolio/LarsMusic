@@ -5,13 +5,23 @@ import ArtistListItem from './ArtistListItem';
 describe('ArtistListItem component', () => {
   it('renders without crashing', () => {
     shallow(
-      <ArtistListItem images={{ url: 'yolo' }} name="yolo" genres={['genre1', 'genre2']} external_urls={'urls'} />
+      <ArtistListItem
+        images={[{ url: 'yolo', width: 200 }]}
+        name="yolo"
+        genres={['genre1', 'genre2']}
+        external_urls={'urls'}
+      />
     );
   });
 
   it('ArtistListItem renders correctly', () => {
     const wrapper = shallow(
-      <ArtistListItem images={{ url: 'yolo' }} name="yolo" genres={['genre1', 'genre2']} external_urls={'urls'} />
+      <ArtistListItem
+        images={[{ url: 'yolo', width: 200 }]}
+        name="yolo"
+        genres={['genre1', 'genre2']}
+        external_urls={'urls'}
+      />
     );
     expect(wrapper).toMatchSnapshot();
   });

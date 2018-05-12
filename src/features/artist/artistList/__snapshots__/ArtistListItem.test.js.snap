@@ -13,9 +13,12 @@ ShallowWrapper {
           ]
     }
     images={
-        Object {
-            "url": "yolo",
-          }
+        Array [
+            Object {
+              "url": "yolo",
+              "width": 200,
+            },
+          ]
     }
     name="yolo"
 />,
@@ -48,6 +51,7 @@ ShallowWrapper {
                     }
           />
           <ArtistListItemActions
+                    artistId={undefined}
                     externalUrl="urls"
           />
 </styled.div>,
@@ -84,6 +88,7 @@ ShallowWrapper {
               }
 />,
             <ArtistListItemActions
+              artistId={undefined}
               externalUrl="urls"
 />,
           ],
@@ -120,6 +125,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
+              "artistId": undefined,
               "externalUrl": "urls",
             },
             "ref": null,
@@ -155,6 +161,7 @@ ShallowWrapper {
                         }
             />
             <ArtistListItemActions
+                        artistId={undefined}
                         externalUrl="urls"
             />
 </styled.div>,
@@ -191,6 +198,7 @@ ShallowWrapper {
                 }
 />,
               <ArtistListItemActions
+                artistId={undefined}
                 externalUrl="urls"
 />,
             ],
@@ -227,6 +235,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
+                "artistId": undefined,
                 "externalUrl": "urls",
               },
               "ref": null,

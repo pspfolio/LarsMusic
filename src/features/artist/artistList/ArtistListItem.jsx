@@ -36,14 +36,15 @@ const CardArtistTitle = styled.h5`
   margin: 16px 0 0 0;
 `;
 
-const ArtistListItem = ({ images, name, genres, external_urls }) => {
+const ArtistListItem = ({ images, name, genres, external_urls, id }) => {
+  const image = images.find(image => image.width > 199 && image.width < 350);
   return (
     <ArtistCard>
-      <CardArtistImage url={images.url} />
+      <CardArtistImage url={image.url} />
       <CardArtistContent>
         <CardArtistTitle>{name}</CardArtistTitle>
         <ArtistListItemGenres genres={genres.slice(0, 3)} />
-        <ArtistListItemActions externalUrl={external_urls} />
+        <ArtistListItemActions externalUrl={external_urls} artistId={id} />
       </CardArtistContent>
     </ArtistCard>
   );
