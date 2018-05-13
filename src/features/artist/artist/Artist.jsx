@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DashboardLayout from 'features/dashboard//DashboardLayout';
-import { fetchArtist } from '../artistActions';
+import { fetchArtistIfNeeded } from '../artistActions';
+import { selectArtistById } from '../artistSelectors';
+import ArtistPanel from './ArtistPanel';
 
 class Artist extends Component {
   componentDidMount() {
-    const { fetchArtist } = this.props;
+    const { fetchArtist, artist } = this.props;
     const { id } = this.props.match.params;
-    console.log('IIIDEE', id);
+    console.log('ARTIST!!', artist);
     fetchArtist(id);
   }
   render() {
-    return (
-      <DashboardLayout>
-        <h1>ARTIST</h1>
-      </DashboardLayout>
-    );
+    const { artist } = this.props;
+    return <DashboardLayout>{artist ? <ArtistPanel artist={artist} /> : <h3>Loading</h3>}</DashboardLayout>;
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchArtist: id => {
-      dispatch(fetchArtist(id));
-    }
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  artist: selectArtistById(state, ownProps.match.params.id)
+});
 
-export default connect(null, mapDispatchToProps)(Artist);
+const mapDispatchToProps = dispatch => ({
+  fetchArtist: id => {
+    dispatch(fetchArtistIfNeeded(id));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Artist);

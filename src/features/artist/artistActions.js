@@ -46,7 +46,7 @@ function fetchArtistBasicData(artistId) {
   };
 }
 
-export function fetchArtist(artistId) {
+export function fetchArtistIfNeeded(artistId) {
   return (dispatch, getState) => {
     const artistFromState = getState().artist.entities[artistId];
     if (!artistFromState) return dispatch(fetchArtistBasicData(artistId));
