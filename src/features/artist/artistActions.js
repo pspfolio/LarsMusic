@@ -44,7 +44,6 @@ function fetchArtistBasicData(artistId) {
     })
       .then(response => response.json())
       .then(json => {
-        console.log('ARTISTFETCHED', json);
         dispatch(setArtist(json));
       });
   };
