@@ -1,5 +1,5 @@
 import mapKeys from 'lodash/mapKeys';
-import { RECEIVE_ARTIST_LIST, REQUEST_ARTIST_LIST } from './artistConstants';
+import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistConstants';
 import { artistIdList } from 'data/sampleData';
 
 function requestArtistList() {
@@ -9,21 +9,55 @@ function requestArtistList() {
 }
 
 function setArtistList(json) {
-  console.log(json.artists);
-  const data = json.artists.map(artist => ({
-    ...artist,
-    followers: artist.followers['total'],
-    external_urls: artist.external_urls['spotify']
-  }));
+  const data = json.artists.map(handleArtistData);
 
   const payload = mapKeys(data, 'id');
   return {
-    type: RECEIVE_ARTIST_LIST,
+    type: RECEIVE_ARTISTS,
     payload
   };
 }
 
-export default function fetchArtists() {
+function setArtist(artist) {
+  const payload = handleArtistData(artist);
+
+  return {
+    type: RECEIVE_ARTIST,
+    payload
+  };
+}
+
+const handleArtistData = artist => ({
+  ...artist,
+  followers: artist.followers['total'],
+  external_urls: artist.external_urls['spotify']
+});
+
+function fetchArtistBasicData(artistId) {
+  return (dispatch, getState) => {
+    // dispatch request artist
+    const accessToken = getState().accessToken;
+    return fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
+      headers: new Headers({
+        Authorization: `Bearer ${accessToken}`
+      })
+    })
+      .then(response => response.json())
+      .then(json => {
+        console.log('ARTISTFETCHED', json);
+        dispatch(setArtist(json));
+      });
+  };
+}
+
+export function fetchArtist(artistId) {
+  return (dispatch, getState) => {
+    const artistFromState = getState().artist.entities[artistId];
+    if (!artistFromState) return dispatch(fetchArtistBasicData(artistId));
+  };
+}
+
+export function fetchArtists() {
   return (dispatch, getState) => {
     dispatch(requestArtistList());
     const accessToken = getState().accessToken;

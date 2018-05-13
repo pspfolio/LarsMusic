@@ -1,5 +1,5 @@
 import artistReducer from './artistReducer';
-import { RECEIVE_ARTIST_LIST, REQUEST_ARTIST_LIST } from './artistConstants';
+import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistConstants';
 
 describe('artistReducer', () => {
   it('should return the initial state', () => {
@@ -15,13 +15,24 @@ describe('artistReducer', () => {
     expect(state.isFetching).toEqual(true);
   });
 
-  it('should handle RECEIVE_ARTIST_LIST', () => {
+  it('should handle RECEIVE_ARTISTS', () => {
     const action = {
-      type: RECEIVE_ARTIST_LIST,
-      payload: [{ name: 'artist' }]
+      type: RECEIVE_ARTISTS,
+      payload: { yolo: { id: 'yolo', name: 'artist' }, yolo1: { id: 'yolo1', name: 'artist1' } }
     };
     const state = artistReducer(undefined, action);
     expect(state.isFetching).toEqual(false);
-    expect(state.entities.length).toEqual(1);
+    expect(state.entities['yolo1'].name).toEqual('artist1');
+  });
+
+  it('should handle RECEIVE_ARTIST', () => {
+    const action = {
+      type: RECEIVE_ARTIST,
+      payload: { id: 'yolo', name: 'Yolo' }
+    };
+
+    const state = artistReducer(undefined, action);
+    expect(state.isFetching).toEqual(false);
+    expect(state.entities['yolo'].name).toEqual('Yolo');
   });
 });
