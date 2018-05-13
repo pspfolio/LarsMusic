@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ArtistListItemActions from './ArtistListItemActions';
-import ArtistListItemGenres from './ArtistListItemGenres';
+import ArtistGenres from '../artistGenres/ArtistGenres';
 
 const ArtistCard = styled.section`
   width: 296px;
@@ -43,7 +43,7 @@ const ArtistListItem = ({ images, name, genres, external_urls, id }) => {
       <CardArtistImage url={image.url} />
       <CardArtistContent>
         <CardArtistTitle>{name}</CardArtistTitle>
-        <ArtistListItemGenres genres={genres.slice(0, 3)} />
+        <ArtistGenres genres={genres.slice(0, 3)} />
         <ArtistListItemActions externalUrl={external_urls} artistId={id} />
       </CardArtistContent>
     </ArtistCard>

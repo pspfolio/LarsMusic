@@ -6,7 +6,7 @@ const CardGenreList = styled.div`
   display: flex;
   color: rgba(0, 0, 0, 0.6);
   font-size: 14px;
-  margin-top: 24px;
+  margin-top: 8px;
   letter-spacing: 0.25px;
 `;
 
@@ -24,7 +24,7 @@ const ArtistListItemGenres = ({ genres }) => (
   <CardGenreList>
     {genres.map((genre, index) => (
       <CardGenreListItem key={genre}>
-        {genre} {index !== 2 && <CardGenreListDivider src={lens} alt="genre divider" />}
+        {genre} {genres.length !== index + 1 && <CardGenreListDivider src={lens} alt="genre divider" />}
       </CardGenreListItem>
     ))}
   </CardGenreList>
