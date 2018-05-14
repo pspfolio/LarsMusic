@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ArtistGenres from '../artistGenres/ArtistGenres';
+import TopTracks from 'features/tracks/topTracks/TopTracks';
 
 const ArtistPanelHeader = styled.article`
   display: flex;
@@ -53,7 +54,6 @@ const ActionRow = styled.div`
 class ArtistPanel extends Component {
   render() {
     const { artist } = this.props;
-    console.log(artist);
     const image = artist.images.find(image => image.height > 100 && image.height < 200);
     return (
       <div>
@@ -68,10 +68,11 @@ class ArtistPanel extends Component {
               <SpotifyButton href={artist.external_urls} target="_blank">
                 Open in Spotify
               </SpotifyButton>
-              <Popularity>Popularity: {artist.popularity}</Popularity>
+              <Popularity>Popularity: {artist.popularity} / 100</Popularity>
             </ActionRow>
           </ArtistPanelTitle>
         </ArtistPanelHeader>
+        <TopTracks />
       </div>
     );
   }

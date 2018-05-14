@@ -7,9 +7,8 @@ import ArtistPanel from './ArtistPanel';
 
 class Artist extends Component {
   componentDidMount() {
-    const { fetchArtist, artist } = this.props;
+    const { fetchArtist } = this.props;
     const { id } = this.props.match.params;
-    console.log('ARTIST!!', artist);
     fetchArtist(id);
   }
   render() {
