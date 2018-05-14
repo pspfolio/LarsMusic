@@ -39,6 +39,13 @@ const SpotifyButton = styled.a`
   }
 `;
 
+const Popularity = styled.span`
+  margin-left: 24px;
+  letter-spacing: 0.25px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+`;
+
 const ActionRow = styled.div`
   min-height: 28px;
 `;
@@ -61,7 +68,7 @@ class ArtistPanel extends Component {
               <SpotifyButton href={artist.external_urls} target="_blank">
                 Open in Spotify
               </SpotifyButton>
-              Popularity: 123
+              <Popularity>Popularity: {artist.popularity}</Popularity>
             </ActionRow>
           </ArtistPanelTitle>
         </ArtistPanelHeader>
