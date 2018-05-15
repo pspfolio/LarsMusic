@@ -12,7 +12,24 @@ class TopTracks extends Component {
 
   render() {
     const { topTracks } = this.props;
-    return <article>{topTracks && <ul> {topTracks.map(track => <h4>{track.name}</h4>)}</ul>}</article>;
+    return (
+      <article>
+        {topTracks && (
+          <ul>
+            {topTracks.map(track => (
+              <li key={track.id}>
+                <img src={track.album.images.find(img => img.height < 100).url} alt={`${track.name} album art`} />
+                <h4>{track.name}</h4>
+                <h4>{track.album.name}</h4>
+                <a href={track.external_urls['spotify']} target="_blank">
+                  Open in Spotify
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </article>
+    );
   }
 }
 
