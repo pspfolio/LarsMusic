@@ -6,13 +6,20 @@ import { fetchTopTracksIfNeeded } from '../tracksActions';
 import { selectTopTracksByArtistId } from '../tracksSelectors';
 
 const TopTracksCard = styled.article`
-  margin: 32px;
+  margin: 16px 0 0 32px;
   max-width: 60%;
+  background-color: white;
+  padding: 24px;
+  border-radius: 5px;
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1);
 `;
 
-const Title = styled.h5`
-  font-size: 24px;
+const Title = styled.h6`
+  margin-left: 32px;
+  margin: 0 0 16px 32px;
+  font-size: 20px;
   letter-spacing: 0.25px;
+  font-weight: 500;
 `;
 
 const TrackList = styled.ul`
@@ -62,29 +69,32 @@ class TopTracks extends Component {
   render() {
     const { topTracks } = this.props;
     return (
-      <TopTracksCard>
+      <div>
         <Title>Top Tracks</Title>
-        {topTracks && (
-          <TrackList>
-            {topTracks.map(track => (
-              <TrackListRow key={track.id}>
-                <TrackListImage
-                  src={track.album.images.find(img => img.height < 100).url}
-                  alt={`${track.name} album art`}
-                />
-                <TrackListNameWrapper>
-                  <TrackListName>{track.name}</TrackListName>
-                  <TrackListAlbumName>{track.album.name}</TrackListAlbumName>
-                </TrackListNameWrapper>
 
-                <a href={track.external_urls['spotify']} target="_blank">
-                  Open in Spotify
-                </a>
-              </TrackListRow>
-            ))}
-          </TrackList>
-        )}
-      </TopTracksCard>
+        <TopTracksCard>
+          {topTracks && (
+            <TrackList>
+              {topTracks.map(track => (
+                <TrackListRow key={track.id}>
+                  <TrackListImage
+                    src={track.album.images.find(img => img.height < 100).url}
+                    alt={`${track.name} album art`}
+                  />
+                  <TrackListNameWrapper>
+                    <TrackListName>{track.name}</TrackListName>
+                    <TrackListAlbumName>{track.album.name}</TrackListAlbumName>
+                  </TrackListNameWrapper>
+
+                  <a href={track.external_urls['spotify']} target="_blank">
+                    Open in Spotify
+                  </a>
+                </TrackListRow>
+              ))}
+            </TrackList>
+          )}
+        </TopTracksCard>
+      </div>
     );
   }
 }
