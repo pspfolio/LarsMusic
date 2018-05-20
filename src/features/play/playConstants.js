@@ -1,0 +1,2 @@
+export const SET_PLAY_TRACK = 'SET_PLAY_TRACK';
+export const REMOVE_PLAY_TRACK = 'REMOVE_PLAY_TRACK';
