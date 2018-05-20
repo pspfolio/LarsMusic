@@ -4,6 +4,7 @@ import Loadable from 'react-loadable';
 import styled from 'styled-components';
 import Loading from 'common/components/Loading';
 import PrivateRoute from 'common/components/privateRoute/PrivateRoute';
+import Play from 'features/play/Play';
 
 import './App.css';
 
@@ -46,6 +47,7 @@ class App extends Component {
             <Route render={() => <h1>Four oh Four</h1>} />
           </Switch>
         </Router>
+        <Play />
       </FullViewHeight>
     );
   }
