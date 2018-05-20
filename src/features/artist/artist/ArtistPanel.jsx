@@ -23,25 +23,7 @@ const ArtistPanelHeading = styled.h4`
   color: rgba(0, 0, 0, 0.87);
 `;
 
-const SpotifyButton = styled.a`
-  background-color: #1db954;
-  padding: 10px 40px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-  letter-spacing: 1.25px;
-  font-size: 14px;
-  border-radius: 500px;
-  line-height: 1.6;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    background-color: #1ed760;
-  }
-`;
-
 const Popularity = styled.span`
-  margin-left: 24px;
   letter-spacing: 0.25px;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
@@ -65,9 +47,6 @@ class ArtistPanel extends Component {
               <ArtistGenres genres={artist.genres} />
             </div>
             <ActionRow>
-              <SpotifyButton href={artist.external_urls} target="_blank">
-                Open in Spotify
-              </SpotifyButton>
               <Popularity>Popularity: {artist.popularity} / 100</Popularity>
             </ActionRow>
           </ArtistPanelTitle>
