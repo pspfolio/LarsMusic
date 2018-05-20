@@ -22,6 +22,7 @@ const Title = styled.h6`
   font-size: 20px;
   letter-spacing: 0.25px;
   font-weight: 500;
+  color: rgba(0, 0, 0, 0.86);
 `;
 
 const TrackList = styled.ul`
@@ -53,6 +54,7 @@ const TrackListName = styled.span`
   font-size: 16px;
   letter-spacing: 0.5px;
   font-weight: 500;
+  color: rgba(0, 0, 0, 0.86);
 `;
 
 const TrackListAlbumName = styled.span`
