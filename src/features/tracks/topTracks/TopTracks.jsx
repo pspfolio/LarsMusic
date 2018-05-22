@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchTopTracksIfNeeded } from '../tracksActions';
+import { setPlayTrack } from 'features/play/playActions';
 import { selectTopTracksByArtistId } from '../tracksSelectors';
 import spotify_logo_black from 'assets/images/Spotify_Icon_RGB_Black.png';
 import play_icon from 'assets/images/play_icon.svg';
@@ -97,7 +98,7 @@ class TopTracks extends Component {
   }
 
   render() {
-    const { topTracks } = this.props;
+    const { topTracks, play } = this.props;
     return (
       <div>
         <Title>Top Tracks</Title>
@@ -116,7 +117,7 @@ class TopTracks extends Component {
                     <TrackListAlbumName>{track.album.name}</TrackListAlbumName>
                   </TrackListNameWrapper>
                   <PlayWrapper>
-                    <PlayIcon src={play_icon} />
+                    <PlayIcon src={play_icon} onClick={() => play(track.id)} />
                   </PlayWrapper>
                   <SpotifyLink href={track.external_urls['spotify']} target="_blank">
                     <SpotifyLogo src={spotify_logo_black} alt="spotify logo" />
@@ -139,7 +140,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  getTopTracks: () => dispatch(fetchTopTracksIfNeeded(ownProps.match.params.id))
+  getTopTracks: () => dispatch(fetchTopTracksIfNeeded(ownProps.match.params.id)),
+  play: trackId => dispatch(setPlayTrack(trackId, ownProps.match.params.id))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopTracks));

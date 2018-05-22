@@ -1,11 +1,12 @@
 import { REQUEST_TOP_TRACKS, RECEIVE_TOP_TRACKS } from './tracksConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
+import mapKeys from 'lodash/mapKeys';
 
 const setTopTracks = (data, artistId) => {
-  const payload = { [artistId]: data.tracks };
+  const artistTopTracks = { [artistId]: mapKeys(data.tracks, 'id') };
   return {
     type: RECEIVE_TOP_TRACKS,
-    payload
+    payload: artistTopTracks
   };
 };
 
