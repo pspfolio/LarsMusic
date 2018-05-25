@@ -17,7 +17,7 @@ const TopBarContainer = styled.div`
 `;
 
 const Container = styled.main`
-  width: 1250px;
+  max-width: 1250px;
   margin: 0 auto;
 `;
 
