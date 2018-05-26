@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import IconAdder from '../iconAdder/IconAdder';
-import play_icon from 'assets/images/play_icon.svg';
+import pause_icon from 'assets/images/pause_icon.svg';
 
-const PlayButtonStyle = styled.button`
+const PauseButtonStyle = styled.button`
   width: ${props => (props.size ? `${props.size}px` : '48px')};
   height: ${props => (props.size ? `${props.size}px` : '48px')};
   border: 2px solid rgba(0, 0, 0, 0.6);
@@ -31,8 +31,8 @@ const PlayButtonStyle = styled.button`
   }
 `;
 
-const PlayButton = ({ onClick, size }) => (
-  <IconAdder tag={PlayButtonStyle} onClick={onClick} src={play_icon} alt="play" size={size} />
+const PauseButton = ({ onClick, size }) => (
+  <IconAdder tag={PauseButtonStyle} onClick={onClick} src={pause_icon} alt="play" size={size} />
 );
 
-export default PlayButton;
+export default PauseButton;

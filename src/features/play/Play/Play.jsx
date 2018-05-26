@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { selectPlayingArtists, selectPlayingTrack } from '../playSelectors';
 import PlayButton from 'common/components/playButton/PlayButton';
+import PauseButton from 'common/components/pauseButton/PauseButton';
 
 const PlayContainer = styled.div`
   position: fixed;
@@ -14,15 +15,26 @@ const PlayContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.95);
   align-items: center;
   justify-content: space-evenly;
+  padding: 0 160px;
+  box-shadow: -1px -2px 14px rgba(50, 50, 93, 0.1);
 `;
 
 const TrackName = styled.p`
   font-weight: 500;
   letter-spacing: 0.25px;
   color: rgba(0, 0, 0, 0.87);
+  flex: 0 0 25%;
 `;
 
-const ActionButtons = styled.div``;
+const ActionButtons = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+`;
+
+const VolumeWrapper = styled.div`
+  flex: 0 0 25%;
+`;
 
 class Play extends Component {
   constructor(props) {
@@ -47,35 +59,27 @@ class Play extends Component {
   };
 
   pause = () => {
-    this.setState({ playing: false }, () => {
-      console.log('state changte');
-    });
+    this.setState({ playing: false });
     this.audio.current.pause();
   };
 
   render() {
     const { playing } = this.state;
     const { playingArtist, playingTrack } = this.props;
-    console.log(playing);
 
     return (
       <div>
-        {playingArtist && playingTrack ? (
-          <PlayContainer>
-            <TrackName>{playingTrack.name}</TrackName>
-            <ActionButtons>
-              {!playing ? (
-                <PlayButton onClick={this.play} />
-              ) : (
-                <button type="button" onClick={this.pause}>
-                  Pause
-                </button>
-              )}
-            </ActionButtons>
-            <div>Volume</div>
-            <audio autoPlay src={playingTrack.preview_url} ref={this.audio} />
-          </PlayContainer>
-        ) : null}
+        {playingArtist &&
+          playingTrack && (
+            <PlayContainer>
+              <TrackName>{playingTrack.name}</TrackName>
+              <ActionButtons>
+                {!playing ? <PlayButton onClick={this.play} /> : <PauseButton onClick={this.pause} />}
+              </ActionButtons>
+              <VolumeWrapper>Volume</VolumeWrapper>
+              <audio autoPlay src={playingTrack.preview_url} ref={this.audio} />
+            </PlayContainer>
+          )}
       </div>
     );
   }
