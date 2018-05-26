@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { selectPlayingArtists, selectPlayingTrack } from '../playSelectors';
-import play_icon from 'assets/images/play_icon.svg';
+import PlayButton from 'common/components/playButton/PlayButton';
 
 const PlayContainer = styled.div`
   position: fixed;
@@ -23,29 +23,6 @@ const TrackName = styled.p`
 `;
 
 const ActionButtons = styled.div``;
-
-const PlayIcon = styled.img`
-  height: 24px;
-`;
-
-const PlayButton = styled.div`
-  width: 48px;
-  height: 48px;
-  border: 2px solid rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  border-radius: 500%;
-  cursor: pointer;
-  will-change: transform;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    box-shadow: 0 7px 10px rgba(50, 50, 93, 0.1);
-    transform: translateY(-2px);
-  }
-`;
 
 class Play extends Component {
   constructor(props) {
@@ -88,9 +65,7 @@ class Play extends Component {
             <TrackName>{playingTrack.name}</TrackName>
             <ActionButtons>
               {!playing ? (
-                <PlayButton type="button" onClick={this.play}>
-                  <PlayIcon src={play_icon} />
-                </PlayButton>
+                <PlayButton onClick={this.play} />
               ) : (
                 <button type="button" onClick={this.pause}>
                   Pause

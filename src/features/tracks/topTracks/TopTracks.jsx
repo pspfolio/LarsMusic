@@ -6,7 +6,7 @@ import { fetchTopTracksIfNeeded } from '../tracksActions';
 import { setPlayTrack } from 'features/play/playActions';
 import { selectTopTracksByArtistId } from '../tracksSelectors';
 import spotify_logo_black from 'assets/images/Spotify_Icon_RGB_Black.png';
-import play_icon from 'assets/images/play_icon.svg';
+import PlayButton from 'common/components/playButton/PlayButton';
 
 const TopTracksCard = styled.article`
   margin: 16px 0 0 32px;
@@ -65,22 +65,6 @@ const TrackListAlbumName = styled.span`
   color: rgba(0, 0, 0, 0.6);
 `;
 
-const PlayWrapper = styled.div`
-  width: 32px;
-  height: 32px;
-  background-color: #f5f8ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  border-radius: 500%;
-  cursor: pointer;
-`;
-
-const PlayIcon = styled.img`
-  height: 16px;
-`;
-
 const SpotifyLink = styled.a`
   margin-left: 16px;
   display: flex;
@@ -116,9 +100,7 @@ class TopTracks extends Component {
                     <TrackListName>{track.name}</TrackListName>
                     <TrackListAlbumName>{track.album.name}</TrackListAlbumName>
                   </TrackListNameWrapper>
-                  <PlayWrapper>
-                    <PlayIcon src={play_icon} onClick={() => play(track.id)} />
-                  </PlayWrapper>
+                  <PlayButton onClick={() => play(track.id)} size={32} />
                   <SpotifyLink href={track.external_urls['spotify']} target="_blank">
                     <SpotifyLogo src={spotify_logo_black} alt="spotify logo" />
                   </SpotifyLink>
