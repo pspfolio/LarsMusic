@@ -24,6 +24,7 @@ const TrackName = styled.p`
   letter-spacing: 0.25px;
   color: rgba(0, 0, 0, 0.87);
   flex: 0 0 25%;
+  margin-left: 16px;
 `;
 
 const ActionButtons = styled.div`
@@ -34,6 +35,10 @@ const ActionButtons = styled.div`
 
 const VolumeWrapper = styled.div`
   flex: 0 0 25%;
+`;
+
+const AlbumArt = styled.img`
+  height: 48px;
 `;
 
 class Play extends Component {
@@ -66,12 +71,14 @@ class Play extends Component {
   render() {
     const { playing } = this.state;
     const { playingArtist, playingTrack } = this.props;
-
+    const albumImages = playingTrack.album.images;
+    const albumArt = albumImages[albumImages.length - 1].url;
     return (
       <div>
         {playingArtist &&
           playingTrack && (
             <PlayContainer>
+              <AlbumArt src={albumArt} alt="album art" />
               <TrackName>{playingTrack.name}</TrackName>
               <ActionButtons>
                 {!playing ? <PlayButton onClick={this.play} /> : <PauseButton onClick={this.pause} />}

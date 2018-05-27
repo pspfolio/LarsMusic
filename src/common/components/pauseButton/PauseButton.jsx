@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import IconAdder from '../iconAdder/IconAdder';
 import pause_icon from 'assets/images/pause_icon.svg';
