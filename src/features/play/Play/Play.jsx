@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { selectPlayingArtists, selectPlayingTrack } from '../playSelectors';
 import PlayButton from 'common/components/playButton/PlayButton';
 import PauseButton from 'common/components/pauseButton/PauseButton';
+import Slider from 'react-rangeslider';
+import 'react-rangeslider/lib/index.css';
 
 const PlayContainer = styled.div`
   position: fixed;
@@ -35,6 +37,36 @@ const ActionButtons = styled.div`
 
 const VolumeWrapper = styled.div`
   flex: 0 0 25%;
+
+  .rangeslider-horizontal {
+    height: 8px;
+    box-shadow: 0 0 0 transparent;
+
+    .rangeslider__handle {
+      width: 16px;
+      height: 16px;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::after {
+        width: 8px;
+        height: 8px;
+        top: 4px;
+        left: 4px;
+        background-color: #5b5b5b;
+        box-shadow: 0 0 0 transparent;
+      }
+    }
+  }
+
+  .rangeslider {
+    .rangeslider__fill {
+      box-shadow: 0 0 0 transparent;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
 `;
 
 const AlbumArt = styled.img`
@@ -47,7 +79,8 @@ class Play extends Component {
     this.audio = React.createRef();
 
     this.state = {
-      playing: true
+      playing: true,
+      volume: 0.5
     };
   }
   componentDidMount() {
@@ -68,22 +101,40 @@ class Play extends Component {
     this.audio.current.pause();
   };
 
+  getAlbumArt = () => {
+    const {
+      playingTrack: { album }
+    } = this.props;
+    const albumArt = album.images[album.images.length - 1].url;
+
+    return albumArt;
+  };
+
+  handleVolumeChange = value => {
+    this.setState({
+      volume: value
+    });
+
+    this.audio.current.volume = value;
+  };
+
   render() {
-    const { playing } = this.state;
+    const { playing, volume } = this.state;
     const { playingArtist, playingTrack } = this.props;
-    const albumImages = playingTrack.album.images;
-    const albumArt = albumImages[albumImages.length - 1].url;
+
     return (
       <div>
         {playingArtist &&
           playingTrack && (
             <PlayContainer>
-              <AlbumArt src={albumArt} alt="album art" />
+              <AlbumArt src={this.getAlbumArt()} alt="album art" />
               <TrackName>{playingTrack.name}</TrackName>
               <ActionButtons>
                 {!playing ? <PlayButton onClick={this.play} /> : <PauseButton onClick={this.pause} />}
               </ActionButtons>
-              <VolumeWrapper>Volume</VolumeWrapper>
+              <VolumeWrapper>
+                <Slider value={volume} min={0} max={1} step={0.1} tooltip={false} onChange={this.handleVolumeChange} />
+              </VolumeWrapper>
               <audio autoPlay src={playingTrack.preview_url} ref={this.audio} />
             </PlayContainer>
           )}
