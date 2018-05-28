@@ -40,7 +40,6 @@ const ActionRow = styled.div`
 class ArtistPanel extends Component {
   render() {
     const { artist } = this.props;
-    console.log(artist.images);
     const image = artist.images.find(image => image.height > 100 && image.height < 301);
     return (
       <div>

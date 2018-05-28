@@ -4,7 +4,7 @@ import Loadable from 'react-loadable';
 import styled from 'styled-components';
 import Loading from 'common/components/Loading';
 import PrivateRoute from 'common/components/privateRoute/PrivateRoute';
-import PlayingBar from 'features/playingBar/playingBar/PlayingBar';
+import PlayingBar from 'features/playingBar/PlayingBar';
 
 import './App.css';
 
