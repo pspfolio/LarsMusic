@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { selectPlayingArtists, selectPlayingTrack } from '../playSelectors';
+import { selectPlayingArtists, selectPlayingTrack } from '../playingBarSelectors';
 import PlayButton from 'common/components/playButton/PlayButton';
 import PauseButton from 'common/components/pauseButton/PauseButton';
 import Slider from 'react-rangeslider';

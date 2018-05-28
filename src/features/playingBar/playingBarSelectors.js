@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
+import { getArtists } from 'features/artist/artistSelectors';
 
-const getPlayingArtistSelector = state => state.play.artistId;
-const getPlayingTrackSelector = state => state.play.trackId;
+const getPlayingArtistSelector = state => state.playingBar.artistId;
+const getPlayingTrackSelector = state => state.playingBar.trackId;
 
-const getArtists = state => state.artist.entities;
 const getTracks = state => state.track.topTracks;
 
 export const selectPlayingArtists = createSelector(

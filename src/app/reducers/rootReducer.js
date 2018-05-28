@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import accessToken from 'features/accessToken/accessTokenReducer';
 import artist from 'features/artist/artistReducer';
 import track from 'features/tracks/tracksReducer';
-import play from 'features/play/playReducer';
+import playingBar from 'features/playingBar/playingBarReducer';
 
 const rootReducer = combineReducers({
   accessToken,
   artist,
   track,
-  play
+  playingBar
 });
 
 export default rootReducer;

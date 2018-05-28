@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchTopTracksIfNeeded } from '../tracksActions';
-import { setPlayTrack } from 'features/play/playActions';
+import { setPlayTrack } from 'features/playingBar/playingBarActions';
 import { selectTopTracksByArtistId } from '../tracksSelectors';
 import spotify_logo_black from 'assets/images/Spotify_Icon_RGB_Black.png';
 import PlayButton from 'common/components/playButton/PlayButton';

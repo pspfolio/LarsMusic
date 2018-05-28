@@ -8,6 +8,10 @@ const ArtistPanelHeader = styled.article`
   margin: 32px;
 `;
 
+const ArtistImage = styled.img`
+  height: 200px;
+`;
+
 const ArtistPanelTitle = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,11 +40,12 @@ const ActionRow = styled.div`
 class ArtistPanel extends Component {
   render() {
     const { artist } = this.props;
-    const image = artist.images.find(image => image.height > 100 && image.height < 200);
+    console.log(artist.images);
+    const image = artist.images.find(image => image.height > 100 && image.height < 301);
     return (
       <div>
         <ArtistPanelHeader>
-          <img src={image.url} alt={`${artist.name}`} />
+          <ArtistImage src={image.url} alt={`${artist.name}`} />
           <ArtistPanelTitle>
             <div>
               <ArtistPanelHeading>{artist.name}</ArtistPanelHeading>

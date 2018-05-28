@@ -1,4 +1,4 @@
-import { SET_PLAY_TRACK, REMOVE_PLAY_TRACK } from './playConstants';
+import { SET_PLAY_TRACK, REMOVE_PLAY_TRACK } from './playingBarConstants';
 
 const play = (state = {}, action) => {
   switch (action.type) {
