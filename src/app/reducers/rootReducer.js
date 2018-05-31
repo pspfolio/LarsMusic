@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import accessToken from 'features/accessToken/accessTokenReducer';
 import artist from 'features/artist/artistReducer';
 import track from 'features/tracks/tracksReducer';
@@ -8,7 +9,8 @@ const rootReducer = combineReducers({
   accessToken,
   artist,
   track,
-  playingBar
+  playingBar,
+  form: formReducer
 });
 
 export default rootReducer;
