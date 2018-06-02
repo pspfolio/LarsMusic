@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
+import { fetchSearch } from './searchActions';
 import DashboardLayout from 'features/dashboard//DashboardLayout';
 
 const FormWrapper = styled.form`
@@ -38,14 +40,25 @@ const SearchInput = styled(Field)`
   }
 `;
 
-const Search = props => {
+const Search = ({ executeSearch }) => {
   return (
     <DashboardLayout>
-      <FormWrapper onSubmit={() => {}}>
+      <FormWrapper
+        onSubmit={event => {
+          event.preventDefault();
+          executeSearch();
+        }}
+      >
         <SearchInput name="search" component="input" type="text" placeholder="Search Artist" />
       </FormWrapper>
     </DashboardLayout>
   );
 };
 
-export default reduxForm({ form: 'search' })(Search);
+const mapDispatchToProps = dispatch => ({
+  executeSearch: () => dispatch(fetchSearch())
+});
+
+const SearchConnect = connect(null, mapDispatchToProps)(Search);
+
+export default reduxForm({ form: 'search' })(SearchConnect);

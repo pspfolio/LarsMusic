@@ -4,12 +4,14 @@ import accessToken from 'features/accessToken/accessTokenReducer';
 import artist from 'features/artist/artistReducer';
 import track from 'features/tracks/tracksReducer';
 import playingBar from 'features/playingBar/playingBarReducer';
+import search from 'features/search/searchReducer';
 
 const rootReducer = combineReducers({
   accessToken,
   artist,
   track,
   playingBar,
+  search,
   form: formReducer
 });
 

@@ -1,38 +1,27 @@
-import mapKeys from 'lodash/mapKeys';
 import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
+import { handleArtistData } from 'common/utils/artistDataHelpers';
 import { artistIdList } from 'data/sampleData';
 
-function requestArtistList() {
-  return {
-    type: REQUEST_ARTIST_LIST
-  };
-}
+const requestArtistList = () => ({
+  type: REQUEST_ARTIST_LIST
+});
 
-function setArtistList(json) {
-  const data = json.artists.map(handleArtistData);
-
-  const payload = mapKeys(data, 'id');
+const setArtistList = data => {
+  const payload = data.artists.map(handleArtistData);
   return {
     type: RECEIVE_ARTISTS,
     payload
   };
-}
+};
 
-function setArtist(artist) {
-  const payload = handleArtistData(artist);
-
+const setArtist = data => {
+  const payload = handleArtistData(data);
   return {
     type: RECEIVE_ARTIST,
     payload
   };
-}
-
-const handleArtistData = artist => ({
-  ...artist,
-  followers: artist.followers['total'],
-  external_urls: artist.external_urls['spotify']
-});
+};
 
 function fetchArtistBasicData(artistId) {
   return (dispatch, getState) => {
@@ -40,9 +29,7 @@ function fetchArtistBasicData(artistId) {
     const accessToken = getState().accessToken;
     return fetchSpotify(`https://api.spotify.com/v1/artists/${artistId}`, accessToken)
       .then(response => response.json())
-      .then(json => {
-        dispatch(setArtist(json));
-      });
+      .then(json => dispatch(setArtist(json)));
   };
 }
 
@@ -61,8 +48,6 @@ export function fetchArtists() {
     const url = `https://api.spotify.com/v1/artists?ids=${artistIds}`;
     fetchSpotify(url, accessToken)
       .then(data => data.json())
-      .then(json => {
-        dispatch(setArtistList(json));
-      });
+      .then(json => dispatch(setArtistList(json)));
   };
 }
