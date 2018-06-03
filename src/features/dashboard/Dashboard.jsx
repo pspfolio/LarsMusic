@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import DashboardLayout from './DashboardLayout';
-import ArtistList from 'features/artist/artistList/ArtistList';
+import ArtistListLimitContainer from 'features/artist/artistListLimitContainer/ArtistListLimitContainer';
 
 class Dashboard extends Component {
   render() {
     return (
       <DashboardLayout>
-        <ArtistList />
+        <ArtistListLimitContainer itemCount={4} />
       </DashboardLayout>
     );
   }

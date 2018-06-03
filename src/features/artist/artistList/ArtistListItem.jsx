@@ -40,7 +40,7 @@ const ArtistListItem = ({ images, name, genres, external_urls, id }) => {
   const image = images.find(image => image.width > 199 && image.width < 350);
   return (
     <ArtistCard>
-      <CardArtistImage url={image.url} />
+      {image && <CardArtistImage url={image.url} />}
       <CardArtistContent>
         <CardArtistTitle>{name}</CardArtistTitle>
         <ArtistGenres genres={genres.slice(0, 3)} />

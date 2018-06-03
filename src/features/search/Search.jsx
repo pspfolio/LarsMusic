@@ -4,6 +4,7 @@ import { fetchSearch } from './searchActions';
 import { selectArtistsByListId } from 'features/artist/artistSelectors';
 import DashboardLayout from 'features/dashboard//DashboardLayout';
 import SearchForm from './SearchForm';
+import ArtistList from 'features/artist/artistList/ArtistList';
 
 const Search = ({ executeSearch, searchResult }) => {
   return (
@@ -14,6 +15,7 @@ const Search = ({ executeSearch, searchResult }) => {
           executeSearch();
         }}
       />
+      <ArtistList artists={searchResult} />
     </DashboardLayout>
   );
 };
