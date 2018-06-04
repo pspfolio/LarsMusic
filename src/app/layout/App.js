@@ -10,7 +10,6 @@ import './App.css';
 
 const FullViewHeight = styled.div`
   height: 100vh;
-  background-color: #f8f8f8;
 `;
 
 const AsyncLogin = Loadable({

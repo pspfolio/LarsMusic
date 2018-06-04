@@ -5,7 +5,7 @@ import TopTracks from 'features/tracks/topTracks/TopTracks';
 
 const ArtistPanelHeader = styled.article`
   display: flex;
-  margin: 32px;
+  margin: 48px 32px 72px 32px;
 `;
 
 const ArtistImage = styled.img`
@@ -20,7 +20,7 @@ const ArtistPanelTitle = styled.div`
 `;
 
 const ArtistPanelHeading = styled.h4`
-  font-size: 34px;
+  font-size: 36px;
   font-weight: 400;
   margin: 0;
   letter-spacing: 0.25px;
@@ -28,9 +28,11 @@ const ArtistPanelHeading = styled.h4`
 `;
 
 const Popularity = styled.span`
+  display: block;
+  margin-top: 16px;
   letter-spacing: 0.25px;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+  color: #9fa6ac;
 `;
 
 const ActionRow = styled.div`
@@ -48,11 +50,9 @@ class ArtistPanel extends Component {
           <ArtistPanelTitle>
             <div>
               <ArtistPanelHeading>{artist.name}</ArtistPanelHeading>
+              <Popularity>Popularity: {artist.popularity}%</Popularity>
               <ArtistGenres genres={artist.genres} />
             </div>
-            <ActionRow>
-              <Popularity>Popularity: {artist.popularity} / 100</Popularity>
-            </ActionRow>
           </ArtistPanelTitle>
         </ArtistPanelHeader>
         <TopTracks />

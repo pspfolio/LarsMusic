@@ -4,8 +4,8 @@ import lens from 'assets/images/round-lens-24px.svg';
 
 const CardGenreList = styled.div`
   display: flex;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
+  color: #9fa6ac;
+  font-size: 18px;
   margin-top: 8px;
   letter-spacing: 0.25px;
 `;
