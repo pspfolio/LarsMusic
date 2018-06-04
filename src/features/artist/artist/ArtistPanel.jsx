@@ -39,6 +39,13 @@ const ActionRow = styled.div`
   min-height: 28px;
 `;
 
+const LinkToSpotify = styled.a`
+  color: #1db954;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+`;
+
 class ArtistPanel extends Component {
   render() {
     const { artist } = this.props;
@@ -53,6 +60,11 @@ class ArtistPanel extends Component {
               <Popularity>Popularity: {artist.popularity}%</Popularity>
               <ArtistGenres genres={artist.genres} />
             </div>
+            <ActionRow>
+              <LinkToSpotify target="_blank" alt="link to artist page on Spotify" href={artist.external_urls}>
+                In Spotify
+              </LinkToSpotify>
+            </ActionRow>
           </ArtistPanelTitle>
         </ArtistPanelHeader>
         <TopTracks />
