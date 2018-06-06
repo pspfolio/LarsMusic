@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Tab extends Component {
-  render() {
-    return <div />;
-  }
-}
+const Tab = ({ name, label, active, onClick }) => (
+  <div>
+    <p onClick={() => onClick(name)}>{label}</p>
+  </div>
+);
 
 export default Tab;

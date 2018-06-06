@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import ArtistGenres from '../artistGenres/ArtistGenres';
 import TopTracks from 'features/tracks/topTracks/TopTracks';
+import TabContainer from 'features/tabs/TabBarContainer';
 
 const ArtistPanelHeader = styled.article`
   display: flex;
@@ -46,6 +47,12 @@ const LinkToSpotify = styled.a`
   cursor: pointer;
 `;
 
+const tabs = [
+  { name: 'topTracks', label: 'Top Tracks' },
+  { name: 'albums', label: 'Albums' },
+  { name: 'owned', label: 'Owned' }
+];
+
 class ArtistPanel extends Component {
   render() {
     const { artist } = this.props;
@@ -68,6 +75,7 @@ class ArtistPanel extends Component {
           </ArtistPanelTitle>
         </ArtistPanelHeader>
         <TopTracks />
+        <TabContainer tabs={tabs} />
       </div>
     );
   }

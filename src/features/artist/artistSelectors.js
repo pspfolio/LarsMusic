@@ -1,10 +1,7 @@
 import { createSelector } from 'reselect';
 import values from 'lodash/values';
 
-export const getArtists = state => {
-  console.log(state.artist);
-  return state.artist.entities;
-};
+export const getArtists = state => state.artist.entities;
 
 const getArtistsSearchIdList = state => state.search.searchResult;
 
