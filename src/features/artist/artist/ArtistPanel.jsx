@@ -47,11 +47,7 @@ const LinkToSpotify = styled.a`
   cursor: pointer;
 `;
 
-const tabs = [
-  { name: 'topTracks', label: 'Top Tracks' },
-  { name: 'albums', label: 'Albums' },
-  { name: 'owned', label: 'Owned' }
-];
+const tabs = [{ name: 'topTracks', label: 'Top Tracks', component: TopTracks }];
 
 class ArtistPanel extends Component {
   render() {
@@ -74,7 +70,6 @@ class ArtistPanel extends Component {
             </ActionRow>
           </ArtistPanelTitle>
         </ArtistPanelHeader>
-        <TopTracks />
         <TabContainer tabs={tabs} />
       </div>
     );

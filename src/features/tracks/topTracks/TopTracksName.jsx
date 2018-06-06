@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TrackListNameWrapper = styled.div`
-  margin-left: 16px;
+  margin-left: 32px;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -13,7 +13,7 @@ const TrackListNameWrapper = styled.div`
 `;
 
 const TrackListName = styled.span`
-  font-size: 16px;
+  font-size: 20px;
   letter-spacing: 0.5px;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.86);
@@ -21,9 +21,9 @@ const TrackListName = styled.span`
 
 const TrackListAlbumName = styled.span`
   display: block;
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: 0.25px;
-  color: rgba(0, 0, 0, 0.6);
+  color: #b2b2b2;
 `;
 
 const TopTracksName = ({ trackName, albumName }) => (

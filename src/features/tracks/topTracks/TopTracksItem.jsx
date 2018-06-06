@@ -4,7 +4,7 @@ import TopTracksName from './TopTracksName';
 import TopTracksControls from './TopTracksControls';
 
 const TrackListRow = styled.li`
-  margin: 24px 0;
+  margin-top: 32px;
   display: flex;
 
   &:last-child {
