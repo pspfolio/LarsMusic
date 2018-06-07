@@ -1,0 +1,2 @@
+export const REQUEST_ALBUMS = 'REQUEST_ALBUMS';
+export const RECEIVE_ALBUMS = 'RECEIVE_ALBUMS';

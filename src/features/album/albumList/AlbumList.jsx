@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { fetchArtistAlbums } from '../albumActions';
 
 class AlbumList extends Component {
-  constructor(props) {
-    super(props);
-    console.log('ALBUMLIST');
+  componentDidMount() {
+    const { fetchArtistAlbums } = this.props;
+    fetchArtistAlbums();
   }
+
   render() {
     return (
       <div>
@@ -14,4 +18,10 @@ class AlbumList extends Component {
   }
 }
 
-export default AlbumList;
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  fetchArtistAlbums: () => {
+    dispatch(fetchArtistAlbums(ownProps.match.params.id));
+  }
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(AlbumList));
