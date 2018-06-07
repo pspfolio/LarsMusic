@@ -10,7 +10,6 @@ const ArtistContainer = styled.article`
 class ArtistList extends Component {
   render() {
     const { artists } = this.props;
-    console.log(this.props);
     return (
       <div>
         <ArtistContainer>{artists.map(artist => <ArtistListItem key={artist.id} {...artist} />)}</ArtistContainer>

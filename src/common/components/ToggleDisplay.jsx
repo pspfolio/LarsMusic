@@ -6,6 +6,6 @@ const DisplayWrapper = styled.span`
   width: 100%;
 `;
 
-const ToggleDisplay = ({ show, children }) => <DisplayWrapper show>{children}</DisplayWrapper>;
+const ToggleDisplay = ({ show, children }) => <DisplayWrapper show={show}>{children}</DisplayWrapper>;
 
 export default ToggleDisplay;

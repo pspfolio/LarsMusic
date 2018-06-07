@@ -17,7 +17,6 @@ const setSearchResult = data => {
 export function fetchSearch() {
   return (dispatch, getState) => {
     dispatch(requestSearch());
-    console.log('state', getState());
     const accessToken = getState().accessToken;
     const searchWord = getState().form.search.values.search;
     const url = `https://api.spotify.com/v1/search?q=${searchWord}&type=artist&limit=25`;

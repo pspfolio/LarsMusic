@@ -29,7 +29,6 @@ const TabBar = props => {
 
   const tabPanels = tabs.map(tabInfo => {
     const { name, component: TabComponent } = tabInfo;
-
     return (
       <ToggleDisplay show={name === currentTab} key={name}>
         <TabComponent />
