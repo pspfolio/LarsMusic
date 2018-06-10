@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchArtistAlbums } from '../albumActions';
+import { selectTopTracksByArtistId } from '../albumSelectors';
 
 class AlbumList extends Component {
   componentDidMount() {
@@ -10,13 +11,20 @@ class AlbumList extends Component {
   }
 
   render() {
+    console.log(this.props.albums);
     return (
-      <div>
+      <Fragment>
         <h1>This is album list</h1>
-      </div>
+      </Fragment>
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    albums: selectTopTracksByArtistId(state, ownProps.match.params.id)
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchArtistAlbums: () => {
@@ -24,4 +32,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(AlbumList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AlbumList));

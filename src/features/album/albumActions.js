@@ -3,7 +3,7 @@ import { fetchSpotify } from 'common/utils/fetcher';
 
 const setArtistAlbums = (data, artistId) => ({
   type: RECEIVE_ALBUMS,
-  data,
+  data: data.items,
   artistId
 });
 
