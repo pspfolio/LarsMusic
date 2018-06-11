@@ -8,7 +8,7 @@ const ArtistCard = styled.section`
   display: flex;
   flex-direction: column;
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1);
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #fff;
   margin-bottom: 24px;
 `;
@@ -18,6 +18,7 @@ const CardArtistImage = styled.div`
   height: 194px;
   background-image: url(${props => props.url});
   background-size: cover;
+  border-radius: 10px 10px 0 0;
 `;
 
 const CardArtistContent = styled.div`

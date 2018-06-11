@@ -12,6 +12,7 @@ const ArtistPanelHeader = styled.article`
 
 const ArtistImage = styled.img`
   height: 200px;
+  border-radius: 10px;
 `;
 
 const ArtistPanelTitle = styled.div`
