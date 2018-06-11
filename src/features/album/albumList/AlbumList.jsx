@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchArtistAlbums } from '../albumActions';
 import { selectTopTracksByArtistId } from '../albumSelectors';
+import MusicListItem from 'common/components/musicListItem/MusicListItem';
 
 class AlbumList extends Component {
   componentDidMount() {
@@ -11,11 +12,25 @@ class AlbumList extends Component {
   }
 
   render() {
+    const { albums } = this.props;
     console.log(this.props.albums);
     return (
-      <Fragment>
-        <h1>This is album list</h1>
-      </Fragment>
+      <div>
+        {albums && (
+          <ul>
+            {albums.map(({ id, name, album_type, images }) => (
+              <MusicListItem
+                key={id}
+                name={name}
+                secondaryName={album_type}
+                image={images.find(img => img.height < 100).url}
+              >
+                {() => <h5>Controls here</h5>}
+              </MusicListItem>
+            ))}
+          </ul>
+        )}
+      </div>
     );
   }
 }
