@@ -1,4 +1,4 @@
-import { REQUEST_ALBUMS, RECEIVE_ALBUMS } from './albumConstants';
+import { RECEIVE_ALBUMS } from './albumConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
 
 const setArtistAlbums = (data, artistId) => ({

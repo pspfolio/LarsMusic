@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';

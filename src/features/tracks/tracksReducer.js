@@ -1,4 +1,4 @@
-import { REQUEST_TOP_TRACKS, RECEIVE_TOP_TRACKS } from './tracksConstants';
+import { RECEIVE_TOP_TRACKS } from './tracksConstants';
 
 const initialState = {
   isFetching: false,
