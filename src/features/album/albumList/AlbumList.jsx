@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { fetchArtistAlbums } from '../albumActions';
 import { selectTopTracksByArtistId } from '../albumSelectors';
 import MusicListItem from 'common/components/musicListItem/MusicListItem';
+import AlbumListControls from './AlbumListControls';
 
 class AlbumList extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class AlbumList extends Component {
 
   render() {
     const { albums } = this.props;
-    console.log(this.props.albums);
+
     return (
       <div>
         {albums && (
@@ -25,7 +26,7 @@ class AlbumList extends Component {
                 secondaryName={album_type}
                 image={images.find(img => img.height < 100).url}
               >
-                {() => <h5>Controls here</h5>}
+                {() => <AlbumListControls />}
               </MusicListItem>
             ))}
           </ul>
