@@ -23,7 +23,7 @@ function fetchTopTracksBasicData(artistId) {
 
 export function fetchTopTracksIfNeeded(artistId) {
   return (dispatch, getState) => {
-    const topTracks = getState().track.topTracks[artistId];
+    const topTracks = getState().track.entities[artistId];
     if (!topTracks) return dispatch(fetchTopTracksBasicData(artistId));
   };
 }

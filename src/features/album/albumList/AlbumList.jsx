@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchArtistAlbums } from '../albumActions';
-import { selectTopTracksByArtistId } from '../albumSelectors';
+import { selectAlbumsByArtistId } from '../albumSelectors';
 import MusicListItem from 'common/components/musicListItem/MusicListItem';
 import AlbumListControls from './AlbumListControls';
 
@@ -38,7 +38,7 @@ class AlbumList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    albums: selectTopTracksByArtistId(state, ownProps.match.params.id)
+    albums: selectAlbumsByArtistId(state, ownProps.match.params.id)
   };
 };
 
