@@ -3,12 +3,10 @@ import { fetchSpotify } from 'common/utils/fetcher';
 import mapKeys from 'lodash/mapKeys';
 
 const setArtistAlbums = albumData => {
-  const normalizedData = albumData.items.map(item => {
-    return {
-      ...item,
-      artists: item.artists.map(artist => artist.id)
-    };
-  });
+  const normalizedData = albumData.items.map(item => ({
+    ...item,
+    artists: item.artists.map(artist => artist.id)
+  }));
 
   const data = mapKeys(normalizedData, 'id');
 
