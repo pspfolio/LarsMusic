@@ -19,3 +19,4 @@ export const selectArtistById = createSelector(getArtistById, artist => artist);
 export const selectArtistsByListId = createSelector([getArtists, getArtistsSearchIdList], (artists, artistIdList) =>
   values(artists).filter(artist => artistIdList.includes(artist.id))
 );
+export const getArtistTopTracksIdList = createSelector(getArtistById, artist => artist.topTracks);

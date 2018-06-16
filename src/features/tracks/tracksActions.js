@@ -10,7 +10,8 @@ const setTracks = trackdata => {
     images: track.album.images,
     preview_url: track.preview_url,
     id: track.id,
-    href: track.href
+    href: track.href,
+    external_urls: track.external_urls
   }));
 
   const tracks = mapKeys(normalizedData, 'id');

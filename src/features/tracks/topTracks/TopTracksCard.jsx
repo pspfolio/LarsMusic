@@ -14,7 +14,6 @@ const TrackList = styled.ul`
 class TopTracksCard extends Component {
   render() {
     const { topTracks, play } = this.props;
-    console.log('TOPTRACKSJSX', topTracks);
     return (
       <TopTracksCardWrapper>
         {topTracks.length > 0 && (
