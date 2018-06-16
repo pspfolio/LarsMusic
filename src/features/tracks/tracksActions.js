@@ -1,7 +1,9 @@
+import mapKeys from 'lodash/mapKeys';
 import { RECEIVE_TRACKS } from './tracksConstants';
 import { RECEIVE_ARTIST_TOP_TRACKS } from 'features/artist/artistConstants';
+import { RECEIVE_ALBUMS } from 'features/album/albumConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
-import mapKeys from 'lodash/mapKeys';
+import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
 const setTracks = trackdata => {
   const normalizedData = trackdata.tracks.map(track => ({
@@ -34,12 +36,23 @@ const setArtistTopTracks = (trackdata, artistId) => {
   };
 };
 
+const setTopTracksAlbums = trackdata => {
+  const albumData = trackdata.tracks.map(track => track.album);
+  const data = normalizeAlbumData(albumData);
+
+  return {
+    type: RECEIVE_ALBUMS,
+    data
+  };
+};
+
 function fetchTopTracksBasicData(artistId) {
   return (dispatch, getState) => {
     const accessToken = getState().accessToken;
     return fetchSpotify(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=FI`, accessToken)
       .then(response => response.json())
       .then(json => {
+        dispatch(setTopTracksAlbums(json));
         dispatch(setTracks(json));
         dispatch(setArtistTopTracks(json, artistId));
       });

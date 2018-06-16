@@ -1,14 +1,9 @@
 import { RECEIVE_ALBUMS } from './albumConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
-import mapKeys from 'lodash/mapKeys';
+import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
 const setArtistAlbums = albumData => {
-  const normalizedData = albumData.items.map(item => ({
-    ...item,
-    artists: item.artists.map(artist => artist.id)
-  }));
-
-  const data = mapKeys(normalizedData, 'id');
+  const data = normalizeAlbumData(albumData.items);
 
   return {
     type: RECEIVE_ALBUMS,
