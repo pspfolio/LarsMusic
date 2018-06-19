@@ -5,6 +5,11 @@ import MusicListItemContent from './MusicListItemContent';
 const MusicItem = styled.li`
   margin-top: 32px;
   display: flex;
+  cursor: pointer;
+
+  &:hover {
+    background-color: red;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -15,11 +20,11 @@ const MusicItem = styled.li`
   }
 `;
 
-const MusicListItem = ({ image, name, secondaryName, children }) => (
-  <MusicItem>
+const ClickableMusicListItem = ({ image, name, secondaryName, children, onClick }) => (
+  <MusicItem onClick={onClick}>
     <MusicListItemContent image={image} name={name} secondaryName={secondaryName} />
     {children()}
   </MusicItem>
 );
 
-export default MusicListItem;
+export default ClickableMusicListItem;

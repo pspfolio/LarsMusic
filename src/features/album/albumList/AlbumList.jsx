@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchArtistAlbums } from '../albumActions';
 import { selectAlbumsByArtistId } from '../albumSelectors';
-import MusicListItem from 'common/components/musicListItem/MusicListItem';
+import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
 
 const List = styled.ul`
@@ -28,17 +28,17 @@ class AlbumList extends Component {
         {albums && (
           <List>
             {albums.map(({ id, name, album_type, images }) => (
-              <MusicListItem
+              <ClickableMusicListItem
                 key={id}
                 name={name}
                 secondaryName={album_type}
                 image={images.find(img => img.height < 100).url}
                 onClick={() => {
-                  console.log('yolo');
+                  console.log(`yolo ${id}`);
                 }}
               >
                 {() => <AlbumListControls />}
-              </MusicListItem>
+              </ClickableMusicListItem>
             ))}
           </List>
         )}
