@@ -5,22 +5,24 @@ import { RECEIVE_ALBUMS } from 'features/album/albumConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
 import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
-const setTracks = trackdata => {
-  const normalizedData = trackdata.tracks.map(track => ({
+const setTracks = tracks => {
+  console.log('Trackdata', tracks);
+  const data = tracks.map(track => ({
     albumId: track.album.id,
     name: track.name,
     images: track.album.images,
     preview_url: track.preview_url,
     id: track.id,
     href: track.href,
-    external_urls: track.external_urls
+    external_urls: track.external_urls,
+    track_number: track.track_number
   }));
 
-  const tracks = mapKeys(normalizedData, 'id');
+  const tracksNormalized = mapKeys(data, 'id');
 
   return {
     type: RECEIVE_TRACKS,
-    payload: tracks
+    payload: tracksNormalized
   };
 };
 
@@ -53,7 +55,7 @@ function fetchTopTracksBasicData(artistId) {
       .then(response => response.json())
       .then(json => {
         dispatch(setTopTracksAlbums(json));
-        dispatch(setTracks(json));
+        dispatch(setTracks(json.tracks));
         dispatch(setArtistTopTracks(json, artistId));
       });
   };
@@ -65,3 +67,15 @@ export function fetchTopTracksIfNeeded(artistId) {
     if (!topTracks) return dispatch(fetchTopTracksBasicData(artistId));
   };
 }
+
+export const fetchAlbumTracks = albumId => {
+  return (dispatch, getState) => {
+    const accessToken = getState().accessToken;
+
+    return fetchSpotify(`https://api.spotify.com/v1/albums/${albumId}/tracks?limit=50`, accessToken)
+      .then(response => response.json())
+      .then(json => {
+        dispatch(setTracks(json.items));
+      });
+  };
+};

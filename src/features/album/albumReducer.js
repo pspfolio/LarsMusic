@@ -2,7 +2,8 @@ import { RECEIVE_ALBUMS } from './albumConstants';
 
 const initialState = {
   isFetching: false,
-  entities: {}
+  entities: {},
+  albumClicked: ''
 };
 
 const albums = (state = initialState, action) => {

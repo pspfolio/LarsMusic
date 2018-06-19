@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchArtistAlbums } from '../albumActions';
+import { fetchAlbumTracks } from 'features/tracks/tracksActions';
 import { selectAlbumsByArtistId } from '../albumSelectors';
 import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
@@ -18,7 +19,10 @@ class AlbumList extends Component {
     fetchArtistAlbums();
   }
 
-  onClick = id => {};
+  onAlbumClick = id => {
+    console.log(id);
+    this.props.fetchAlbumTracks(id);
+  };
 
   render() {
     const { albums } = this.props;
@@ -34,7 +38,7 @@ class AlbumList extends Component {
                 secondaryName={album_type}
                 image={images.find(img => img.height < 100).url}
                 onClick={() => {
-                  console.log(`yolo ${id}`);
+                  this.onAlbumClick(id);
                 }}
               >
                 {() => <AlbumListControls />}
@@ -56,6 +60,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchArtistAlbums: () => {
     dispatch(fetchArtistAlbums(ownProps.match.params.id));
+  },
+  fetchAlbumTracks: albumId => {
+    dispatch(fetchAlbumTracks(albumId));
   }
 });
 
