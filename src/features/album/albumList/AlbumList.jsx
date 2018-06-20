@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { fetchArtistAlbums } from '../albumActions';
+import { fetchArtistAlbums, openAlbumTrackList } from '../albumActions';
 import { fetchAlbumTracks } from 'features/tracks/tracksActions';
 import { selectAlbumsByArtistId } from '../albumSelectors';
+import { selectTracksByAlbumId } from 'features/tracks/tracksSelectors';
 import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
 
@@ -20,8 +21,8 @@ class AlbumList extends Component {
   }
 
   onAlbumClick = id => {
-    console.log(id);
     this.props.fetchAlbumTracks(id);
+    this.props.openAlbumTrackList(id);
   };
 
   render() {
@@ -53,7 +54,9 @@ class AlbumList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    albums: selectAlbumsByArtistId(state, ownProps.match.params.id)
+    albums: selectAlbumsByArtistId(state, ownProps.match.params.id),
+    albumTracks: selectTracksByAlbumId(state),
+    openAlbum: state.album.openAlbum
   };
 };
 
@@ -63,6 +66,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   fetchAlbumTracks: albumId => {
     dispatch(fetchAlbumTracks(albumId));
+  },
+  openAlbumTrackList: albumId => {
+    dispatch(openAlbumTrackList(albumId));
   }
 });
 

@@ -19,8 +19,13 @@ const getTopTracksById = (state, artistId, limit) => {
   return topTracksById ? topTracksById.slice(0, limit) : topTracksById;
 };
 
+const getTracksByAlbumId = (state, albumId) =>
+  values(state.track.entities).filter(track => track.albumId === state.album.openAlbum);
+
 const selectTracks = state => state.track.entities;
 
 export const selectTopTracksByArtistId = createSelector(getTopTracksById, tracks => tracks);
 
 export const selectAllTracks = createSelector(selectTracks, tracks => tracks);
+
+export const selectTracksByAlbumId = createSelector(getTracksByAlbumId, tracks => tracks);

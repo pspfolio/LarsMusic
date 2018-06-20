@@ -1,4 +1,4 @@
-import { RECEIVE_ALBUMS } from './albumConstants';
+import { RECEIVE_ALBUMS, OPENED_ALBUM_TRACK_LIST } from './albumConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
 import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
@@ -19,5 +19,14 @@ export const fetchArtistAlbums = artistId => {
       .then(json => {
         dispatch(setArtistAlbums(json));
       });
+  };
+};
+
+export const openAlbumTrackList = albumId => {
+  return {
+    type: OPENED_ALBUM_TRACK_LIST,
+    payload: {
+      albumId
+    }
   };
 };

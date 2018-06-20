@@ -5,12 +5,10 @@ import { RECEIVE_ALBUMS } from 'features/album/albumConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
 import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
-const setTracks = tracks => {
-  console.log('Trackdata', tracks);
+const setTracks = (tracks, albumId) => {
   const data = tracks.map(track => ({
-    albumId: track.album.id,
+    albumId: track.album ? track.album.id : albumId,
     name: track.name,
-    images: track.album.images,
     preview_url: track.preview_url,
     id: track.id,
     href: track.href,
@@ -75,7 +73,7 @@ export const fetchAlbumTracks = albumId => {
     return fetchSpotify(`https://api.spotify.com/v1/albums/${albumId}/tracks?limit=50`, accessToken)
       .then(response => response.json())
       .then(json => {
-        dispatch(setTracks(json.items));
+        dispatch(setTracks(json.items, albumId));
       });
   };
 };
