@@ -26,24 +26,26 @@ class AlbumList extends Component {
   };
 
   render() {
-    const { albums } = this.props;
-
+    const { albums, openAlbum } = this.props;
+    console.log(this.props);
     return (
       <div>
         {albums && (
           <List>
             {albums.map(({ id, name, album_type, images }) => (
-              <ClickableMusicListItem
-                key={id}
-                name={name}
-                secondaryName={album_type}
-                image={images.find(img => img.height < 100).url}
-                onClick={() => {
-                  this.onAlbumClick(id);
-                }}
-              >
-                {() => <AlbumListControls />}
-              </ClickableMusicListItem>
+              <React.Fragment key={id}>
+                <ClickableMusicListItem
+                  name={name}
+                  secondaryName={album_type}
+                  image={images.find(img => img.height < 100).url}
+                  onClick={() => {
+                    this.onAlbumClick(id);
+                  }}
+                >
+                  {() => <AlbumListControls />}
+                </ClickableMusicListItem>
+                {openAlbum === id && <h3>Clicked</h3>}
+              </React.Fragment>
             ))}
           </List>
         )}
