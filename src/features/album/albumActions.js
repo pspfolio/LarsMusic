@@ -1,4 +1,4 @@
-import { RECEIVE_ALBUMS, OPENED_ALBUM_TRACK_LIST } from './albumConstants';
+import { RECEIVE_ALBUMS, TOGGLE_ALBUM_TRACK_LIST } from './albumConstants';
 import { fetchSpotify } from 'common/utils/fetcher';
 import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
@@ -22,9 +22,9 @@ export const fetchArtistAlbums = artistId => {
   };
 };
 
-export const openAlbumTrackList = albumId => {
+export const toggleAlbumTrackList = albumId => {
   return {
-    type: OPENED_ALBUM_TRACK_LIST,
+    type: TOGGLE_ALBUM_TRACK_LIST,
     payload: {
       albumId
     }

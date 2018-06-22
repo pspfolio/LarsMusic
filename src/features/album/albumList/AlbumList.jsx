@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { fetchArtistAlbums, openAlbumTrackList } from '../albumActions';
+import { fetchArtistAlbums, toggleAlbumTrackList } from '../albumActions';
 import { fetchAlbumTracks } from 'features/tracks/tracksActions';
 import { selectAlbumsByArtistId } from '../albumSelectors';
 import { selectTracksByAlbumId } from 'features/tracks/tracksSelectors';
@@ -70,7 +70,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(fetchAlbumTracks(albumId));
   },
   openAlbumTrackList: albumId => {
-    dispatch(openAlbumTrackList(albumId));
+    dispatch(toggleAlbumTrackList(albumId));
   }
 });
 
