@@ -5,6 +5,8 @@ const getAlbumsById = (state, id) => values(state.album.entities).filter(entity 
 
 const getAlbumByAlbumId = (state, albumId) => state.album.entities[albumId];
 
+export const getAllAlbums = state => state.album.entities;
+
 export const selectAlbumsByArtistId = createSelector(getAlbumsById, albums => albums);
 
-export const selectAlbumsByAlbumId = createSelector(getAlbumByAlbumId, album => album);
+export const selectAlbumByAlbumId = createSelector(getAlbumByAlbumId, album => album);

@@ -13,11 +13,13 @@ const TrackList = styled.ul`
 
 class TopTracksCard extends Component {
   render() {
-    const { topTracks, play } = this.props;
+    const { topTracks, artistId } = this.props;
     return (
       <TopTracksCardWrapper>
         {topTracks.length > 0 && (
-          <TrackList>{topTracks.map(track => <TopTracksItem key={track.id} play={play} {...track} />)}</TrackList>
+          <TrackList>
+            {topTracks.map(track => <TopTracksItem key={track.id} artistId={artistId} {...track} />)}
+          </TrackList>
         )}
       </TopTracksCardWrapper>
     );

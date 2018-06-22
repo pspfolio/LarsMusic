@@ -20,8 +20,8 @@ const TrackName = styled.p`
 
 class PlayingBarTrack extends Component {
   getAlbumArt = () => {
-    const { playingTrack } = this.props;
-    const albumArt = playingTrack.images[playingTrack.images.length - 1].url;
+    const { playingAlbum } = this.props;
+    const albumArt = playingAlbum.images[playingAlbum.images.length - 1].url;
 
     return albumArt;
   };

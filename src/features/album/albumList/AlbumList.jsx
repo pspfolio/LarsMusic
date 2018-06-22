@@ -8,6 +8,7 @@ import { selectAlbumsByArtistId } from '../albumSelectors';
 import { selectTracksByAlbumId } from 'features/tracks/tracksSelectors';
 import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
+import TracksList from 'features/tracks/tracksList/TracksList';
 
 const List = styled.ul`
   margin-top: 32px;
@@ -26,8 +27,7 @@ class AlbumList extends Component {
   };
 
   render() {
-    const { albums, openAlbum } = this.props;
-    console.log(this.props);
+    const { albums, openAlbum, albumTracks } = this.props;
     return (
       <div>
         {albums && (
@@ -44,7 +44,7 @@ class AlbumList extends Component {
                 >
                   {() => <AlbumListControls />}
                 </ClickableMusicListItem>
-                {openAlbum === id && <h3>Clicked</h3>}
+                {openAlbum === id && <TracksList tracks={albumTracks} />}
               </React.Fragment>
             ))}
           </List>

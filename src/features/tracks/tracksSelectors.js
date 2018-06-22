@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
 import values from 'lodash/values';
-import { selectAlbumsByAlbumId } from 'features/album/albumSelectors';
+import { selectAlbumByAlbumId } from 'features/album/albumSelectors';
 import { getArtistTopTracksIdList } from 'features/artist/artistSelectors';
 
 const getTopTracksById = (state, artistId, limit) => {
   const topTracksList = getArtistTopTracksIdList(state, artistId).map(trackId => {
     const track = state.track.entities[trackId];
-    const album = selectAlbumsByAlbumId(state, track.albumId);
+    const album = selectAlbumByAlbumId(state, track.albumId);
 
     return {
       ...track,
@@ -20,7 +20,9 @@ const getTopTracksById = (state, artistId, limit) => {
 };
 
 const getTracksByAlbumId = (state, albumId) =>
-  values(state.track.entities).filter(track => track.albumId === state.album.openAlbum);
+  values(state.track.entities)
+    .filter(track => track.albumId === state.album.openAlbum)
+    .sort((a, b) => a.track_number - b.track_number);
 
 const selectTracks = state => state.track.entities;
 

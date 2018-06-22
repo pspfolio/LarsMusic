@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { selectPlayingArtists, selectPlayingTrack } from './playingBarSelectors';
+import { selectPlayingArtists, selectPlayingTrack, selectPlayingAlbum } from './playingBarSelectors';
 import PlayingBarTrack from './PlayingBarTrack';
 import PlayingBarControls from './PlayingBarControls';
 import PlayingBarVolume from './PlayingBarVolume';
@@ -58,14 +58,15 @@ class Play extends Component {
 
   render() {
     const { playing, volume } = this.state;
-    const { playingArtist, playingTrack } = this.props;
+    const { playingArtist, playingTrack, playingAlbum } = this.props;
 
+    console.log(playingAlbum);
     return (
       <div>
         {playingArtist &&
           playingTrack && (
             <PlayContainer>
-              <PlayingBarTrack playingTrack={playingTrack} />
+              <PlayingBarTrack playingTrack={playingTrack} playingAlbum={playingAlbum} />
               <PlayingBarControls playing={playing} play={this.play} pause={this.pause} />
               <PlayingBarVolume volume={volume} handleVolumeChange={this.handleVolumeChange} />
               <audio autoPlay src={playingTrack.preview_url} ref={this.audio} />
@@ -78,7 +79,8 @@ class Play extends Component {
 
 const mapStateToProps = state => ({
   playingArtist: selectPlayingArtists(state),
-  playingTrack: selectPlayingTrack(state)
+  playingTrack: selectPlayingTrack(state),
+  playingAlbum: selectPlayingAlbum(state)
 });
 
 export default connect(mapStateToProps)(Play);

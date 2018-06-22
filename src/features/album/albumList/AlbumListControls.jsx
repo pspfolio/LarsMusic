@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import like from 'assets/images/like.svg';
 import arrowDown from 'assets/images/arrowdown.svg';
