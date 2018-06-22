@@ -19,7 +19,7 @@ const SpotifyLogo = styled.img`
   width: 32px;
 `;
 
-const TopTracksControls = ({ play, trackId, spotifyUrl }) => (
+const TracksControls = ({ play, trackId, spotifyUrl }) => (
   <ControlsWrapper>
     <PlayButton onClick={() => play(trackId)} size={32} />
     <SpotifyLink href={spotifyUrl} target="_blank">
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return { play: trackId => dispatch(setPlayTrack(trackId, ownProps.artistId, ownProps.albumId)) };
 };
 
-export default connect(null, mapDispatchToProps)(TopTracksControls);
+export default connect(null, mapDispatchToProps)(TracksControls);

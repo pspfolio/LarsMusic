@@ -1,11 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import TopTracksControls from '../topTracks/TopTracksControls';
+import TracksControls from '../tracksControls/TracksControls';
+
+const TrackWrapper = styled.div`
+  display: flex;
+  margin: 0 40px;
+  justify-content: space-between;
+`;
 
 const TrackItem = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 40px;
+`;
+
+const TrackNumber = styled.p`
+  text-align: center;
+  width: 25px;
 `;
 
 const TrackName = styled.p`
@@ -15,16 +25,24 @@ const TrackName = styled.p`
 
 class TracksList extends Component {
   render() {
-    const { tracks } = this.props;
+    const { tracks, artistId, albumId } = this.props;
     return (
       <Fragment>
         {tracks.map(track => {
+          console.log(track);
           return (
-            <TrackItem key={track.id}>
-              <span>{track.track_number}</span>
-              <TrackName>{track.name}</TrackName>
-              <TopTracksControls />
-            </TrackItem>
+            <TrackWrapper key={track.id}>
+              <TrackItem>
+                <TrackNumber>{track.track_number}</TrackNumber>
+                <TrackName>{track.name}</TrackName>
+              </TrackItem>
+              <TracksControls
+                trackId={track.id}
+                artistId={artistId}
+                albumId={albumId}
+                spotifyUrl={track.external_urls['spotify']}
+              />
+            </TrackWrapper>
           );
         })}
       </Fragment>

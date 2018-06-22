@@ -27,7 +27,7 @@ class AlbumList extends Component {
   };
 
   render() {
-    const { albums, openAlbum, albumTracks } = this.props;
+    const { albums, openAlbum, albumTracks, match } = this.props;
     return (
       <div>
         {albums && (
@@ -44,7 +44,7 @@ class AlbumList extends Component {
                 >
                   {() => <AlbumListControls />}
                 </ClickableMusicListItem>
-                {openAlbum === id && <TracksList tracks={albumTracks} />}
+                {openAlbum === id && <TracksList tracks={albumTracks} albumId={id} artistId={match.params.id} />}
               </React.Fragment>
             ))}
           </List>
