@@ -28,23 +28,20 @@ class TracksList extends Component {
     const { tracks, artistId, albumId } = this.props;
     return (
       <Fragment>
-        {tracks.map(track => {
-          console.log(track);
-          return (
-            <TrackWrapper key={track.id}>
-              <TrackItem>
-                <TrackNumber>{track.track_number}</TrackNumber>
-                <TrackName>{track.name}</TrackName>
-              </TrackItem>
-              <TracksControls
-                trackId={track.id}
-                artistId={artistId}
-                albumId={albumId}
-                spotifyUrl={track.external_urls['spotify']}
-              />
-            </TrackWrapper>
-          );
-        })}
+        {tracks.map(track => (
+          <TrackWrapper key={track.id}>
+            <TrackItem>
+              <TrackNumber>{track.track_number}</TrackNumber>
+              <TrackName>{track.name}</TrackName>
+            </TrackItem>
+            <TracksControls
+              trackId={track.id}
+              artistId={artistId}
+              albumId={albumId}
+              spotifyUrl={track.external_urls['spotify']}
+            />
+          </TrackWrapper>
+        ))}
       </Fragment>
     );
   }

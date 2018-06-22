@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const TopBar = styled.nav`
@@ -21,16 +22,18 @@ const Container = styled.main`
   margin: 0 auto;
 `;
 
-const TopBarHeader = styled.h1`
+const TopBarHeader = styled(Link)`
   color: #fff;
   font-weight: 300;
+  font-size: 1.5em;
+  text-decoration: none;
 `;
 
 const DashboardLayout = ({ children }) => (
   <div>
     <TopBar>
       <TopBarContainer>
-        <TopBarHeader>LarsMusic</TopBarHeader>
+        <TopBarHeader to="/">LarsMusic</TopBarHeader>
       </TopBarContainer>
     </TopBar>
     <Container>{children}</Container>
