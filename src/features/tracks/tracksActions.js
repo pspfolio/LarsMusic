@@ -2,7 +2,6 @@ import mapKeys from 'lodash/mapKeys';
 import { RECEIVE_TRACKS } from './tracksConstants';
 import { RECEIVE_ARTIST_TOP_TRACKS } from 'features/artist/artistConstants';
 import { RECEIVE_ALBUMS } from 'features/album/albumConstants';
-import { fetchSpotify } from 'common/utils/fetcher';
 import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
 const setTracks = (tracks, albumId) => {
@@ -47,16 +46,12 @@ const setTopTracksAlbums = trackdata => {
 };
 
 function fetchTopTracksBasicData(artistId) {
-  return (dispatch, getState) => {
-    const accessToken = getState().accessToken;
-    return fetchSpotify(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=FI`, accessToken)
-      .then(response => response.json())
-      .then(json => {
-        dispatch(setTopTracksAlbums(json));
-        dispatch(setTracks(json.tracks));
-        dispatch(setArtistTopTracks(json, artistId));
-      });
-  };
+  return (dispatch, getState, { spotifyFetcher }) =>
+    spotifyFetcher(`artists/${artistId}/top-tracks?country=FI`).then(json => {
+      dispatch(setTopTracksAlbums(json));
+      dispatch(setTracks(json.tracks));
+      dispatch(setArtistTopTracks(json, artistId));
+    });
 }
 
 export function fetchTopTracksIfNeeded(artistId) {
@@ -67,13 +62,7 @@ export function fetchTopTracksIfNeeded(artistId) {
 }
 
 export const fetchAlbumTracks = albumId => {
-  return (dispatch, getState) => {
-    const accessToken = getState().accessToken;
-
-    return fetchSpotify(`https://api.spotify.com/v1/albums/${albumId}/tracks?limit=50`, accessToken)
-      .then(response => response.json())
-      .then(json => {
-        dispatch(setTracks(json.items, albumId));
-      });
+  return (dispatch, getState, { spotifyFetcher }) => {
+    spotifyFetcher(`albums/${albumId}/tracks?limit=50`).then(json => dispatch(setTracks(json.items, albumId)));
   };
 };
