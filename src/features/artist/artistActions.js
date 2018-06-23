@@ -1,5 +1,4 @@
 import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistConstants';
-import { fetchSpotify } from 'common/utils/fetcher';
 import { handleArtistData } from 'common/utils/artistDataHelpers';
 import { artistIdList } from 'data/sampleData';
 
@@ -24,13 +23,8 @@ const setArtist = data => {
 };
 
 function fetchArtistBasicData(artistId) {
-  return (dispatch, getState) => {
-    // dispatch request artist
-    const accessToken = getState().accessToken;
-    return fetchSpotify(`https://api.spotify.com/v1/artists/${artistId}`, accessToken)
-      .then(response => response.json())
-      .then(json => dispatch(setArtist(json)));
-  };
+  return (dispatch, getState, { spotifyFetcher }) =>
+    spotifyFetcher(`artists/${artistId}`).then(json => dispatch(setArtist(json)));
 }
 
 export function fetchArtistIfNeeded(artistId) {
@@ -41,13 +35,9 @@ export function fetchArtistIfNeeded(artistId) {
 }
 
 export function fetchArtists() {
-  return (dispatch, getState) => {
+  return (dispatch, getState, { spotifyFetcher }) => {
     dispatch(requestArtistList());
-    const accessToken = getState().accessToken;
     const artistIds = artistIdList.join(',');
-    const url = `https://api.spotify.com/v1/artists?ids=${artistIds}`;
-    fetchSpotify(url, accessToken)
-      .then(data => data.json())
-      .then(json => dispatch(setArtistList(json)));
+    return spotifyFetcher(`artists?ids=${artistIds}`).then(json => dispatch(setArtistList(json)));
   };
 }
