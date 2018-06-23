@@ -1,5 +1,4 @@
 import { SEARCH_REQUEST_ARTISTS, SEARCH_RECEIVE_ARTISTS } from './searchConstants';
-import { fetchSpotify } from 'common/utils/fetcher';
 import { handleArtistData } from 'common/utils/artistDataHelpers';
 
 const requestSearch = () => ({
@@ -15,13 +14,9 @@ const setSearchResult = data => {
 };
 
 export function fetchSearch() {
-  return (dispatch, getState) => {
+  return (dispatch, getState, { spotifyFetcher }) => {
     dispatch(requestSearch());
-    const accessToken = getState().accessToken;
     const searchWord = getState().form.search.values.search;
-    const url = `https://api.spotify.com/v1/search?q=${searchWord}&type=artist&limit=25`;
-    fetchSpotify(url, accessToken)
-      .then(data => data.json())
-      .then(json => dispatch(setSearchResult(json)));
+    return spotifyFetcher(`search?q=${searchWord}&type=artist&limit=25`).then(json => dispatch(setSearchResult(json)));
   };
 }
