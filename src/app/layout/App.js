@@ -45,9 +45,9 @@ class App extends Component {
           <Switch>
             <PrivateRoute path="/" exact component={AsyncDashboard} />
             <PrivateRoute path="/artist/:id" component={AsyncArtist} />
+            <PrivateRoute path="/search" component={AsyncSearch} />
             <Route path="/callback" component={AsyncCallback} />
             <Route path="/login" component={AsyncLogin} />
-            <Route path="/search" component={AsyncSearch} />
             <Route render={() => <h1>Four oh Four</h1>} />
           </Switch>
         </Router>
