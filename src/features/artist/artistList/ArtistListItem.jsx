@@ -11,6 +11,7 @@ const ArtistCard = styled.section`
   border-radius: 10px;
   background-color: #fff;
   margin-bottom: 24px;
+  margin-left: 16px;
 `;
 
 const CardArtistImage = styled.div`
