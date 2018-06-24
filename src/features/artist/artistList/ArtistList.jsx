@@ -5,6 +5,7 @@ import ArtistListItem from './ArtistListItem';
 const ArtistContainer = styled.article`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 class ArtistList extends Component {
