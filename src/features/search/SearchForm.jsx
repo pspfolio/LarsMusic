@@ -18,7 +18,7 @@ const SearchInput = styled(Field)`
   font-weight: 500;
   color: #171745;
   width: 40%;
-  box-shadow: 0px 5px 20px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: 0px 5px 20px 2px rgba(0, 0, 0, 0.1);
   -webkit-appearance: none;
   border: 0;
   outline: 0;
