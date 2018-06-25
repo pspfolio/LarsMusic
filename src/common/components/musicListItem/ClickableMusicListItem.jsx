@@ -8,7 +8,7 @@ const MusicItem = styled.li`
   cursor: pointer;
 
   &:hover {
-    background-color: red;
+    background-color: #efefef;
   }
 
   &:last-child {
