@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import UserName from 'features/user/UserName';
 
 const TopBar = styled.nav`
   width: 100%;
@@ -13,8 +14,10 @@ const TopBar = styled.nav`
 const TopBarContainer = styled.div`
   display: flex;
   height: 100%;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
-  margin-left: 24px;
+  margin: 0 24px;
 `;
 
 const Container = styled.main`
@@ -34,6 +37,7 @@ const DashboardLayout = ({ children }) => (
     <TopBar>
       <TopBarContainer>
         <TopBarHeader to="/">LarsMusic</TopBarHeader>
+        <UserName />
       </TopBarContainer>
     </TopBar>
     <Container>{children}</Container>
