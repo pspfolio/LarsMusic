@@ -6,6 +6,7 @@ import { fetchArtists } from '../artistActions';
 import { selectArtistByLimit } from '../artistSelectors';
 import Header from 'common/components/header/Header';
 import ArtistList from '../artistList/ArtistList';
+import { albumsRef } from 'firebase.js';
 
 const MoreArtistLinkContainer = styled.div`
   text-align: right;
@@ -21,6 +22,9 @@ class DashboardArtistList extends Component {
   componentDidMount() {
     const { getArtists } = this.props;
     getArtists();
+    albumsRef.on('value', snapshot => {
+      console.log('DATAAA', snapshot.val());
+    });
   }
   render() {
     const { artists } = this.props;
