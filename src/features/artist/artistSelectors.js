@@ -13,7 +13,7 @@ export const selectArtists = createSelector(getArtists, artist => artist);
 
 export const selectArtistByLimit = createSelector([getArtists, (state, limit) => limit], (artists, limit) => {
   const artistList = values(artists);
-  return !artistList.length ? [] : artistList.slice(0, limit);
+  return artistList.length === 0 ? [] : artistList.slice(0, limit);
 });
 
 export const selectArtistById = createSelector(getArtistById, artist => artist);
