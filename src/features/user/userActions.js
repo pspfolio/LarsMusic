@@ -12,14 +12,3 @@ export const fetchUserProfile = () => {
     });
   };
 };
-
-/*
-export const fetchArtistAlbums = artistId => {
-  return (dispatch, getState, { spotifyFetcher }) => {
-    spotifyFetcher(`artists/${artistId}/albums?market=FI&limit=50`).then(json => {
-      dispatch(setArtistAlbums(json));
-    });
-  };
-};
-
-*/
