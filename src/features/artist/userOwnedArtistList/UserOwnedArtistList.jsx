@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { fetchArtists } from '../artistActions';
+import { fetchUserArtists } from '../artistActions';
 import { selectArtistByLimit } from '../artistSelectors';
 import Header from 'common/components/header/Header';
 import ArtistList from '../artistList/ArtistList';
-import { albumsRef } from 'firebase.js';
 
 const MoreArtistLinkContainer = styled.div`
   text-align: right;
@@ -20,11 +19,8 @@ const MoreArtistLink = styled(Link)`
 
 class DashboardArtistList extends Component {
   componentDidMount() {
-    const { getArtists } = this.props;
-    getArtists();
-    albumsRef.on('value', snapshot => {
-      console.log('DATAAA', snapshot.val());
-    });
+    const { getUserArtists } = this.props;
+    getUserArtists();
   }
   render() {
     const { artists } = this.props;
@@ -46,7 +42,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getArtists: () => dispatch(fetchArtists())
+  getUserArtists: () => dispatch(fetchUserArtists())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardArtistList);

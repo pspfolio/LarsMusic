@@ -1,3 +1,4 @@
+import { database } from 'firebase.js';
 import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistConstants';
 import { handleArtistData } from 'common/utils/artistDataHelpers';
 import { artistIdList } from 'data/sampleData';
@@ -39,5 +40,15 @@ export function fetchArtists() {
     dispatch(requestArtistList());
     const artistIds = artistIdList.join(',');
     return spotifyFetcher(`artists?ids=${artistIds}`).then(json => dispatch(setArtistList(json)));
+  };
+}
+
+export function fetchUserArtists() {
+  return (dispatch, getState, { spotifyFetcher }) => {
+    const state = getState();
+    console.log('user', state);
+    database.ref(`artist/${state.user.id}`).once('value', snapshot => {
+      console.log('artistactionDATAAA', snapshot.val());
+    });
   };
 }
