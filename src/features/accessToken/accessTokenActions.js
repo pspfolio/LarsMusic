@@ -1,11 +1,17 @@
 import { SET_ACCESS_TOKEN } from './accessTokenConstants';
 import { saveAccessTokenState } from 'common/utils/localStorage';
+import { fetchUserProfile } from 'features/user/userActions';
 
-export function setAccessToken(data) {
-  saveAccessTokenState(data.access_token);
+const accessTokenAction = accessToken => ({
+  type: SET_ACCESS_TOKEN,
+  payload: accessToken
+});
 
-  return {
-    type: SET_ACCESS_TOKEN,
-    payload: data.access_token
+export const setAccessToken = ({ access_token }) => {
+  saveAccessTokenState(access_token);
+
+  return (dispatch, getState, { spotifyFetcher }) => {
+    dispatch(accessTokenAction(access_token));
+    return dispatch(fetchUserProfile());
   };
-}
+};

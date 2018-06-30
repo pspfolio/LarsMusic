@@ -59,8 +59,6 @@ class Play extends Component {
   render() {
     const { playing, volume } = this.state;
     const { playingArtist, playingTrack, playingAlbum } = this.props;
-
-    console.log(playingAlbum);
     return (
       <div>
         {playingArtist &&

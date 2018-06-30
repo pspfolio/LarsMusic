@@ -46,7 +46,6 @@ export function fetchArtists() {
 export function fetchUserArtists() {
   return (dispatch, getState, { spotifyFetcher }) => {
     const state = getState();
-    console.log('user', state);
     database.ref(`artist/${state.user.id}`).once('value', snapshot => {
       console.log('artistactionDATAAA', snapshot.val());
     });

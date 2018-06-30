@@ -1,6 +1,4 @@
 export default getStore => (url, opts) => {
-  console.log('MIDDLEWAREE storee', getStore());
-
   const headers = {
     authorization: `Bearer ${getStore().accessToken}`
   };
