@@ -41,8 +41,8 @@ const mapStateToProps = (state, ownProps) => ({
   artists: selectArtistByLimit(state, ownProps.itemCount)
 });
 
-const mapDispatchToProps = dispatch => ({
-  getUserArtists: () => dispatch(fetchUserArtists())
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  getUserArtists: () => dispatch(fetchUserArtists(ownProps.itemCount))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardArtistList);

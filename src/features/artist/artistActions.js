@@ -35,19 +35,26 @@ export function fetchArtistIfNeeded(artistId) {
   };
 }
 
-export function fetchArtists() {
+const fetchArtists = artistIdList => {
   return (dispatch, getState, { spotifyFetcher }) => {
     dispatch(requestArtistList());
     const artistIds = artistIdList.join(',');
     return spotifyFetcher(`artists?ids=${artistIds}`).then(json => dispatch(setArtistList(json)));
   };
-}
+};
 
-export function fetchUserArtists() {
+export function fetchUserArtists(limit) {
   return (dispatch, getState, { spotifyFetcher }) => {
     const state = getState();
-    database.ref(`artist/${state.user.id}`).once('value', snapshot => {
+    /*database.ref(`artist/${state.user.id}`).on('value', snapshot => {
       console.log('artistactionDATAAA', snapshot.val());
-    });
+    });*/
+    database
+      .ref(`artist/${state.user.id}`)
+      .limitToFirst(limit)
+      .on('value', snapshot => {
+        const artistIds = Object.keys(snapshot.val());
+        return dispatch(fetchArtists(artistIds));
+      });
   };
 }
