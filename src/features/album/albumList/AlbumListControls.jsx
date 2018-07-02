@@ -12,9 +12,9 @@ const ImageWrapper = styled.img`
   margin-left: 16px;
 `;
 
-const AlbumListControls = () => (
+const AlbumListControls = ({ onClick }) => (
   <ControlWrapper>
-    <ImageWrapper src={like} alt="like icon" />
+    <ImageWrapper src={like} alt="like icon" onClick={onClick} />
     <ImageWrapper src={arrowDown} alt="arrowdown icon" />
   </ControlWrapper>
 );

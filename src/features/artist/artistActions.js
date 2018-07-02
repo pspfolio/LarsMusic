@@ -1,7 +1,6 @@
 import { database } from 'firebase.js';
 import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistConstants';
 import { handleArtistData } from 'common/utils/artistDataHelpers';
-import { artistIdList } from 'data/sampleData';
 
 const requestArtistList = () => ({
   type: REQUEST_ARTIST_LIST
@@ -46,9 +45,6 @@ const fetchArtists = artistIdList => {
 export function fetchUserArtists(limit) {
   return (dispatch, getState, { spotifyFetcher }) => {
     const state = getState();
-    /*database.ref(`artist/${state.user.id}`).on('value', snapshot => {
-      console.log('artistactionDATAAA', snapshot.val());
-    });*/
     database
       .ref(`artist/${state.user.id}`)
       .limitToFirst(limit)

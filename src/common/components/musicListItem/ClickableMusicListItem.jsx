@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import MusicListItemContent from './MusicListItemContent';
 
-const MusicItem = styled.li`
+const MusicListItem = styled.li`
   margin-top: 32px;
-  display: flex;
   cursor: pointer;
+  list-style-type: none;
+  display: flex;
+`;
 
+const MusicContent = styled.div`
+  display: flex;
+  flex: 2;
   &:hover {
     background-color: #efefef;
   }
@@ -21,10 +26,14 @@ const MusicItem = styled.li`
 `;
 
 const ClickableMusicListItem = ({ image, name, secondaryName, children, onClick }) => (
-  <MusicItem onClick={onClick}>
-    <MusicListItemContent image={image} name={name} secondaryName={secondaryName} />
-    {children()}
-  </MusicItem>
+  <Fragment>
+    <MusicListItem>
+      <MusicContent onClick={onClick}>
+        <MusicListItemContent image={image} name={name} secondaryName={secondaryName} />
+      </MusicContent>
+      {children()}
+    </MusicListItem>
+  </Fragment>
 );
 
 export default ClickableMusicListItem;

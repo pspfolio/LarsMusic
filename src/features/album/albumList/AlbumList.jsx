@@ -26,6 +26,10 @@ class AlbumList extends Component {
     this.props.openAlbumTrackList(id);
   };
 
+  onAddFavoriteClick = id => {
+    console.log('onfavorite', id);
+  };
+
   render() {
     const { albums, openAlbum, albumTracks, match } = this.props;
     return (
@@ -42,7 +46,7 @@ class AlbumList extends Component {
                     this.onAlbumClick(id);
                   }}
                 >
-                  {() => <AlbumListControls />}
+                  {() => <AlbumListControls onClick={() => this.onAddFavoriteClick(id)} />}
                 </ClickableMusicListItem>
                 {openAlbum === id && <TracksList tracks={albumTracks} albumId={id} artistId={match.params.id} />}
               </React.Fragment>

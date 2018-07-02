@@ -20,8 +20,6 @@ export default function configureStore(preloadedState) {
 
   const composedEnhancer = composeWithDevTools(...storeEnhancers);
 
-  console.log('configurestore preloadedstate', preloadedState);
-
   const store = createStore(rootReducer, preloadedState, composedEnhancer);
 
   if (process.env.NODE_ENV !== 'production') {

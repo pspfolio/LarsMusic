@@ -10,7 +10,6 @@ const cacheMiddleware = store => next => action => {
   const result = next(action);
   const shouldPersist = actionsToPersist[action.type];
 
-  console.log('cachemiddleware', shouldPersist);
   if (shouldPersist) {
     ric(() => {
       const appState = store.getState();
