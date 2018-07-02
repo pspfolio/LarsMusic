@@ -42,7 +42,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  getUserArtists: () => dispatch(fetchUserArtists(ownProps.itemCount))
+  getUserArtists: () => dispatch(fetchUserArtists())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardArtistList);

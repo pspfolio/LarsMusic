@@ -1,5 +1,11 @@
 import { database } from 'firebase.js';
-import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistConstants';
+import {
+  RECEIVE_ARTISTS,
+  REQUEST_ARTIST_LIST,
+  RECEIVE_ARTIST,
+  RECEIVE_OWNED_ARTISTS,
+  REQUEST_OWNED_ARTISTS
+} from './artistConstants';
 import { handleArtistData } from 'common/utils/artistDataHelpers';
 
 const requestArtistList = () => ({
@@ -22,6 +28,15 @@ const setArtist = data => {
   };
 };
 
+const setListOfOwnedArtist = artistIdList => ({
+  type: RECEIVE_OWNED_ARTISTS,
+  payload: artistIdList
+});
+
+const setRequestListOfOwnedArtist = () => ({
+  type: REQUEST_OWNED_ARTISTS
+});
+
 function fetchArtistBasicData(artistId) {
   return (dispatch, getState, { spotifyFetcher }) =>
     spotifyFetcher(`artists/${artistId}`).then(json => dispatch(setArtist(json)));
@@ -42,15 +57,14 @@ const fetchArtists = artistIdList => {
   };
 };
 
-export function fetchUserArtists(limit) {
+export function fetchUserArtists() {
   return (dispatch, getState, { spotifyFetcher }) => {
+    dispatch(setRequestListOfOwnedArtist());
     const state = getState();
-    database
-      .ref(`artist/${state.user.id}`)
-      .limitToFirst(limit)
-      .on('value', snapshot => {
-        const artistIds = Object.keys(snapshot.val());
-        return dispatch(fetchArtists(artistIds));
-      });
+    database.ref(`album/${state.user.id}`).on('value', snapshot => {
+      const artistIds = Object.keys(snapshot.val());
+      dispatch(setListOfOwnedArtist(artistIds));
+      return dispatch(fetchArtists(artistIds));
+    });
   };
 }
