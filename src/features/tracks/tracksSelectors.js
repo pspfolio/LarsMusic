@@ -20,11 +20,11 @@ const getTopTracksById = (state, artistId, limit) => {
 };
 
 const getTracksByAlbumId = (state, albumId) =>
-  values(state.track.entities)
+  values(state.entities.track.entities)
     .filter(track => track.albumId === state.album.openAlbum)
     .sort((a, b) => a.track_number - b.track_number);
 
-const selectTracks = state => state.track.entities;
+const selectTracks = state => state.entities.track.entities;
 
 export const selectTopTracksByArtistId = createSelector(getTopTracksById, tracks => tracks);
 

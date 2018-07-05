@@ -7,10 +7,10 @@ const getPlayingArtistSelector = state => state.playingBar.artistId;
 const getPlayingTrackSelector = state => state.playingBar.trackId;
 const getPlayingAlbumSelector = state => state.playingBar.albumId;
 
-export const selectPlayingArtists = createSelector(
-  [getPlayingArtistSelector, getArtists],
-  (artistId, artists) => artists[artistId]
-);
+export const selectPlayingArtists = createSelector([getPlayingArtistSelector, getArtists], (artistId, artists) => {
+  console.log(artists);
+  return artists[artistId];
+});
 export const selectPlayingTrack = createSelector(
   [getPlayingTrackSelector, selectAllTracks],
   (trackId, tracks) => (trackId ? tracks[trackId] : '')

@@ -62,7 +62,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     albums: selectAlbumsByArtistId(state, ownProps.match.params.id),
     albumTracks: selectTracksByAlbumId(state),
-    openAlbum: state.album.openAlbum
+    openAlbum: state.entities.album.openAlbum
   };
 };
 

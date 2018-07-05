@@ -8,13 +8,12 @@ import search from 'features/search/searchReducer';
 import album from 'features/album/albumReducer';
 import user from 'features/user/userReducer';
 
+const entities = combineReducers({ artist, album, track });
 const rootReducer = combineReducers({
+  entities,
   accessToken,
-  artist,
-  track,
   playingBar,
   search,
-  album,
   user,
   form: formReducer
 });
