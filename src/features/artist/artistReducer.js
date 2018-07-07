@@ -1,12 +1,5 @@
 import mapKeys from 'lodash/mapKeys';
-import {
-  RECEIVE_ARTISTS,
-  REQUEST_ARTIST_LIST,
-  RECEIVE_ARTIST,
-  RECEIVE_ARTIST_TOP_TRACKS,
-  RECEIVE_OWNED_ARTISTS,
-  REQUEST_OWNED_ARTISTS
-} from './artistConstants';
+import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST, RECEIVE_ARTIST_TOP_TRACKS } from './artistConstants';
 import { SEARCH_RECEIVE_ARTISTS } from '../search/searchConstants';
 
 const initialState = {
@@ -14,12 +7,6 @@ const initialState = {
   itemsById: {},
   items: []
 };
-
-/*
-
-  REFACTOR TO OWN ENTITIES (USERARTISTS)
-
-*/
 
 export default function artistList(state = initialState, action) {
   switch (action.type) {
@@ -38,10 +25,6 @@ export default function artistList(state = initialState, action) {
           [action.payload.id]: { ...state.entities[action.payload.id], topTracks: action.payload.topTracks }
         }
       };
-    /* case REQUEST_OWNED_ARTISTS:
-      return { ...state, loading: true };
-    case RECEIVE_OWNED_ARTISTS:
-      return { ...state, userArtists: { ...state.userArtists, entities: [...action.payload] }, loading: false };*/
     default:
       return state;
   }

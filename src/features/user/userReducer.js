@@ -1,4 +1,4 @@
-import { RECEIVE_USER_PROFILE, REQUEST_OWNED_ARTISTS, RECEIVE_OWNED_ARTISTS } from './userConstants';
+import { RECEIVE_USER_PROFILE } from './userConstants';
 
 const user = (state = null, action) => {
   switch (action.type) {

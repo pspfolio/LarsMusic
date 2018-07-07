@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { fetchUserArtists } from '../artistActions';
+import { fetchUserArtists } from 'features/entities/userArtists/userArtistActions';
 import { selectArtistByLimit } from '../artistSelectors';
 import Header from 'common/components/header/Header';
 import ArtistList from '../artistList/ArtistList';

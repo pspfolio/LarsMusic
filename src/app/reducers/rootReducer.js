@@ -7,8 +7,10 @@ import playingBar from 'features/playingBar/playingBarReducer';
 import search from 'features/search/searchReducer';
 import album from 'features/album/albumReducer';
 import user from 'features/user/userReducer';
+import userArtists from 'features/entities/userArtists/userArtistReducer';
 
-const entities = combineReducers({ artist, album, track });
+const entities = combineReducers({ artist, album, track, userArtists });
+
 const rootReducer = combineReducers({
   entities,
   accessToken,
