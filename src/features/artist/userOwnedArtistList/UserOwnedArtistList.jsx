@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { fetchUserArtists } from 'features/entities/userArtists/userArtistActions';
-import { selectArtistByLimit } from '../artistSelectors';
+import { selectUserArtists } from 'features/entities/userArtists/userArtistSelectors';
 import Header from 'common/components/header/Header';
 import ArtistList from '../artistList/ArtistList';
 
@@ -38,7 +38,7 @@ class DashboardArtistList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  artists: selectArtistByLimit(state, ownProps.itemCount)
+  artists: selectUserArtists(state, ownProps.itemCount)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

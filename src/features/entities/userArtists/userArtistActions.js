@@ -1,5 +1,6 @@
 import { database } from 'firebase.js';
 import { REQUEST_OWNED_ARTISTS, RECEIVE_OWNED_ARTISTS } from './userArtistConstants';
+import { fetchArtists } from 'features/artist/artistActions';
 
 const setRequestListOfOwnedArtist = () => ({
   type: REQUEST_OWNED_ARTISTS
@@ -16,6 +17,7 @@ export function fetchUserArtists() {
     const state = getState();
     database.ref(`album/${state.user.id}`).on('value', snapshot => {
       const artistIds = Object.keys(snapshot.val());
+      dispatch(fetchArtists(artistIds));
       dispatch(setListOfOwnedArtist(artistIds));
     });
   };

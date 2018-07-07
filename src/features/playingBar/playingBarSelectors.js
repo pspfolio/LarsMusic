@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getArtists } from 'features/artist/artistSelectors';
+import { selectArtists } from 'features/artist/artistSelectors';
 import { selectAllTracks } from 'features/tracks/tracksSelectors';
 import { getAllAlbums } from 'features/album/albumSelectors';
 
@@ -7,8 +7,7 @@ const getPlayingArtistSelector = state => state.playingBar.artistId;
 const getPlayingTrackSelector = state => state.playingBar.trackId;
 const getPlayingAlbumSelector = state => state.playingBar.albumId;
 
-export const selectPlayingArtists = createSelector([getPlayingArtistSelector, getArtists], (artistId, artists) => {
-  console.log(artists);
+export const selectPlayingArtists = createSelector([getPlayingArtistSelector, selectArtists], (artistId, artists) => {
   return artists[artistId];
 });
 export const selectPlayingTrack = createSelector(

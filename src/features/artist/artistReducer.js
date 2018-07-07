@@ -36,7 +36,7 @@ const receiveArtistList = (state, action) => {
 
   const result = {
     ...state,
-    itemsBy: { ...state.itemsById, ...itemsById },
+    itemsById: { ...state.itemsById, ...itemsById },
     items: [...state.items, ...items],
     isFetching: false
   };
