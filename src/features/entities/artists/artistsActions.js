@@ -1,4 +1,4 @@
-import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistConstants';
+import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistsConstants';
 import { handleArtistData } from 'common/utils/artistDataHelpers';
 
 const requestArtistList = () => ({
@@ -28,7 +28,7 @@ function fetchArtistBasicData(artistId) {
 
 export function fetchArtistIfNeeded(artistId) {
   return (dispatch, getState) => {
-    const artistFromState = getState().entities.artist.entities[artistId];
+    const artistFromState = getState().entities.artists.itemsById[artistId];
     if (!artistFromState) return dispatch(fetchArtistBasicData(artistId));
   };
 }

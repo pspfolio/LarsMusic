@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { selectArtists } from 'features/artist/artistSelectors';
+import { selectArtists } from 'features/entities/artists/artistsSelectors';
 import { selectAllTracks } from 'features/tracks/tracksSelectors';
 import { getAllAlbums } from 'features/album/albumSelectors';
 

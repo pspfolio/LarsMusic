@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { selectArtists, isFetchingArtists } from 'features/artist/artistSelectors';
+import { selectArtists, isFetchingArtists } from 'features/entities/artists/artistsSelectors';
 
 const selectUserArtistIdList = state => state.entities.userArtists.items;
 

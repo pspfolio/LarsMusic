@@ -1,6 +1,6 @@
 import mapKeys from 'lodash/mapKeys';
-import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST, RECEIVE_ARTIST_TOP_TRACKS } from './artistConstants';
-import { SEARCH_RECEIVE_ARTISTS } from '../search/searchConstants';
+import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST, RECEIVE_ARTIST_TOP_TRACKS } from './artistsConstants';
+import { SEARCH_RECEIVE_ARTISTS } from 'features/search/searchConstants';
 
 const initialState = {
   isFetching: false,

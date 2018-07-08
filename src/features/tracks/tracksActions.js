@@ -1,6 +1,6 @@
 import mapKeys from 'lodash/mapKeys';
 import { RECEIVE_TRACKS } from './tracksConstants';
-import { RECEIVE_ARTIST_TOP_TRACKS } from 'features/artist/artistConstants';
+import { RECEIVE_ARTIST_TOP_TRACKS } from 'features/entities/artists/artistsConstants';
 import { RECEIVE_ALBUMS } from 'features/album/albumConstants';
 import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 

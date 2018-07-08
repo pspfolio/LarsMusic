@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DashboardLayout from 'features/dashboard//DashboardLayout';
-import { fetchArtistIfNeeded } from '../artistActions';
-import { selectArtistById } from '../artistSelectors';
+import { fetchArtistIfNeeded } from 'features/entities/artists/artistsActions';
+import { selectArtistById } from 'features/entities/artists/artistsSelectors';
 import ArtistPanel from './ArtistPanel';
 
 class Artist extends Component {

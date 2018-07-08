@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSearch } from './searchActions';
-import { selectArtistsByListId } from 'features/artist/artistSelectors';
+import { selectArtistsByListId } from 'features/entities/artists/artistsSelectors';
 import DashboardLayout from 'features/dashboard//DashboardLayout';
 import SearchForm from './SearchForm';
 import ArtistList from 'features/artist/artistList/ArtistList';

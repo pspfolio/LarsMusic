@@ -1,6 +1,6 @@
 import { database } from 'firebase.js';
 import { REQUEST_OWNED_ARTISTS, RECEIVE_OWNED_ARTISTS } from './userArtistConstants';
-import { fetchArtists } from 'features/artist/artistActions';
+import { fetchArtists } from '../artists/artistsActions';
 
 const setRequestListOfOwnedArtist = () => ({
   type: REQUEST_OWNED_ARTISTS

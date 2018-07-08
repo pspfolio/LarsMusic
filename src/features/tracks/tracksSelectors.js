@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import values from 'lodash/values';
 import { selectAlbumByAlbumId } from 'features/album/albumSelectors';
-import { getArtistTopTracksIdList } from 'features/artist/artistSelectors';
+import { getArtistTopTracksIdList } from 'features/entities/artists/artistsSelectors';
 
 const getTopTracksById = (state, artistId, limit) => {
   const topTracksList = getArtistTopTracksIdList(state, artistId).map(trackId => {
