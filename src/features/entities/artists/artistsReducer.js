@@ -16,13 +16,13 @@ export default function artistList(state = initialState, action) {
     case SEARCH_RECEIVE_ARTISTS:
       return receiveArtistList(state, action);
     case RECEIVE_ARTIST:
-      return { ...state, entities: { ...state.entities, [action.payload.id]: action.payload }, isFetching: false };
+      return { ...state, itemsById: { ...state.itemsById, [action.payload.id]: action.payload }, isFetching: false };
     case RECEIVE_ARTIST_TOP_TRACKS:
       return {
         ...state,
-        entities: {
-          ...state.entities,
-          [action.payload.id]: { ...state.entities[action.payload.id], topTracks: action.payload.topTracks }
+        itemsById: {
+          ...state.itemsById,
+          [action.payload.id]: { ...state.itemsById[action.payload.id], topTracks: action.payload.topTracks }
         }
       };
     default:

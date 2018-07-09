@@ -1,7 +1,7 @@
 import mapKeys from 'lodash/mapKeys';
 import { RECEIVE_TRACKS } from './tracksConstants';
 import { RECEIVE_ARTIST_TOP_TRACKS } from 'features/entities/artists/artistsConstants';
-import { RECEIVE_ALBUMS } from 'features/album/albumConstants';
+import { RECEIVE_ALBUMS } from 'features/entities/albums/albumsConstants';
 import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
 const setTracks = (tracks, albumId) => {
@@ -37,11 +37,10 @@ const setArtistTopTracks = (trackdata, artistId) => {
 
 const setTopTracksAlbums = trackdata => {
   const albumData = trackdata.tracks.map(track => track.album);
-  const data = normalizeAlbumData(albumData);
-
+  const payload = normalizeAlbumData(albumData);
   return {
     type: RECEIVE_ALBUMS,
-    data
+    payload
   };
 };
 
@@ -56,7 +55,7 @@ function fetchTopTracksBasicData(artistId) {
 
 export function fetchTopTracksIfNeeded(artistId) {
   return (dispatch, getState) => {
-    const topTracks = getState().entities.track.entities[artistId];
+    const topTracks = getState().entities.tracks.itemsById[artistId];
     if (!topTracks) return dispatch(fetchTopTracksBasicData(artistId));
   };
 }

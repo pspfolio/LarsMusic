@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { selectArtists } from 'features/entities/artists/artistsSelectors';
-import { selectAllTracks } from 'features/tracks/tracksSelectors';
-import { getAllAlbums } from 'features/album/albumSelectors';
+import { selectAllTracks } from 'features/entities/tracks/tracksSelectors';
+import { getAllAlbums } from 'features/entities/albums/albumsSelectors';
 
 const getPlayingArtistSelector = state => state.playingBar.artistId;
 const getPlayingTrackSelector = state => state.playingBar.trackId;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { fetchTopTracksIfNeeded } from '../tracksActions';
-import { selectTopTracksByArtistId } from '../tracksSelectors';
+import { fetchTopTracksIfNeeded } from 'features/entities/tracks/tracksActions';
+import { selectTopTracksByArtistId } from 'features/entities/tracks/tracksSelectors';
 import TopTracksCard from './TopTracksCard';
 
 class TopTracks extends Component {

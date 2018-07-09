@@ -1,14 +1,4 @@
-import { RECEIVE_ALBUMS, TOGGLE_ALBUM_TRACK_LIST } from './albumConstants';
-import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
-
-const setArtistAlbums = albumData => {
-  const data = normalizeAlbumData(albumData.items);
-
-  return {
-    type: RECEIVE_ALBUMS,
-    data
-  };
-};
+import { TOGGLE_ALBUM_TRACK_LIST } from './albumConstants';
 
 export const toggleAlbumTrackList = albumId => {
   return {
@@ -16,13 +6,5 @@ export const toggleAlbumTrackList = albumId => {
     payload: {
       albumId
     }
-  };
-};
-
-export const fetchArtistAlbums = artistId => {
-  return (dispatch, getState, { spotifyFetcher }) => {
-    spotifyFetcher(`artists/${artistId}/albums?market=FI&limit=50`).then(json => {
-      dispatch(setArtistAlbums(json));
-    });
   };
 };

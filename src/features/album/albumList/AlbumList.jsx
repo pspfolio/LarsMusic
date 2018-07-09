@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { fetchArtistAlbums, toggleAlbumTrackList } from '../albumActions';
-import { fetchAlbumTracks } from 'features/tracks/tracksActions';
-import { selectAlbumsByArtistId } from '../albumSelectors';
-import { selectTracksByAlbumId } from 'features/tracks/tracksSelectors';
+import { fetchArtistAlbums } from 'features/entities/albums/albumsActions';
+import { toggleAlbumTrackList } from '../albumActions';
+import { fetchAlbumTracks } from 'features/entities/tracks/tracksActions';
+import { selectAlbumsByArtistId } from 'features/entities/albums/albumsSelectors';
+import { selectTracksByAlbumId } from 'features/entities/tracks/tracksSelectors';
 import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
 import TracksList from 'features/tracks/tracksList/TracksList';
@@ -62,7 +63,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     albums: selectAlbumsByArtistId(state, ownProps.match.params.id),
     albumTracks: selectTracksByAlbumId(state),
-    openAlbum: state.entities.album.openAlbum
+    openAlbum: state.albums.openAlbum
   };
 };
 

@@ -1,20 +1,22 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import accessToken from 'features/accessToken/accessTokenReducer';
-import artists from 'features/entities/artists/artistsReducer';
-import track from 'features/tracks/tracksReducer';
+import artistsEntities from 'features/entities/artists/artistsReducer';
+import albumsEntities from 'features/entities/albums/albumsReducer';
+import tracks from 'features/entities/tracks/tracksReducer';
 import playingBar from 'features/playingBar/playingBarReducer';
 import search from 'features/search/searchReducer';
-import album from 'features/album/albumReducer';
+import albums from 'features/album/albumReducer';
 import user from 'features/user/userReducer';
 import userArtists from 'features/entities/userArtists/userArtistReducer';
 
-const entities = combineReducers({ artists, album, track, userArtists });
+const entities = combineReducers({ artists: artistsEntities, albums: albumsEntities, tracks, userArtists });
 
 const rootReducer = combineReducers({
   entities,
   accessToken,
   playingBar,
+  albums,
   search,
   user,
   form: formReducer
