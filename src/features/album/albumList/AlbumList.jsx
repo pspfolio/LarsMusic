@@ -8,6 +8,7 @@ import { fetchAlbumTracks } from 'features/entities/tracks/tracksActions';
 import { selectAlbumsByArtistId } from 'features/entities/albums/albumsSelectors';
 import { selectTracksByAlbumId } from 'features/entities/tracks/tracksSelectors';
 import { addArtist } from 'features/entities/userArtists/userArtistActions';
+import { fetchUserOwnedAlbumsByArtistId } from 'features/entities/userAlbums/userAlbumsActions';
 import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
 import TracksList from 'features/tracks/tracksList/TracksList';
@@ -19,8 +20,9 @@ const List = styled.ul`
 
 class AlbumList extends Component {
   componentDidMount() {
-    const { fetchArtistAlbums } = this.props;
+    const { fetchArtistAlbums, fetchUserOwnedAlbumsByArtistId } = this.props;
     fetchArtistAlbums();
+    fetchUserOwnedAlbumsByArtistId();
   }
 
   onAlbumClick = id => {
@@ -31,8 +33,6 @@ class AlbumList extends Component {
 
   onAddFavoriteClick = id => {
     const { addArtistsToFavorite } = this.props;
-
-    console.log('onfavorite', id);
     addArtistsToFavorite(id);
   };
 
@@ -42,7 +42,7 @@ class AlbumList extends Component {
       <div>
         {albums && (
           <List>
-            {albums.map(({ id, name, album_type, images }) => (
+            {albums.map(({ id, name, album_type, images, owned }) => (
               <React.Fragment key={id}>
                 <ClickableMusicListItem
                   name={name}
@@ -52,7 +52,7 @@ class AlbumList extends Component {
                     this.onAlbumClick(id);
                   }}
                 >
-                  {() => <AlbumListControls onClick={() => this.onAddFavoriteClick(id)} />}
+                  {() => <AlbumListControls onClick={() => this.onAddFavoriteClick(id)} owned={owned} />}
                 </ClickableMusicListItem>
                 {openAlbum === id && <TracksList tracks={albumTracks} albumId={id} artistId={match.params.id} />}
               </React.Fragment>
@@ -84,6 +84,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   addArtistsToFavorite: trackId => {
     dispatch(addArtist(ownProps.match.params.id, trackId));
+  },
+  fetchUserOwnedAlbumsByArtistId: () => {
+    dispatch(fetchUserOwnedAlbumsByArtistId(ownProps.match.params.id));
   }
 });
 

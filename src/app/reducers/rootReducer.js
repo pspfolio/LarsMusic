@@ -9,8 +9,9 @@ import search from 'features/search/searchReducer';
 import albums from 'features/album/albumReducer';
 import user from 'features/user/userReducer';
 import userArtists from 'features/entities/userArtists/userArtistReducer';
+import userAlbums from 'features/entities/userAlbums/userAlbumsReducer';
 
-const entities = combineReducers({ artists: artistsEntities, albums: albumsEntities, tracks, userArtists });
+const entities = combineReducers({ artists: artistsEntities, albums: albumsEntities, tracks, userArtists, userAlbums });
 
 const rootReducer = combineReducers({
   entities,

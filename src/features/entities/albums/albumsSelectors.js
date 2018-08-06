@@ -6,8 +6,23 @@ const getAlbumsById = (state, id) =>
 
 const getAlbumByAlbumId = (state, albumId) => state.entities.albums.itemsById[albumId];
 
+const getOwnedAlbums = state => state.entities.userAlbums.items;
+
 export const getAllAlbums = state => state.entities.albums.itemsById;
 
-export const selectAlbumsByArtistId = createSelector(getAlbumsById, albums => albums);
+export const selectAlbumsByArtistId = createSelector(getAlbumsById, getOwnedAlbums, (albums, ownedAlbumIds) => {
+  if (albums.length) {
+    const result = albums.map(album => {
+      return {
+        ...album,
+        owned: ownedAlbumIds.includes(album.id)
+      };
+    });
+
+    return result;
+  }
+
+  return [];
+});
 
 export const selectAlbumByAlbumId = createSelector(getAlbumByAlbumId, album => album);
