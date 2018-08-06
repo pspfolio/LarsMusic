@@ -16,7 +16,6 @@ const albums = (state = initialState, action) => {
 };
 
 const receiveAlbums = (state, action) => {
-  console.log('action.payload', action.payload);
   const itemsById = action.payload;
   const items = Object.keys(itemsById);
 

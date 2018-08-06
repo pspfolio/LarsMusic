@@ -7,6 +7,7 @@ import { toggleAlbumTrackList } from '../albumActions';
 import { fetchAlbumTracks } from 'features/entities/tracks/tracksActions';
 import { selectAlbumsByArtistId } from 'features/entities/albums/albumsSelectors';
 import { selectTracksByAlbumId } from 'features/entities/tracks/tracksSelectors';
+import { addArtist } from 'features/entities/userArtists/userArtistActions';
 import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
 import TracksList from 'features/tracks/tracksList/TracksList';
@@ -23,12 +24,16 @@ class AlbumList extends Component {
   }
 
   onAlbumClick = id => {
-    this.props.fetchAlbumTracks(id);
-    this.props.openAlbumTrackList(id);
+    const { fetchAlbumTracks, openAlbumTrackList } = this.props;
+    fetchAlbumTracks(id);
+    openAlbumTrackList(id);
   };
 
   onAddFavoriteClick = id => {
+    const { addArtistsToFavorite } = this.props;
+
     console.log('onfavorite', id);
+    addArtistsToFavorite(id);
   };
 
   render() {
@@ -76,6 +81,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   openAlbumTrackList: albumId => {
     dispatch(toggleAlbumTrackList(albumId));
+  },
+  addArtistsToFavorite: trackId => {
+    dispatch(addArtist(ownProps.match.params.id, trackId));
   }
 });
 

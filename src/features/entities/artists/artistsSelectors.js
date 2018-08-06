@@ -12,7 +12,6 @@ export const selectArtistByLimit = createSelector([selectArtists, (state, limit)
 });
 
 export const selectArtistById = createSelector([selectArtists, (state, id) => id], (artists, id) => {
-  console.log('artists', id);
   return artists[id];
 });
 

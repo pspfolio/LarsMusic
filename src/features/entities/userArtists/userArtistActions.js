@@ -11,8 +11,16 @@ const setListOfOwnedArtist = artistIdList => ({
   payload: artistIdList
 });
 
-export function fetchUserArtists() {
-  return (dispatch, getState, { spotifyFetcher }) => {
+export const addArtist = (artistId, albumId) => {
+  return (dispatch, getState) => {
+    const user = getState().user;
+    database.ref(`album/${user.id}/${artistId}`).push({ albumId: albumId });
+    dispatch(fetchUserArtists());
+  };
+};
+
+export const fetchUserArtists = () => {
+  return (dispatch, getState) => {
     dispatch(setRequestListOfOwnedArtist());
     const state = getState();
     database.ref(`album/${state.user.id}`).on('value', snapshot => {
@@ -21,4 +29,4 @@ export function fetchUserArtists() {
       dispatch(setListOfOwnedArtist(artistIds));
     });
   };
-}
+};

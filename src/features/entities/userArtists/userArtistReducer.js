@@ -10,7 +10,7 @@ export default function artistList(state = initialState, action) {
     case REQUEST_OWNED_ARTISTS:
       return { ...state, isFetching: true };
     case RECEIVE_OWNED_ARTISTS:
-      return { ...state, items: [...state.items, ...action.payload], isFetching: false };
+      return { ...state, items: [...action.payload], isFetching: false };
     default:
       return state;
   }
