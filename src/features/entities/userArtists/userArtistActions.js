@@ -11,14 +11,6 @@ const setListOfOwnedArtist = artistIdList => ({
   payload: artistIdList
 });
 
-export const addArtist = (artistId, albumId) => {
-  return (dispatch, getState) => {
-    const user = getState().user;
-    database.ref(`album/${user.id}/${artistId}`).push({ albumId: albumId });
-    dispatch(fetchUserArtists());
-  };
-};
-
 export const fetchUserArtists = () => {
   return (dispatch, getState) => {
     dispatch(setRequestListOfOwnedArtist());

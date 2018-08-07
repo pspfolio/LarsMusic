@@ -7,8 +7,7 @@ import { toggleAlbumTrackList } from '../albumActions';
 import { fetchAlbumTracks } from 'features/entities/tracks/tracksActions';
 import { selectAlbumsByArtistId } from 'features/entities/albums/albumsSelectors';
 import { selectTracksByAlbumId } from 'features/entities/tracks/tracksSelectors';
-import { addArtist } from 'features/entities/userArtists/userArtistActions';
-import { fetchUserOwnedAlbumsByArtistId } from 'features/entities/userAlbums/userAlbumsActions';
+import { fetchUserOwnedAlbumsByArtistId, toggleLikedAlbum } from 'features/entities/userAlbums/userAlbumsActions';
 import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
 import TracksList from 'features/tracks/tracksList/TracksList';
@@ -32,8 +31,8 @@ class AlbumList extends Component {
   };
 
   onAddFavoriteClick = id => {
-    const { addArtistsToFavorite } = this.props;
-    addArtistsToFavorite(id);
+    const { toggleLikedAlbum } = this.props;
+    toggleLikedAlbum(id);
   };
 
   render() {
@@ -82,8 +81,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   openAlbumTrackList: albumId => {
     dispatch(toggleAlbumTrackList(albumId));
   },
-  addArtistsToFavorite: trackId => {
-    dispatch(addArtist(ownProps.match.params.id, trackId));
+  toggleLikedAlbum: trackId => {
+    dispatch(toggleLikedAlbum(ownProps.match.params.id, trackId));
   },
   fetchUserOwnedAlbumsByArtistId: () => {
     dispatch(fetchUserOwnedAlbumsByArtistId(ownProps.match.params.id));
