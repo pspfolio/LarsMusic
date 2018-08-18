@@ -2,7 +2,6 @@ import { database } from 'firebase.js';
 import values from 'lodash/values';
 import findKey from 'lodash/findKey';
 import { RECEIVE_OWNED_ALBUMS, REMOVE_OWNED_ALBUM } from './userAlbumsConstants';
-import { fetchUserArtists } from '../userArtists/userArtistActions';
 
 const receiveOwnedAlbums = albumIds => ({
   type: RECEIVE_OWNED_ALBUMS,
