@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import UserName from 'features/user/UserName';
 import Sidebar from 'features/sidebar/Sidebar';
