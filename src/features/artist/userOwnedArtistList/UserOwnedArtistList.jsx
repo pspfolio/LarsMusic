@@ -27,7 +27,7 @@ class DashboardArtistList extends Component {
 
     return (
       <div>
-        <Header>Your collection of Artists</Header>
+        <Header>Oma musiikki</Header>
         <ArtistList artists={artists} />
         <MoreArtistLinkContainer>
           <MoreArtistLink to="/">More...</MoreArtistLink>

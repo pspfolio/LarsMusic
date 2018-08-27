@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Styled = styled.h4`
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 34px;
+  font-weight: 500;
+  color: #3d3333;
+  font-size: 28px;
   letter-spacing: 0.25px;
   margin-top: 32px;
 `;

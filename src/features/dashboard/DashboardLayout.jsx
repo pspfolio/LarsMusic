@@ -8,8 +8,10 @@ const Content = styled.div`
 `;
 
 const Container = styled.main`
+  padding: 0 80px;
   width: 100%;
   height: 100%;
+  background-color: #fcfcfc;
 `;
 
 const DashboardLayout = ({ children }) => (
