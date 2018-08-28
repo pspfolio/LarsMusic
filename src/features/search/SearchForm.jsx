@@ -6,6 +6,7 @@ const FormWrapper = styled.form`
   display: flex;
   justify-content: center;
   margin: 32px 0;
+  flex: 1;
 `;
 
 const SearchInput = styled(Field)`

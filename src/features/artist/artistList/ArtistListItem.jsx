@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
+// Delete
 import ArtistListItemActions from './ArtistListItemActions';
 import ArtistGenres from '../artistGenres/ArtistGenres';
 
@@ -18,7 +20,7 @@ const CardArtistImage = styled.div`
   height: 194px;
   background-image: url(${props => props.url});
   background-size: cover;
-  border-radius: 10px 10px 0 0;
+  border-radius: 8px;
 `;
 
 const CardArtistTitle = styled.h5`

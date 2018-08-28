@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { selectUserDisplayName } from './userSelectors';
 
 const UserNameParagraph = styled.p`
-  color: white;
+  color: #3d3333;
 `;
 
 const UserName = ({ displayName }) => <UserNameParagraph>{displayName}</UserNameParagraph>;
