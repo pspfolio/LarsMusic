@@ -5,7 +5,12 @@ import { NavLink } from 'react-router-dom';
 const Aside = styled.aside`
   width: 300px;
   color: #353d33;
-  height: 100%;
+  min-height: 100vh;
+  background: #fff;
+
+  @media (max-width: 769px) {
+    display: none;
+  }
 `;
 
 const Title = styled.h1`
@@ -24,7 +29,7 @@ const NavigationList = styled.ul`
 `;
 
 const NavigationListItem = styled.li`
-  margin-left: 60px;
+  margin-left: 20%;
   margin-bottom: 32px;
   list-style-type: none;
 `;

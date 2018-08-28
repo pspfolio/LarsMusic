@@ -9,7 +9,8 @@ import PlayingBar from 'features/playingBar/PlayingBar';
 import './App.css';
 
 const FullViewHeight = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  background-color: #fcfcfc;
 `;
 
 const AsyncLogin = Loadable({

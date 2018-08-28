@@ -10,13 +10,21 @@ const TopBar = styled.div`
   align-items: center;
 `;
 
+const UserNameWrapper = styled.div`
+  @media (max-width: 769px) {
+    display: none;
+  }
+`;
+
 class Dashboard extends Component {
   render() {
     return (
       <DashboardLayout>
         <TopBar>
           <SearchForm onSubmit={() => {}} />
-          <UserName />
+          <UserNameWrapper>
+            <UserName />
+          </UserNameWrapper>
         </TopBar>
         <UserOwnedArtistList itemCount={4} />
       </DashboardLayout>

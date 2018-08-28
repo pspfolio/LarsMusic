@@ -36,6 +36,10 @@ const SearchInput = styled(Field)`
   &:-moz-placeholder {
     color: #cfcffd;
   }
+
+  @media (max-width: 769px) {
+    width: 75%;
+  }
 `;
 
 const SearchForm = ({ onSubmit }) => (
