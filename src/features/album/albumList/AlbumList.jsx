@@ -48,6 +48,7 @@ class AlbumList extends Component {
                   secondaryName={album_type}
                   image={images.find(img => img.height < 100).url}
                   onClick={() => {
+                    console.log('cliiick');
                     this.onAlbumClick(id);
                   }}
                 >

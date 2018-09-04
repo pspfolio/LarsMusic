@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import ArtistListItem from './ArtistListItem';
 
@@ -10,11 +10,7 @@ const ArtistContainer = styled.article`
 class ArtistList extends Component {
   render() {
     const { artists } = this.props;
-    return (
-      <Fragment>
-        <ArtistContainer>{artists.map(artist => <ArtistListItem key={artist.id} {...artist} />)}</ArtistContainer>
-      </Fragment>
-    );
+    return <ArtistContainer>{artists.map(artist => <ArtistListItem key={artist.id} {...artist} />)}</ArtistContainer>;
   }
 }
 

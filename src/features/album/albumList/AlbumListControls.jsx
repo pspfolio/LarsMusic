@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import like from 'assets/images/like.svg';
 import liked from 'assets/images/liked.svg';
-import arrowDown from 'assets/images/arrowdown.svg';
 
 const ControlWrapper = styled.div`
   display: flex;
@@ -17,7 +16,6 @@ const AlbumListControls = ({ onClick, owned }) => {
   return (
     <ControlWrapper>
       <ImageWrapper src={owned ? liked : like} alt="like icon" onClick={onClick} />
-      <ImageWrapper src={arrowDown} alt="arrowdown icon" />
     </ControlWrapper>
   );
 };

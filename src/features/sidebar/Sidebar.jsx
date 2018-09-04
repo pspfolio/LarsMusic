@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import SiteTitle from 'common/components/SiteTitle';
 
 const Aside = styled.aside`
   width: 300px;
@@ -11,16 +12,6 @@ const Aside = styled.aside`
   @media (max-width: 769px) {
     display: none;
   }
-`;
-
-const Title = styled.h1`
-  margin-top: 0;
-  padding-top: 50px;
-  font-size: 1.5em;
-  font-weight: 500;
-  text-align: center;
-  letter-spacing: 1.5px;
-  color: #7977fb;
 `;
 
 const NavigationList = styled.ul`
@@ -63,7 +54,7 @@ class Sidebar extends Component {
     return (
       <Aside>
         <nav>
-          <Title>LarsMusic</Title>
+          <SiteTitle />
 
           <NavigationList>
             <NavigationListItem>

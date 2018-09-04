@@ -4,7 +4,7 @@ import { loadImage } from 'common/utils/imageLoader';
 import styled from 'styled-components';
 
 const BackgroundImage = styled.div`
-  height: 100%;
+  height: 100vh;
   background-image: url(${props => props.image});
   background-repeat: no-repeat;
   background-size: cover;
