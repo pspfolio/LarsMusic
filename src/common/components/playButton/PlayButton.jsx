@@ -22,7 +22,7 @@ const PlayButtonStyle = styled.button`
   }
 
   &:hover {
-    box-shadow: 0 7px 10px rgba(50, 50, 93, 0.1);
+    box-shadow: 0 4px 8px rgba(50, 50, 93, 0.1);
     transform: translateY(-2px);
   }
 

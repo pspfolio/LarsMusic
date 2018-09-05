@@ -39,6 +39,7 @@ class TracksList extends Component {
               artistId={artistId}
               albumId={albumId}
               spotifyUrl={track.external_urls['spotify']}
+              showPlayButton={!!track.preview_url}
             />
           </TrackWrapper>
         ))}

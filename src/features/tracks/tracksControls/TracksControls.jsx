@@ -7,9 +7,13 @@ import PlayButton from 'common/components/playButton/PlayButton';
 
 const ControlsWrapper = styled.div`
   display: flex;
+
+  justify-content: flex-end;
+  min-width: 120px;
 `;
 
 const SpotifyLink = styled.a`
+  margin-right: 24px;
   margin-left: 16px;
   display: flex;
   align-items: center;
@@ -19,9 +23,9 @@ const SpotifyLogo = styled.img`
   width: 32px;
 `;
 
-const TracksControls = ({ play, trackId, spotifyUrl }) => (
+const TracksControls = ({ play, trackId, spotifyUrl, showPlayButton }) => (
   <ControlsWrapper>
-    <PlayButton onClick={() => play(trackId)} size={32} />
+    {showPlayButton && <PlayButton onClick={() => play(trackId)} size={32} />}
     <SpotifyLink href={spotifyUrl} target="_blank">
       <SpotifyLogo src={spotify_logo_black} alt="spotify logo" />
     </SpotifyLink>

@@ -17,8 +17,8 @@ const MusicItem = styled.li`
 
 const MusicListItem = ({ image, name, secondaryName, children }) => (
   <MusicItem>
-    <MusicListItemContent image={image} name={name} secondaryName={secondaryName} />
     {children()}
+    <MusicListItemContent image={image} name={name} secondaryName={secondaryName} />
   </MusicItem>
 );
 
