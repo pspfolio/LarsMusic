@@ -1,21 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import like from 'assets/images/like.svg';
-import liked from 'assets/images/liked.svg';
 
 const ControlWrapper = styled.div`
   display: flex;
+  min-width: 80px;
+  align-items: center;
+  justify-content: center;
 `;
 
-const ImageWrapper = styled.img`
-  width: 32px;
-  margin-left: 16px;
+const Icon = styled.p`
+  font-size: ${props => (props.owned ? '48px' : '35px')};
+  margin: 0;
+  transition: color 0.2s ease-in-out;
+  color: rgba(0, 0, 0, 0.6);
+
+  &:hover {
+    color: #9012fe;
+  }
 `;
 
 const AlbumListControls = ({ onClick, owned }) => {
   return (
     <ControlWrapper>
-      <ImageWrapper src={owned ? liked : like} alt="like icon" onClick={onClick} />
+      <Icon onClick={onClick} owned={owned}>
+        {owned ? '-' : '+'}
+      </Icon>
     </ControlWrapper>
   );
 };

@@ -12,6 +12,8 @@ const MusicListItem = styled.li`
 const MusicContent = styled.div`
   display: flex;
   flex: 2;
+  justify-content: center;
+  align-self: center;
   &:hover {
     background-color: #efefef;
   }
@@ -28,10 +30,10 @@ const MusicContent = styled.div`
 const ClickableMusicListItem = ({ image, name, secondaryName, children, onClick }) => (
   <Fragment>
     <MusicListItem>
+      {children()}
       <MusicContent onClick={onClick}>
         <MusicListItemContent image={image} name={name} secondaryName={secondaryName} />
       </MusicContent>
-      {children()}
     </MusicListItem>
   </Fragment>
 );

@@ -4,11 +4,12 @@ import TracksControls from '../tracksControls/TracksControls';
 
 const TrackWrapper = styled.div`
   display: flex;
-  margin: 0 40px;
+  margin: 0 146px;
   justify-content: space-between;
 `;
 
 const TrackItem = styled.div`
+  flex: 1;
   display: flex;
   align-items: center;
 `;
@@ -30,10 +31,6 @@ class TracksList extends Component {
       <Fragment>
         {tracks.map(track => (
           <TrackWrapper key={track.id}>
-            <TrackItem>
-              <TrackNumber>{track.track_number}</TrackNumber>
-              <TrackName>{track.name}</TrackName>
-            </TrackItem>
             <TracksControls
               trackId={track.id}
               artistId={artistId}
@@ -41,6 +38,10 @@ class TracksList extends Component {
               spotifyUrl={track.external_urls['spotify']}
               showPlayButton={!!track.preview_url}
             />
+            <TrackItem>
+              <TrackNumber>{track.track_number}</TrackNumber>
+              <TrackName>{track.name}</TrackName>
+            </TrackItem>
           </TrackWrapper>
         ))}
       </Fragment>

@@ -14,7 +14,7 @@ import TracksList from 'features/tracks/tracksList/TracksList';
 
 const List = styled.ul`
   margin-top: 32px;
-  padding: 0 32px;
+  padding-left: 0;
 `;
 
 class AlbumList extends Component {
@@ -48,7 +48,6 @@ class AlbumList extends Component {
                   secondaryName={album_type}
                   image={images.find(img => img.height < 100).url}
                   onClick={() => {
-                    console.log('cliiick');
                     this.onAlbumClick(id);
                   }}
                 >

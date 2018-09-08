@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Title = styled.h1`
+const Title = styled(Link)`
   margin-top: 0;
   padding-top: 50px;
   font-size: 1.5em;
@@ -9,8 +10,11 @@ const Title = styled.h1`
   text-align: center;
   letter-spacing: 1.5px;
   color: #7977fb;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
 `;
 
-const SiteTitle = () => <Title>LarsMusic</Title>;
+const SiteTitle = () => <Title to="/">LarsMusic</Title>;
 
 export default SiteTitle;
