@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 const TabWrapper = styled.div`
   margin-right: 72px;
-  font-size: ${props => (props.active ? '30px' : '20px')};
-  color: ${props => (props.active ? '#76ACFC' : '#cfcfcf')};
+  font-size: ${props => (props.active ? '1.3rem' : '1.1rem')};
+  color: ${props => (props.active ? '#7977fb' : '#cfcfcf')};
   font-weight: ${props => (props.active ? 500 : 400)};
   position: relative;
   cursor: pointer;
   transition: color 0.3s ease-out;
 
   &:hover {
-    color: #76acfc;
+    color: #7977fb;
   }
 
   &::after {
@@ -20,7 +20,7 @@ const TabWrapper = styled.div`
     margin: 0 auto;
     height: 3px;
     width: 72px;
-    background-color: #76acfc;
+    background-color: #7977fb;
   }
 `;
 

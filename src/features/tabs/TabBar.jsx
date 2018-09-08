@@ -11,7 +11,7 @@ const TabBarWrapper = styled.div`
 const TabBarContent = styled.div`
   padding-left: 32px;
   display: flex;
-  width: 1250px;
+  width: 100%;
   margin: 0 auto;
   align-items: center;
 `;

@@ -4,48 +4,39 @@ import ArtistGenres from '../artistGenres/ArtistGenres';
 import TopTracks from 'features/tracks/topTracks/TopTracks';
 import AlbumList from 'features/album/albumList/AlbumList';
 import TabContainer from 'features/tabs/TabBarContainer';
+import Header from 'common/components/header/Header';
 
 const ArtistPanelHeader = styled.article`
   display: flex;
+  justify-content: center;
   margin: 48px 32px 72px 32px;
-`;
-
-const ArtistImage = styled.img`
-  height: 200px;
-  border-radius: 10px;
 `;
 
 const ArtistPanelTitle = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 24px;
-  justify-content: space-between;
 `;
 
 const ArtistPanelHeading = styled.h4`
-  font-size: 36px;
-  font-weight: 400;
+  font-size: 56px;
+  font-weight: 500;
   margin: 0;
   letter-spacing: 0.25px;
-  color: rgba(0, 0, 0, 0.87);
-`;
-
-const Popularity = styled.span`
-  display: block;
-  margin-top: 16px;
-  letter-spacing: 0.25px;
-  font-size: 18px;
-  color: #9fa6ac;
+  color: #3d3333;
 `;
 
 const ActionRow = styled.div`
   min-height: 28px;
+  text-align: center;
+  margin-top: 16px;
 `;
 
 const LinkToSpotify = styled.a`
+  margin-top: 16px;
   color: #1db954;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 `;
 
@@ -57,20 +48,14 @@ const tabs = [
 class ArtistPanel extends Component {
   render() {
     const { artist } = this.props;
-    const image = artist.images.find(image => image.height > 100 && image.height < 301);
     return (
       <div>
         <ArtistPanelHeader>
-          <ArtistImage src={image.url} alt={`${artist.name}`} />
           <ArtistPanelTitle>
-            <div>
-              <ArtistPanelHeading>{artist.name}</ArtistPanelHeading>
-              <Popularity>Popularity: {artist.popularity}%</Popularity>
-              <ArtistGenres genres={artist.genres} />
-            </div>
+            <ArtistPanelHeading>{artist.name}</ArtistPanelHeading>
             <ActionRow>
               <LinkToSpotify target="_blank" alt="link to artist page on Spotify" href={artist.external_urls}>
-                In Spotify
+                Kuuntele Spotifyssa
               </LinkToSpotify>
             </ActionRow>
           </ArtistPanelTitle>
