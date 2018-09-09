@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { selectPlayingArtists, selectPlayingTrack, selectPlayingAlbum } from './playingBarSelectors';
+import { selectPlayingArtists, selectPlayingTrack, selectPlayingAlbum, selectIsPlaying } from './playingBarSelectors';
+import { setPlayStatus } from './playingBarActions';
 import PlayingBarTrack from './PlayingBarTrack';
 import PlayingBarControls from './PlayingBarControls';
 import PlayingBarVolume from './PlayingBarVolume';
@@ -26,7 +27,6 @@ class Play extends Component {
     this.audio = React.createRef();
 
     this.state = {
-      playing: true,
       volume: 0.5
     };
   }
@@ -34,17 +34,15 @@ class Play extends Component {
     this.audio.current && this.audio.current.load();
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    return { playing: true };
-  }
-
   play = () => {
-    this.setState({ playing: true });
+    const { setPlayStatus } = this.props;
+    setPlayStatus(true);
     this.audio.current.play();
   };
 
   pause = () => {
-    this.setState({ playing: false });
+    const { setPlayStatus } = this.props;
+    setPlayStatus(false);
     this.audio.current.pause();
   };
 
@@ -57,8 +55,8 @@ class Play extends Component {
   };
 
   render() {
-    const { playing, volume } = this.state;
-    const { playingArtist, playingTrack, playingAlbum } = this.props;
+    const { volume } = this.state;
+    const { playingArtist, playingTrack, playingAlbum, isPlaying } = this.props;
 
     return (
       <div>
@@ -66,7 +64,7 @@ class Play extends Component {
           playingTrack && (
             <PlayContainer>
               <PlayingBarTrack playingTrack={playingTrack} playingAlbum={playingAlbum} />
-              <PlayingBarControls playing={playing} play={this.play} pause={this.pause} />
+              <PlayingBarControls playing={isPlaying} play={this.play} pause={this.pause} />
               <PlayingBarVolume volume={volume} handleVolumeChange={this.handleVolumeChange} />
               <audio autoPlay src={playingTrack.preview_url} ref={this.audio} />
             </PlayContainer>
@@ -79,7 +77,12 @@ class Play extends Component {
 const mapStateToProps = state => ({
   playingArtist: selectPlayingArtists(state),
   playingTrack: selectPlayingTrack(state),
-  playingAlbum: selectPlayingAlbum(state)
+  playingAlbum: selectPlayingAlbum(state),
+  isPlaying: selectIsPlaying(state)
 });
 
-export default connect(mapStateToProps)(Play);
+const mapDispatchToProps = dispatch => ({
+  setPlayStatus: isPlaying => dispatch(setPlayStatus(isPlaying))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Play);

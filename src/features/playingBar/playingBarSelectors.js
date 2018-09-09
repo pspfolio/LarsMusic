@@ -7,6 +7,8 @@ const getPlayingArtistSelector = state => state.playingBar.artistId;
 const getPlayingTrackSelector = state => state.playingBar.trackId;
 const getPlayingAlbumSelector = state => state.playingBar.albumId;
 
+export const selectIsPlaying = state => state.playingBar.isPlaying;
+
 export const selectPlayingArtists = createSelector([getPlayingArtistSelector, selectArtists], (artistId, artists) => {
   return artists[artistId];
 });
