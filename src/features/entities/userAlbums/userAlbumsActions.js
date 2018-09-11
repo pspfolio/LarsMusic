@@ -20,6 +20,7 @@ export const toggleLikedAlbum = (artistId, albumId) => {
 
     artistRef.once('value', snapshot => {
       const key = findKey(snapshot.val(), item => item.albumId === albumId);
+      console.log('key', key);
       if (key) {
         dispatch(removeAlbum(albumId));
         artistRef
@@ -30,7 +31,10 @@ export const toggleLikedAlbum = (artistId, albumId) => {
             dispatch(receiveOwnedAlbums([albumId]));
           });
       } else {
-        artistRef.push({ albumId: albumId });
+        artistRef.push({ albumId: albumId }).then(() => {
+          console.log('artist added', albumId);
+          dispatch(receiveOwnedAlbums([albumId]));
+        });
       }
     });
   };

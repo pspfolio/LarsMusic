@@ -5,7 +5,6 @@ const initialState = {
 };
 
 const play = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case SET_PLAY_TRACK:
       const { trackId, artistId, albumId } = action.payload;
