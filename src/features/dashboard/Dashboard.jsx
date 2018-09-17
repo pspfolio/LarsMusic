@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import DashboardLayout from './DashboardLayout';
 import UserOwnedArtistList from 'features/artist/userOwnedArtistList/UserOwnedArtistList';
 import SearchForm from 'features/search/SearchForm';
@@ -14,11 +15,7 @@ class Dashboard extends Component {
     return (
       <DashboardLayout>
         <TopBar>
-          <SearchForm
-            onSubmit={event => {
-              event.preventDefault();
-            }}
-          />
+          <SearchForm onSubmit={() => this.props.history.push('/search')} />
         </TopBar>
         <UserOwnedArtistList itemCount={4} />
       </DashboardLayout>
@@ -26,4 +23,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);
