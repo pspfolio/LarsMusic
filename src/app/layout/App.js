@@ -38,6 +38,11 @@ const AsyncSearch = Loadable({
   loading: Loading
 });
 
+const AsyncUserArtistList = Loadable({
+  loader: () => import('features/artist/userOwnedArtist/UserOwnedArtistView'),
+  loading: Loading
+});
+
 class App extends Component {
   render() {
     return (
@@ -47,6 +52,7 @@ class App extends Component {
             <PrivateRoute path="/" exact component={AsyncDashboard} />
             <PrivateRoute path="/artist/:id" component={AsyncArtist} />
             <PrivateRoute path="/search" component={AsyncSearch} />
+            <PrivateRoute path="/own" component={AsyncUserArtistList} />
             <Route path="/callback" component={AsyncCallback} />
             <Route path="/login" component={AsyncLogin} />
             <Route render={() => <h1>Four oh Four</h1>} />

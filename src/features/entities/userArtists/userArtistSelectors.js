@@ -9,8 +9,8 @@ export const selectUserArtists = createSelector(
   [selectUserArtistIdList, selectArtists, isFetchingArtistList, isFetchingArtists, (state, limit) => limit],
   (artistIdList, artists, isFetchingArtistList, isFetchingArtists, limit) => {
     if (isFetchingArtistList || isFetchingArtists) return [];
-    const limitedArtistIdList = artistIdList.slice(0, limit);
-    const result = limitedArtistIdList.map(artistId => artists[artistId]);
+    const artistIds = limit ? artistIdList.slice(0, limit) : artistIdList;
+    const result = artistIds.map(artistId => artists[artistId]);
     return result;
   }
 );
