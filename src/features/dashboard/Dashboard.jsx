@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import DashboardLayout from './DashboardLayout';
-import UserOwnedArtistList from 'features/artist/userOwnedArtistList/UserOwnedArtistList';
+import UserOwnedArtistList from 'features/artist/userOwnedArtist/UserOwnedArtistList';
 import SearchForm from 'features/search/SearchForm';
 
 const TopBar = styled.div`
