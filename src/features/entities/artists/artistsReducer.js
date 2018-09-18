@@ -13,8 +13,9 @@ export default function artistList(state = initialState, action) {
     case REQUEST_ARTIST_LIST:
       return { ...state, isFetching: true };
     case RECEIVE_ARTISTS:
+      return receiveArtistList(state, action.payload);
     case SEARCH_RECEIVE_ARTISTS:
-      return receiveArtistList(state, action);
+      return receiveArtistList(state, action.payload.artists);
     case RECEIVE_ARTIST:
       return { ...state, itemsById: { ...state.itemsById, [action.payload.id]: action.payload }, isFetching: false };
     case RECEIVE_ARTIST_TOP_TRACKS:
@@ -30,8 +31,8 @@ export default function artistList(state = initialState, action) {
   }
 }
 
-const receiveArtistList = (state, action) => {
-  const itemsById = mapKeys(action.payload, 'id');
+const receiveArtistList = (state, data) => {
+  const itemsById = mapKeys(data, 'id');
   const items = Object.keys(itemsById);
 
   const result = {

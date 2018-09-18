@@ -13,12 +13,9 @@ const NoSearchResults = styled.p`
 `;
 
 class Search extends React.Component {
-  state = {
-    searched: false
-  };
-
   renderContent() {
     const { searchResult } = this.props;
+    console.log('searchResult', searchResult);
     return searchResult.length ? (
       <ArtistList artists={searchResult} />
     ) : (
@@ -30,7 +27,7 @@ class Search extends React.Component {
     return (
       <DashboardLayout>
         <SearchForm onSubmit={() => this.setState({ searched: true })} />
-        {this.state.searched && this.renderContent()}
+        {this.renderContent()}
       </DashboardLayout>
     );
   }

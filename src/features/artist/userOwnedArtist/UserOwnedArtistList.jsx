@@ -28,7 +28,7 @@ class DashboardArtistList extends Component {
     return (
       <div>
         <Header>Oma musiikki</Header>
-        {[].length ? (
+        {artists.length ? (
           <ArtistList artists={artists} />
         ) : (
           <EmptyStateText>
