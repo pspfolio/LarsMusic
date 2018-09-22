@@ -1,17 +1,18 @@
-import { SET_ACCESS_TOKEN } from './accessTokenConstants';
-import { saveAccessTokenState } from 'common/utils/localStorage';
+import { USER_AUTHENTICATED } from './accessTokenConstants';
+import { saveTokensState } from 'common/utils/localStorage';
 import { fetchUserProfile } from 'features/user/userActions';
 
-const accessTokenAction = accessToken => ({
-  type: SET_ACCESS_TOKEN,
+const setUserTokens = accessToken => ({
+  type: USER_AUTHENTICATED,
   payload: accessToken
 });
 
-export const setAccessToken = ({ access_token }) => {
-  saveAccessTokenState(access_token);
+export const setTokens = ({ access_token, refresh_token }) => {
+  const tokens = { access_token, refresh_token };
+  saveTokensState(tokens);
 
   return (dispatch, getState, { spotifyFetcher }) => {
-    dispatch(accessTokenAction(access_token));
+    dispatch(setUserTokens(tokens));
     return dispatch(fetchUserProfile());
   };
 };

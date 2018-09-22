@@ -1,6 +1,6 @@
-export const loadAccessTokenState = () => {
+export const loadPresistedTokens = () => {
   try {
-    const serializedState = localStorage.getItem('access_token');
+    const serializedState = localStorage.getItem('tokens');
     if (serializedState === null) return undefined;
 
     return JSON.parse(serializedState);
@@ -9,9 +9,9 @@ export const loadAccessTokenState = () => {
   }
 };
 
-export const saveAccessTokenState = state => {
+export const saveTokensState = state => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem('access_token', serializedState);
+    localStorage.setItem('tokens', serializedState);
   } catch (err) {}
 };

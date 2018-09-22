@@ -1,6 +1,6 @@
 export default getStore => (url, opts) => {
   const headers = {
-    authorization: `Bearer ${getStore().accessToken}`
+    authorization: `Bearer ${getStore().auth.access_token}`
   };
 
   return fetch(`https://api.spotify.com/v1/${url}`, {
@@ -8,8 +8,13 @@ export default getStore => (url, opts) => {
       ...headers,
       ...opts
     }
-  }).then(res => {
-    // check if 401 get new accessToken
-    return res.json();
-  });
+  })
+    .then(res => {
+      console.log('res', res);
+      // check if 401 get new accessToken
+      return res.json();
+    })
+    .catch(error => {
+      console.log('error', error);
+    });
 };

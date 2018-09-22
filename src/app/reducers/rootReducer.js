@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import accessToken from 'features/accessToken/accessTokenReducer';
+import auth from 'features/accessToken/accessTokenReducer';
 import artistsEntities from 'features/entities/artists/artistsReducer';
 import albumsEntities from 'features/entities/albums/albumsReducer';
 import tracks from 'features/entities/tracks/tracksReducer';
@@ -15,7 +15,7 @@ const entities = combineReducers({ artists: artistsEntities, albums: albumsEntit
 
 const rootReducer = combineReducers({
   entities,
-  accessToken,
+  auth,
   playingBar,
   albums,
   search,
