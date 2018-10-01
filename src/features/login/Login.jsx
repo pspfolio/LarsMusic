@@ -14,7 +14,7 @@ const LoginContainer = styled.article`
   text-align: center;
 
   @media (max-width: 375px) {
-    padding: 0 20px;
+    padding: 0 24px;
   }
 `;
 

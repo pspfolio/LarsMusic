@@ -4,7 +4,7 @@ import SearchInput from './SearchInput';
 import styled from 'styled-components';
 import { fetchSearch } from './searchActions';
 
-const FormWrapper = styled.form`
+const Form = styled.form`
   display: flex;
   justify-content: center;
   justify-self: center;
@@ -18,14 +18,14 @@ class SearchForm extends Component {
     const { executeSearch, onSubmit } = this.props;
     if (event) event.preventDefault();
     executeSearch();
-    if (onSubmit) onSubmit();
+    onSubmit();
   };
 
   render() {
     return (
-      <FormWrapper onSubmit={this.handleFormSubmit}>
+      <Form onSubmit={this.handleFormSubmit}>
         <SearchInput handleIconClick={this.handleFormSubmit} />
-      </FormWrapper>
+      </Form>
     );
   }
 }

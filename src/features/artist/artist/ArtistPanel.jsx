@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import ArtistGenres from '../artistGenres/ArtistGenres';
 import TopTracks from 'features/tracks/topTracks/TopTracks';
 import AlbumList from 'features/album/albumList/AlbumList';
 import TabContainer from 'features/tabs/TabBarContainer';
-import Header from 'common/components/header/Header';
 
 const ArtistPanelHeader = styled.article`
   display: flex;

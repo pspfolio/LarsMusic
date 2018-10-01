@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -18,7 +18,7 @@ const LinkToSearch = styled(Link)`
   color: ${props => props.theme.primaryColor};
 `;
 
-class DashboardArtistList extends Component {
+class UserOwnedArtistList extends Component {
   componentDidMount() {
     const { getUserArtists } = this.props;
     getUserArtists();
@@ -26,7 +26,7 @@ class DashboardArtistList extends Component {
   render() {
     const { artists } = this.props;
     return (
-      <div>
+      <Fragment>
         <Header>Oma musiikki</Header>
         {artists.length ? (
           <ArtistList artists={artists} />
@@ -35,7 +35,7 @@ class DashboardArtistList extends Component {
             Plöh, etkö ole lisännyt yhtään albumia arkistoosi? <LinkToSearch to="/search">Etsi</LinkToSearch> artisteja.
           </EmptyStateText>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
@@ -44,8 +44,8 @@ const mapStateToProps = (state, ownProps) => ({
   artists: selectUserArtists(state, ownProps.itemCount)
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   getUserArtists: () => dispatch(fetchUserArtists())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardArtistList);
+export default connect(mapStateToProps, mapDispatchToProps)(UserOwnedArtistList);

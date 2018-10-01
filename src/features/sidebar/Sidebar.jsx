@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import SiteTitle from 'common/components/SiteTitle';
@@ -49,29 +49,24 @@ const Link = styled(NavLink)`
   }
 `;
 
-class Sidebar extends Component {
-  render() {
-    return (
-      <Aside>
-        <nav>
-          <SiteTitle />
-
-          <NavigationList>
-            <NavigationListItem>
-              <Link to="/own" activeClassName="selected">
-                Oma musiikki
-              </Link>
-            </NavigationListItem>
-            <NavigationListItem>
-              <Link to="/search" activeClassName="selected">
-                Etsi
-              </Link>
-            </NavigationListItem>
-          </NavigationList>
-        </nav>
-      </Aside>
-    );
-  }
-}
+const Sidebar = () => (
+  <Aside>
+    <nav>
+      <SiteTitle />
+      <NavigationList>
+        <NavigationListItem>
+          <Link to="/own" activeClassName="selected">
+            Oma musiikki
+          </Link>
+        </NavigationListItem>
+        <NavigationListItem>
+          <Link to="/search" activeClassName="selected">
+            Etsi
+          </Link>
+        </NavigationListItem>
+      </NavigationList>
+    </nav>
+  </Aside>
+);
 
 export default Sidebar;

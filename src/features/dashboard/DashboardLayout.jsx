@@ -8,7 +8,7 @@ const Content = styled.div`
 `;
 
 const Container = styled.main`
-  padding: 0 20px;
+  padding: 0 24px;
   width: 100%;
   height: 100%;
 `;

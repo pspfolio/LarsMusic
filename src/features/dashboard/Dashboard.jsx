@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import DashboardLayout from './DashboardLayout';
@@ -10,17 +10,13 @@ const TopBar = styled.div`
   align-items: center;
 `;
 
-class Dashboard extends Component {
-  render() {
-    return (
-      <DashboardLayout>
-        <TopBar>
-          <SearchForm onSubmit={() => this.props.history.push('/search')} />
-        </TopBar>
-        <UserOwnedArtistList itemCount={4} />
-      </DashboardLayout>
-    );
-  }
-}
+const Dashboard = ({ history }) => (
+  <DashboardLayout>
+    <TopBar>
+      <SearchForm onSubmit={() => history.push('/search')} />
+    </TopBar>
+    <UserOwnedArtistList itemCount={4} />
+  </DashboardLayout>
+);
 
 export default withRouter(Dashboard);

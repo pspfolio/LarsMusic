@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Styled = styled.h4`
+const StyledHeader = styled.h4`
   font-weight: 500;
   color: #3d3333;
   font-size: 28px;
@@ -9,6 +9,6 @@ const Styled = styled.h4`
   margin-top: 32px;
 `;
 
-const Header = ({ children }) => <Styled>{children}</Styled>;
+const Header = ({ children }) => <StyledHeader>{children}</StyledHeader>;
 
 export default Header;
