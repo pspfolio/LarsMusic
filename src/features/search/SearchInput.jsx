@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SearchInputField = styled(Field)`
   font-family: 'Roboto';
-  height: 32px;
+  height: 48px;
   font-size: 18px;
   letter-spacing: 1px;
   padding: 12px 16px;
@@ -44,7 +44,7 @@ const SearchIcon = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-  width: 5%;
+  width: 10%;
   cursor: pointer;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;

@@ -27,7 +27,7 @@ export const refreshAccessToken = () => {
       })
       .then(data => {
         const { access_token } = data;
-        setTokens({ access_token, refresh_token });
+        return setTokens({ access_token, refresh_token });
       })
       .catch(error => {
         console.log('error', error);

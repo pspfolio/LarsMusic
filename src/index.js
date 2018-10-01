@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import './index.css';
+import injectGlobalStyles from './injectGlobalStyles';
 
 const rootEl = document.getElementById('root');
 
 const render = () => {
-  const App = require('app/layout/App').default;
+  const App = require('./App').default;
   ReactDOM.render(
     <Provider store={store}>
       <App />
@@ -23,5 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
     });
   }
 }
+
+injectGlobalStyles();
 
 render();

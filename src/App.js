@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import styled from 'styled-components';
 import Loading from 'common/components/Loading';
 import PrivateRoute from 'common/components/privateRoute/PrivateRoute';
 import PlayingBar from 'features/playingBar/PlayingBar';
-
-import './App.css';
-
-const FullViewHeight = styled.div`
-  min-height: 100vh;
-  background-color: #fcfcfc;
-`;
 
 const AsyncLogin = Loadable({
   loader: () => import('features/login/Login'),
@@ -46,7 +38,7 @@ const AsyncUserArtistList = Loadable({
 class App extends Component {
   render() {
     return (
-      <FullViewHeight>
+      <Fragment>
         <Router>
           <Switch>
             <PrivateRoute path="/" exact component={AsyncDashboard} />
@@ -59,7 +51,7 @@ class App extends Component {
           </Switch>
         </Router>
         <PlayingBar />
-      </FullViewHeight>
+      </Fragment>
     );
   }
 }
