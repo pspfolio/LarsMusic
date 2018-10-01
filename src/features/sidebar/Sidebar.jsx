@@ -40,7 +40,7 @@ const Link = styled(NavLink)`
     bottom: -8px;
     left: 0;
     width: 0;
-    background-color: #7977fb;
+    background-color: ${props => props.theme.primaryColor};
     transition: all 0.3s ease-in-out;
   }
 

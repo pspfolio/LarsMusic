@@ -9,7 +9,7 @@ const Title = styled(Link)`
   font-weight: 500;
   text-align: center;
   letter-spacing: 1.5px;
-  color: #7977fb;
+  color: ${props => props.theme.primaryColor};
   text-decoration: none;
   display: flex;
   justify-content: center;

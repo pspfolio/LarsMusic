@@ -49,7 +49,7 @@ const SearchIcon = styled.div`
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   color: #fff;
-  background-color: #7977fb;
+  background-color: ${props => props.theme.primaryColor};
 
   transition: all 0.2s ease-in-out;
 `;

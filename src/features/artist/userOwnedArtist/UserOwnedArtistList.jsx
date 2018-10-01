@@ -15,7 +15,7 @@ const EmptyStateText = styled.p`
 
 const LinkToSearch = styled(Link)`
   text-decoration: none;
-  color: #7977fb;
+  color: ${props => props.theme.primaryColor};
 `;
 
 class DashboardArtistList extends Component {

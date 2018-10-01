@@ -9,7 +9,7 @@ import ArtistList from 'features/artist/artistList/ArtistList';
 const NoSearchResults = styled.p`
   text-align: center;
   font-size: 18px;
-  color: #7977fbcc;
+  color: ${props => props.theme.primaryColor};
 `;
 
 class Search extends React.Component {

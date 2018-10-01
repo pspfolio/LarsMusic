@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import theme from 'common/theme';
 import store from './store';
 import './index.css';
 import injectGlobalStyles from './injectGlobalStyles';
@@ -11,7 +13,9 @@ const render = () => {
   const App = require('./App').default;
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>,
     rootEl
   );
