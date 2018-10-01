@@ -1,3 +1,4 @@
+import api from 'common/utils/axiosUtils';
 import { RECEIVE_USER_PROFILE } from './userConstants';
 
 const setUserProfile = payload => ({
@@ -6,9 +7,7 @@ const setUserProfile = payload => ({
 });
 
 export const fetchUserProfile = () => {
-  return (dispatch, getState, { spotifyFetcher }) => {
-    spotifyFetcher('me').then(json => {
-      return dispatch(setUserProfile(json));
-    });
+  return dispatch => {
+    api('/me').then(json => dispatch(setUserProfile(json)));
   };
 };

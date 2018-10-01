@@ -1,6 +1,6 @@
-export const loadPresistedTokens = () => {
+export const loadFromLocalStorage = key => {
   try {
-    const serializedState = localStorage.getItem('tokens');
+    const serializedState = localStorage.getItem(key);
     if (serializedState === null) return undefined;
 
     return JSON.parse(serializedState);
@@ -9,9 +9,9 @@ export const loadPresistedTokens = () => {
   }
 };
 
-export const saveTokensState = state => {
+export const saveToLocalStorage = (key, state) => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem('tokens', serializedState);
+    localStorage.setItem(key, serializedState);
   } catch (err) {}
 };

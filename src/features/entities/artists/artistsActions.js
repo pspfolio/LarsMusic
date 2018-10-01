@@ -1,3 +1,4 @@
+import api from 'common/utils/axiosUtils';
 import { RECEIVE_ARTISTS, REQUEST_ARTIST_LIST, RECEIVE_ARTIST } from './artistsConstants';
 import { handleArtistData } from 'common/utils/artistDataHelpers';
 
@@ -5,7 +6,7 @@ const requestArtistList = () => ({
   type: REQUEST_ARTIST_LIST
 });
 
-const setArtistList = data => {
+const setArtistList = ({ data }) => {
   const payload = data.artists.map(handleArtistData);
   return {
     type: RECEIVE_ARTISTS,
@@ -13,7 +14,7 @@ const setArtistList = data => {
   };
 };
 
-const setArtist = data => {
+const setArtist = ({ data }) => {
   const payload = handleArtistData(data);
   return {
     type: RECEIVE_ARTIST,
@@ -22,8 +23,7 @@ const setArtist = data => {
 };
 
 function fetchArtistBasicData(artistId) {
-  return (dispatch, getState, { spotifyFetcher }) =>
-    spotifyFetcher(`artists/${artistId}`).then(json => dispatch(setArtist(json)));
+  return dispatch => api.get(`/artists/${artistId}`).then(json => dispatch(setArtist(json)));
 }
 
 export function fetchArtistIfNeeded(artistId) {
@@ -34,9 +34,9 @@ export function fetchArtistIfNeeded(artistId) {
 }
 
 export const fetchArtists = artistIdList => {
-  return (dispatch, getState, { spotifyFetcher }) => {
+  return dispatch => {
     dispatch(requestArtistList());
     const artistIds = artistIdList.join(',');
-    return spotifyFetcher(`artists?ids=${artistIds}`).then(json => dispatch(setArtistList(json)));
+    return api.get(`/artists?ids=${artistIds}`).then(json => dispatch(setArtistList(json)));
   };
 };

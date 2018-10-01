@@ -1,5 +1,5 @@
 import ric from 'ric-shim';
-import { set } from 'idb-keyval';
+import { saveToLocalStorage } from '../common/utils/localStorage';
 import { RECEIVE_USER_PROFILE } from 'features/user/userConstants';
 
 const actionsToPersist = {
@@ -16,7 +16,7 @@ const cacheMiddleware = store => next => action => {
 
       shouldPersist.forEach(reducerName => {
         const stateToPersist = appState[reducerName];
-        set(reducerName, stateToPersist);
+        saveToLocalStorage(reducerName, stateToPersist);
       });
     });
   }
