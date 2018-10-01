@@ -15,7 +15,6 @@ const NoSearchResults = styled.p`
 class Search extends React.Component {
   renderContent() {
     const { searchResult } = this.props;
-    console.log('searchResult', searchResult);
     return searchResult.length ? (
       <ArtistList artists={searchResult} />
     ) : (

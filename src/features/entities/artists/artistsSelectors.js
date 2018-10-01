@@ -15,11 +15,7 @@ export const selectArtistById = createSelector([selectArtists, (state, id) => id
   return artists[id];
 });
 
-export const selectArtistsByListId = createSelector(
-  [selectArtists, getArtistsSearchIdList],
-  (artists, artistIdList) => {
-    console.log('values', artistIdList);
-    return values(artists).filter(artist => artistIdList.includes(artist.id));
-  }
+export const selectArtistsByListId = createSelector([selectArtists, getArtistsSearchIdList], (artists, artistIdList) =>
+  values(artists).filter(artist => artistIdList.includes(artist.id))
 );
 export const getArtistTopTracksIdList = createSelector(selectArtistById, artist => artist.topTracks);

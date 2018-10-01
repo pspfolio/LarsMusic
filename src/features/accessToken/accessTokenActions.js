@@ -19,7 +19,6 @@ export const setTokens = ({ access_token, refresh_token }) => {
 
 export const refreshAccessToken = () => {
   return (dispatch, getState) => {
-    console.log('REFRESHING');
     const { refresh_token } = getState().auth;
 
     return fetch(`http://localhost:8888/refreshToken?refresh_token=${refresh_token}`)
@@ -28,7 +27,6 @@ export const refreshAccessToken = () => {
       })
       .then(data => {
         const { access_token } = data;
-        console.log('access_token', access_token);
         setTokens({ access_token, refresh_token });
       })
       .catch(error => {

@@ -13,7 +13,6 @@ export class AccessToken extends Component {
     } = this.props;
 
     const parsed = queryString.parse(search);
-    console.log('parsed', parsed);
     setTokens(parsed);
     history.push('/');
   }
