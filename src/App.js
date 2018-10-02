@@ -31,7 +31,7 @@ const AsyncSearch = Loadable({
 });
 
 const AsyncUserArtistList = Loadable({
-  loader: () => import('features/artist/userOwnedArtist/UserOwnedArtistList'),
+  loader: () => import('features/artist/userOwnedArtist/UserOwnedArtistView'),
   loading: Loading
 });
 
