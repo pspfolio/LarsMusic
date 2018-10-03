@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import history from 'common/history';
+import { Router, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Loading from 'common/components/Loading';
 import PrivateRoute from 'common/components/privateRoute/PrivateRoute';
@@ -39,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Router>
+        <Router history={history}>
           <Switch>
             <PrivateRoute path="/" exact component={AsyncDashboard} />
             <PrivateRoute path="/artist/:id" component={AsyncArtist} />

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from 'store';
 import { refreshAccessToken } from 'features/accessToken/accessTokenActions';
+import history from '../history';
 
 const instance = axios.create({
   baseURL: 'https://api.spotify.com/v1'
@@ -26,7 +27,8 @@ instance.interceptors.response.use(
           return axios(originalRequest);
         })
         .catch(() => {
-          console.log('refersh_token refresh not ok');
+          console.log('going to push historyyy');
+          history.push('/login');
         });
     }
   }

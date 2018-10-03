@@ -23,7 +23,7 @@ const render = () => {
 
 if (process.env.NODE_ENV !== 'production') {
   if (module.hot) {
-    module.hot.accept('app/layout/App', () => {
+    module.hot.accept('./App', () => {
       setTimeout(render);
     });
   }
