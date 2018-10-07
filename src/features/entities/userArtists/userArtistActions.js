@@ -15,7 +15,7 @@ export const fetchUserArtists = () => {
   return (dispatch, getState) => {
     dispatch(setRequestListOfOwnedArtist());
     const state = getState();
-    database.ref(`album/${state.user.id}`).on('value', snapshot => {
+    database.ref(`album/${state.user.data.id}`).on('value', snapshot => {
       const artistIds = Object.keys(snapshot.val());
       dispatch(fetchArtists(artistIds));
       dispatch(setListOfOwnedArtist(artistIds));

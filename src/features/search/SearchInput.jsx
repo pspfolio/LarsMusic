@@ -30,10 +30,6 @@ const SearchInputField = styled(Field)`
   &:-moz-placeholder {
     color: #cfcffd;
   }
-
-  @media (max-width: 769px) {
-    width: 75%;
-  }
 `;
 
 const SearchIcon = styled.div`

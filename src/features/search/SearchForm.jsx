@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import SearchInput from './SearchInput';
 import styled from 'styled-components';
 import { fetchSearch } from './searchActions';
+import { devices } from 'common/utils/styledUtils';
+
+console.log('devices', devices);
 
 const Form = styled.form`
   display: flex;
@@ -11,6 +14,10 @@ const Form = styled.form`
   margin: 32px auto;
   width: 40%;
   position: relative;
+
+  ${devices.md`
+    width: 100%;
+  `};
 `;
 
 class SearchForm extends Component {

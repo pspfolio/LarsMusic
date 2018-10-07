@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import no_image from 'assets/images/no_image.jpg';
+import { devices } from 'common/utils/styledUtils';
 
 const CardArtistImage = styled.div`
   width: 100%;
   height: 194px;
   background-image: url(${props => props.url});
   background-size: cover;
-  background-position: center;
+  background-position: 50% 20%;
   border-radius: 8px;
 `;
 
@@ -42,6 +43,11 @@ const ArtistCard = styled.section`
   &:hover ${CardArtistTitle} {
     color: ${props => props.theme.primaryColor};
   }
+
+  ${devices.md`
+    margin-right: 0px;
+    width: 100%;
+  `};
 `;
 
 const ArtistListItem = ({ images, name, id }) => {
