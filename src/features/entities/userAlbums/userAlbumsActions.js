@@ -45,7 +45,7 @@ export const toggleLikedAlbum = (artistId, albumId) => {
 export const fetchUserOwnedAlbumsByArtistId = artistId => {
   return (dispatch, getState) => {
     const user = getState().user;
-    database.ref(`album/${user.id}/${artistId}`).on('value', snapshot => {
+    database.ref(`album/${user.data.id}/${artistId}`).on('value', snapshot => {
       const data = snapshot.val();
       const albumIds = values(data).map(item => item.albumId);
       dispatch(receiveOwnedAlbums(albumIds));
