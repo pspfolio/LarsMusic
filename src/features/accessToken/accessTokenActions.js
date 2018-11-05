@@ -21,7 +21,7 @@ export const refreshAccessToken = () => {
   return (dispatch, getState) => {
     const { refresh_token } = getState().auth;
 
-    return fetch(`http://localhost:8888/refreshToken?refresh_token=${refresh_token}`)
+    return fetch(`https://larsfin.tech/refreshToken?refresh_token=${refresh_token}`)
       .then(res => {
         return res.json();
       })
