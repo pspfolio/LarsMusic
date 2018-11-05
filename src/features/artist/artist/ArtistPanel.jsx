@@ -39,8 +39,8 @@ const LinkToSpotify = styled.a`
 `;
 
 const tabs = [
-  { name: 'topTracks', label: 'Top Kappaleet', component: TopTracks },
-  { name: 'albums', label: 'Albumit', component: AlbumList }
+  { name: 'albums', label: 'Albumit', component: AlbumList },
+  { name: 'topTracks', label: 'Top Kappaleet', component: TopTracks }
 ];
 
 class ArtistPanel extends Component {
