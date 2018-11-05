@@ -17,8 +17,7 @@ export const toggleLikedAlbum = (artistId, albumId) => {
   return (dispatch, getState) => {
     const user = getState().user;
     const artistRef = database.ref(`album/${user.data.id}/${artistId}`);
-    // updating redux data before call to firebase
-    dispatch(receiveOwnedAlbums([albumId]));
+
     artistRef.once('value', snapshot => {
       const key = findKey(snapshot.val(), item => item.albumId === albumId);
       if (key) {
@@ -27,15 +26,15 @@ export const toggleLikedAlbum = (artistId, albumId) => {
           .child(key)
           .remove()
           .then()
-          .catch(() => {
-            dispatch(receiveOwnedAlbums([albumId]));
+          .catch(error => {
+            console.log('ERROR on toggled', error.response);
           });
       } else {
         artistRef
           .push({ albumId: albumId })
           .then()
-          .catch(() => {
-            dispatch(removeAlbum(albumId));
+          .catch(error => {
+            console.log('ERROR on toggled ELSEE', error.response);
           });
       }
     });
@@ -46,6 +45,7 @@ export const fetchUserOwnedAlbumsByArtistId = artistId => {
   return (dispatch, getState) => {
     const user = getState().user;
     database.ref(`album/${user.data.id}/${artistId}`).on('value', snapshot => {
+      console.log('updated');
       const data = snapshot.val();
       const albumIds = values(data).map(item => item.albumId);
       dispatch(receiveOwnedAlbums(albumIds));

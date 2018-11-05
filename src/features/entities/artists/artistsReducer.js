@@ -5,7 +5,8 @@ import { SEARCH_RECEIVE_ARTISTS } from 'features/search/searchConstants';
 const initialState = {
   isFetching: false,
   itemsById: {},
-  items: []
+  items: [],
+  topTracks: {}
 };
 
 export default function artistList(state = initialState, action) {
@@ -21,11 +22,12 @@ export default function artistList(state = initialState, action) {
     case RECEIVE_ARTIST_TOP_TRACKS:
       return {
         ...state,
-        itemsById: {
-          ...state.itemsById,
-          [action.payload.id]: { ...state.itemsById[action.payload.id], topTracks: action.payload.topTracks }
+        topTracks: {
+          ...state.topTracks,
+          [action.payload.id]: action.payload.topTracks
         }
       };
+
     default:
       return state;
   }

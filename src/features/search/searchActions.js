@@ -21,8 +21,8 @@ export function fetchSearch() {
   return (dispatch, getState) => {
     dispatch(requestSearch());
     const searchTerm = getState().form.search.values.search;
-    return api(`/search?q=${searchTerm}&type=artist&limit=25`).then(json =>
-      dispatch(setSearchResult(json, searchTerm))
-    );
+    return api(`/search?q=${searchTerm}&type=artist&limit=25`).then(json => {
+      return dispatch(setSearchResult(json, searchTerm));
+    });
   };
 }
