@@ -10,6 +10,7 @@ import { selectTracksByAlbumId } from 'features/entities/tracks/tracksSelectors'
 import { fetchUserOwnedAlbumsByArtistId, toggleLikedAlbum } from 'features/entities/userAlbums/userAlbumsActions';
 import ClickableMusicListItem from 'common/components/musicListItem/ClickableMusicListItem';
 import AlbumListControls from './AlbumListControls';
+import no_image from 'assets/images/no_image.jpg';
 import TracksList from 'features/tracks/tracksList/TracksList';
 
 const List = styled.ul`
@@ -41,21 +42,24 @@ class AlbumList extends Component {
       <div>
         {albums && (
           <List>
-            {albums.map(({ id, name, album_type, images, owned }) => (
-              <React.Fragment key={id}>
-                <ClickableMusicListItem
-                  name={name}
-                  secondaryName={album_type}
-                  image={images.find(img => img.height < 100).url}
-                  onClick={() => {
-                    this.onAlbumClick(id);
-                  }}
-                >
-                  {() => <AlbumListControls onClick={() => this.onAddFavoriteClick(id)} owned={owned} />}
-                </ClickableMusicListItem>
-                {openAlbum === id && <TracksList tracks={albumTracks} albumId={id} artistId={match.params.id} />}
-              </React.Fragment>
-            ))}
+            {albums.map(({ id, name, album_type, images, owned }) => {
+              console.log(images);
+              return (
+                <React.Fragment key={id}>
+                  <ClickableMusicListItem
+                    name={name}
+                    secondaryName={album_type}
+                    image={images.length > 0 ? images.find(img => img.height < 100).url : no_image}
+                    onClick={() => {
+                      this.onAlbumClick(id);
+                    }}
+                  >
+                    {() => <AlbumListControls onClick={() => this.onAddFavoriteClick(id)} owned={owned} />}
+                  </ClickableMusicListItem>
+                  {openAlbum === id && <TracksList tracks={albumTracks} albumId={id} artistId={match.params.id} />}
+                </React.Fragment>
+              );
+            })}
           </List>
         )}
       </div>
