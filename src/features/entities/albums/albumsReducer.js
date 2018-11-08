@@ -1,4 +1,4 @@
-import { RECEIVE_ALBUMS } from './albumsConstants';
+import { ALBUMS_SUCCESS } from './albumsConstants';
 
 const initialState = {
   isFetching: false,
@@ -8,7 +8,7 @@ const initialState = {
 
 const albums = (state = initialState, action) => {
   switch (action.type) {
-    case RECEIVE_ALBUMS:
+    case ALBUMS_SUCCESS:
       return receiveAlbums(state, action);
     default:
       return state;

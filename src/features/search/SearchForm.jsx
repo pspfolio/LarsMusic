@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import { fetchSearch } from './searchActions';
 import { devices } from 'common/utils/styledUtils';
 
-console.log('devices', devices);
-
 const Form = styled.form`
   display: flex;
   justify-content: center;

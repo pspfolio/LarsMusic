@@ -25,4 +25,14 @@ export const selectAlbumsByArtistId = createSelector(getAlbumsById, getOwnedAlbu
   return [];
 });
 
+export const selectOwnedAlbumsByArtistId = createSelector(getAlbumsById, getOwnedAlbums, (albums, ownedAlbumIds) => {
+  if (albums.length) {
+    const ownedAlbums = albums.filter(album => ownedAlbumIds.includes(album.id));
+    const result = ownedAlbums.map(album => ({ ...album, owned: true }));
+    return result;
+  }
+
+  return [];
+});
+
 export const selectAlbumByAlbumId = createSelector(getAlbumByAlbumId, album => album);

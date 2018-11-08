@@ -27,7 +27,6 @@ instance.interceptors.response.use(
           return axios(originalRequest);
         })
         .catch(() => {
-          console.log('going to push historyyy');
           history.push('/login');
         });
     }

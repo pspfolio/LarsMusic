@@ -2,7 +2,7 @@ import api from 'common/utils/axiosUtils';
 import mapKeys from 'lodash/mapKeys';
 import { RECEIVE_TRACKS } from './tracksConstants';
 import { RECEIVE_ARTIST_TOP_TRACKS } from 'features/entities/artists/artistsConstants';
-import { RECEIVE_ALBUMS } from 'features/entities/albums/albumsConstants';
+import { ALBUMS_SUCCESS } from 'features/entities/albums/albumsConstants';
 import { normalizeAlbumData } from 'common/utils/albumDataHelpers';
 
 const setTracks = (tracks, albumId) => {
@@ -40,7 +40,7 @@ const setTopTracksAlbums = ({ data }) => {
   const albumData = data.tracks.map(track => track.album);
   const payload = normalizeAlbumData(albumData);
   return {
-    type: RECEIVE_ALBUMS,
+    type: ALBUMS_SUCCESS,
     payload
   };
 };

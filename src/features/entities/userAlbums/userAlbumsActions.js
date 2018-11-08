@@ -45,7 +45,6 @@ export const fetchUserOwnedAlbumsByArtistId = artistId => {
   return (dispatch, getState) => {
     const user = getState().user;
     database.ref(`album/${user.data.id}/${artistId}`).on('value', snapshot => {
-      console.log('updated');
       const data = snapshot.val();
       const albumIds = values(data).map(item => item.albumId);
       dispatch(receiveOwnedAlbums(albumIds));

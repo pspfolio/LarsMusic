@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TopTracks from 'features/tracks/topTracks/TopTracks';
-import AlbumList from 'features/album/albumList/AlbumList';
+import ArtistAlbumList from 'features/album/albumList/ArtistAlbumList';
+import UserOwnedAlbumList from 'features/album/albumList/UserOwnedAlbumList';
 import TabContainer from 'features/tabs/TabBarContainer';
 
 const ArtistPanelHeader = styled.article`
@@ -39,8 +40,9 @@ const LinkToSpotify = styled.a`
 `;
 
 const tabs = [
-  { name: 'albums', label: 'Albumit', component: AlbumList },
-  { name: 'topTracks', label: 'Top Kappaleet', component: TopTracks }
+  { name: 'albums', label: 'Albumit', component: ArtistAlbumList },
+  { name: 'topTracks', label: 'Top Kappaleet', component: TopTracks },
+  { name: 'userOwnedAlbums', label: 'Hyllyssä', component: UserOwnedAlbumList }
 ];
 
 class ArtistPanel extends Component {

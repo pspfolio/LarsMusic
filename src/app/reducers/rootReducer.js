@@ -10,6 +10,7 @@ import albums from 'features/album/albumReducer';
 import user from 'features/user/userReducer';
 import userArtists from 'features/entities/userArtists/userArtistReducer';
 import userAlbums from 'features/entities/userAlbums/userAlbumsReducer';
+import loading from './loadingReducer';
 
 const entities = combineReducers({ artists: artistsEntities, albums: albumsEntities, tracks, userArtists, userAlbums });
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   albums,
   search,
   user,
-  form: formReducer
+  form: formReducer,
+  loading
 });
 
 export default rootReducer;

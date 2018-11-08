@@ -20,8 +20,8 @@ const LinkToSearch = styled(Link)`
 
 class UserOwnedArtistList extends Component {
   componentDidMount() {
-    const { getUserArtists } = this.props;
-    getUserArtists();
+    const { fetchUserArtists } = this.props;
+    fetchUserArtists();
   }
   render() {
     const { artists } = this.props;
@@ -45,7 +45,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUserArtists: () => dispatch(fetchUserArtists())
+  fetchUserArtists: () => dispatch(fetchUserArtists())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserOwnedArtistList);
