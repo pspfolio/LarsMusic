@@ -6,7 +6,11 @@ import { toggleAlbumTrackList } from '../albumActions';
 import { fetchAlbumTracks } from 'features/entities/tracks/tracksActions';
 import { selectAlbumsByArtistId, selectOwnedAlbumsByArtistId } from 'features/entities/albums/albumsSelectors';
 import { selectTracksByAlbumId } from 'features/entities/tracks/tracksSelectors';
-import { fetchUserOwnedAlbumsByArtistId, toggleLikedAlbum } from 'features/entities/userAlbums/userAlbumsActions';
+import {
+  fetchUserOwnedAlbumsByArtistId,
+  toggleLikedAlbum,
+  addAlbumType
+} from 'features/entities/userAlbums/userAlbumsActions';
 
 class AlbumListContainer extends Component {
   componentDidMount() {
@@ -26,12 +30,21 @@ class AlbumListContainer extends Component {
     toggleLikedAlbum(id);
   };
 
+  onAlbumTypeSelect = (id, albumType) => {
+    const { addAlbumType } = this.props;
+    console.log('albumtype', albumType);
+    addAlbumType(id, albumType);
+  };
+
   render() {
     const { children, albums, openAlbum, albumTracks, ownedAlbums, match, isAlbumsLoading } = this.props;
 
+    console.log('ownedalbusm', ownedAlbums);
+
     const actions = {
       onAlbumClick: this.onAlbumClick,
-      onAddFavoriteClick: this.onAddFavoriteClick
+      onAddFavoriteClick: this.onAddFavoriteClick,
+      onAlbumTypeSelect: this.onAlbumTypeSelect
     };
 
     const data = {
@@ -67,11 +80,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   openAlbumTrackList: albumId => {
     dispatch(toggleAlbumTrackList(albumId));
   },
-  toggleLikedAlbum: trackId => {
-    dispatch(toggleLikedAlbum(ownProps.match.params.id, trackId));
+  toggleLikedAlbum: albumId => {
+    dispatch(toggleLikedAlbum(ownProps.match.params.id, albumId));
   },
   fetchUserOwnedAlbumsByArtistId: () => {
     dispatch(fetchUserOwnedAlbumsByArtistId(ownProps.match.params.id));
+  },
+  addAlbumType: (albumId, albumType) => {
+    dispatch(addAlbumType(ownProps.match.params.id, albumId, albumType));
   }
 });
 

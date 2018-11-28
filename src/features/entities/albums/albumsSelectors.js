@@ -10,12 +10,14 @@ const getOwnedAlbums = state => state.entities.userAlbums.items;
 
 export const getAllAlbums = state => state.entities.albums.itemsById;
 
-export const selectAlbumsByArtistId = createSelector(getAlbumsById, getOwnedAlbums, (albums, ownedAlbumIds) => {
+export const selectAlbumsByArtistId = createSelector(getAlbumsById, getOwnedAlbums, (albums, ownedAlbums) => {
   if (albums.length) {
+    const ownedAlbumIds = values(ownedAlbums).map(item => item.albumId);
     const result = albums.map(album => {
       return {
         ...album,
-        owned: ownedAlbumIds.includes(album.id)
+        owned: ownedAlbumIds.includes(album.id),
+        albumType: ownedAlbums[album.id] ? ownedAlbums[album.id].albumType : ''
       };
     });
 
@@ -25,10 +27,17 @@ export const selectAlbumsByArtistId = createSelector(getAlbumsById, getOwnedAlbu
   return [];
 });
 
-export const selectOwnedAlbumsByArtistId = createSelector(getAlbumsById, getOwnedAlbums, (albums, ownedAlbumIds) => {
+export const selectOwnedAlbumsByArtistId = createSelector(getAlbumsById, getOwnedAlbums, (albums, ownedAlbums) => {
+  const ownedAlbumIds = values(ownedAlbums).map(item => item.albumId);
   if (albums.length) {
-    const ownedAlbums = albums.filter(album => ownedAlbumIds.includes(album.id));
-    const result = ownedAlbums.map(album => ({ ...album, owned: true }));
+    const owned = albums.filter(album => ownedAlbumIds.includes(album.id));
+    const result = owned.map(album => {
+      const ownedAlbum = ownedAlbums[album.id];
+      if (!ownedAlbum) return { ...album, owned: true };
+
+      const albumType = ownedAlbums[album.id].albumType;
+      return { ...album, owned: true, albumType };
+    });
     return result;
   }
 

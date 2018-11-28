@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Menu from 'common/components/Menu';
 
 const ControlWrapper = styled.div`
   display: flex;
@@ -19,12 +20,17 @@ const Icon = styled.p`
   }
 `;
 
-const AlbumListControls = ({ onClick, owned }) => {
+const AlbumListControls = ({ onClick, onTypeChange, owned, albumType }) => {
   return (
     <ControlWrapper>
       <Icon onClick={onClick} owned={owned}>
         {owned ? '-' : '+'}
       </Icon>
+      {owned ? (
+        <Menu items={['LP', 'CD', 'Digi']} onClick={onTypeChange} selectedItem={albumType} />
+      ) : (
+        <div style={{ width: '100px' }} />
+      )}
     </ControlWrapper>
   );
 };

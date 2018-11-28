@@ -27,10 +27,19 @@ const EmptyScreenImage = styled.img`
 
 class AlbumList extends Component {
   renderAlbums = () => {
-    const { albums, openAlbum, albumTracks, match, onAlbumClick, onAddFavoriteClick, isAlbumsLoading } = this.props;
+    const {
+      albums,
+      openAlbum,
+      albumTracks,
+      match,
+      onAlbumClick,
+      onAddFavoriteClick,
+      isAlbumsLoading,
+      onAlbumTypeSelect
+    } = this.props;
     return (
       <List>
-        {albums.map(({ id, name, album_type, images, owned }) => (
+        {albums.map(({ id, name, album_type, images, owned, albumType }) => (
           <React.Fragment key={id}>
             <ClickableMusicListItem
               name={name}
@@ -40,7 +49,14 @@ class AlbumList extends Component {
                 onAlbumClick(id);
               }}
             >
-              {() => <AlbumListControls onClick={() => onAddFavoriteClick(id)} owned={owned} />}
+              {() => (
+                <AlbumListControls
+                  onClick={() => onAddFavoriteClick(id)}
+                  onTypeChange={albumType => onAlbumTypeSelect(id, albumType)}
+                  owned={owned}
+                  albumType={albumType}
+                />
+              )}
             </ClickableMusicListItem>
             {openAlbum === id && <TracksList tracks={albumTracks} albumId={id} artistId={match.params.id} />}
           </React.Fragment>

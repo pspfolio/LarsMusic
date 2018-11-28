@@ -40,9 +40,9 @@ const LinkToSpotify = styled.a`
 `;
 
 const tabs = [
+  { name: 'userOwnedAlbums', label: 'Hyllyssä', component: UserOwnedAlbumList },
   { name: 'albums', label: 'Albumit', component: ArtistAlbumList },
-  { name: 'topTracks', label: 'Top Kappaleet', component: TopTracks },
-  { name: 'userOwnedAlbums', label: 'Hyllyssä', component: UserOwnedAlbumList }
+  { name: 'topTracks', label: 'Top Kappaleet', component: TopTracks }
 ];
 
 class ArtistPanel extends Component {
