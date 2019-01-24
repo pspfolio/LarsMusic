@@ -38,6 +38,7 @@ export const selectOwnedAlbumsByArtistId = createSelector(getAlbumsById, getOwne
       const albumType = ownedAlbums[album.id].albumType;
       return { ...album, owned: true, albumType };
     });
+
     return result;
   }
 

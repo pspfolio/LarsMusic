@@ -60,7 +60,6 @@ class Menu extends Component {
   };
 
   closeMenu = event => {
-    console.log(this.dropdownMenu);
     if (!event || (this.dropdownMenu && !this.dropdownMenu.contains(event.target))) {
       this.setState({ showMenu: false }, () => {
         document.removeEventListener('click', this.closeMenu);

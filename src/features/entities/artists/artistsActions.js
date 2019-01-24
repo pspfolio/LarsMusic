@@ -33,10 +33,11 @@ export function fetchArtistIfNeeded(artistId) {
   };
 }
 
-export const fetchArtists = artistIdList => {
+export const fetchArtists = data => {
   return dispatch => {
-    dispatch(requestArtistList());
-    const artistIds = artistIdList.join(',');
-    return api.get(`/artists?ids=${artistIds}`).then(json => dispatch(setArtistList(json)));
+    dispatch({
+      type: RECEIVE_ARTISTS,
+      payload: data
+    });
   };
 };

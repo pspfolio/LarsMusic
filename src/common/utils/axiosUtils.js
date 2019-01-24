@@ -20,6 +20,8 @@ instance.interceptors.response.use(
   error => {
     const originalRequest = error.config;
 
+    console.log('resp', error.response);
+
     if (error.response.status === 401) {
       store
         .dispatch(refreshAccessToken())

@@ -28,7 +28,7 @@ const CardLink = styled(Link)`
 `;
 
 const ArtistCard = styled.section`
-  width: 296px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   background-color: #fcfcfc;
