@@ -71,7 +71,7 @@ class Login extends Component {
           <MainHeader>LarsMusic</MainHeader>
           <LoginParagraph>Track your album and vinyl collection and use Spotify data to help it</LoginParagraph>
           <LoginParagraph>Please login to Spotify and start use the application</LoginParagraph>
-          <LoginButton href="http://localhost:8888/login">
+          <LoginButton href="https://larsfin.tech/login">
             Log in <SpotifyIcon src={spotifyWhiteIcon} alt="logo of Spotify" />
           </LoginButton>
         </LoginContainer>
